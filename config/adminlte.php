@@ -215,6 +215,12 @@ return [
             'icon' => 'fas fa-list-alt'
         ],
 
+        [
+            'text' => 'Perfis',
+            'url'  => 'admin/profiles',
+            'icon' => 'fas fa-adress-book'
+        ],
+
     ],
 
     /*

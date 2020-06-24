@@ -3,7 +3,10 @@
 @section('title', 'Planos')
 
 @section('content_header')
-    <h1>Planos</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('plans.index') }}" class="active">Planos</a></li>
+    </ol>
 @stop
 
 @section('content')
@@ -37,7 +40,8 @@
                                 R$ {{number_format($plan->price, 2, ',', '.') }}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning">Detalhes</a>
+                                {{-- <a href="{{ route('details.plan.index', $plan->url) }}" class="btn btn-primary">Detalhes</a> --}}
+                                <a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning">Ver</a>
                                 <a href="{{ route('plans.edit', $plan->url) }}" class="btn btn-success">Editar</a>
                             </td>
                         </tr>
