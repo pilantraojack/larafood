@@ -36,8 +36,8 @@
                                 {{ $profile->name }}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('profiles.show', $plan->url) }}" class="btn btn-warning">Detalhes</a>
-                                <a href="{{ route('profiles.edit', $plan->url) }}" class="btn btn-success">Editar</a>
+                                <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-warning">Detalhes</a>
+                                <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-success">Editar</a>
                             </td>
                         </tr>
                     @endforeach
