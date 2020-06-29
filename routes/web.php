@@ -21,6 +21,7 @@ Route::prefix('admin')
     // Routes Profiles
     Route::resource('profiles', 'ACL\ProfileController');
 
+
     // Routes Details Plans
     // Route::get('plans/{id}/details', 'DetailPlanController@index')->name('details.plan.index');
 
