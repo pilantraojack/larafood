@@ -221,6 +221,12 @@ return [
             'icon' => 'fas fa-adress-book'
         ],
 
+        [
+            'text' => 'Permissões',
+            'url'  => 'admin/permissions',
+            'icon' => 'fas fa-lock'
+        ],
+
     ],
 
     /*
