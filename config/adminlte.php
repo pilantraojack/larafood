@@ -218,7 +218,7 @@ return [
         [
             'text' => 'Perfis',
             'url'  => 'admin/profiles',
-            'icon' => 'fas fa-adress-book'
+            'icon' => 'fas fa-id-badge'
         ],
 
         [

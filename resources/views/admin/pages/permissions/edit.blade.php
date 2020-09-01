@@ -9,10 +9,10 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('pemissions.update', $permission->id) }}" class="form" method="POST">
+            <form action="{{ route('permissions.update', $permission->id) }}" class="form" method="POST">
                 @method('PUT')
 
-                @include('admin.pages.pemissions.partials.form')
+                @include('admin.pages.permissions.partials.form')
             </form>
         </div>
     </div>

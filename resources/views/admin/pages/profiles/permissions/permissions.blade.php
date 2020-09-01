@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Perfis')
+@section('title', "Permissões do perfil {{ $profile->name }}")
 
 @section('content_header')
     <ol class="breadcrumb">
@@ -8,17 +8,13 @@
         <li class="breadcrumb-item"><a href="{{ route('profiles.index') }}">Perfis</a></li>
     </ol>
 
-    <h1>Perfis <a href="{{ route('profiles.create') }}" class="btn btn-dark">ADD</a></h1>
+    <h1>Permissões do perfil <strong>{{ $profile->name }}</strong></h1>
+    <hr>
+    <a href="{{ route('profiles.permissions.available', $profile->id) }}" class="btn btn-dark">ADD NOVA PERMISSÃO</a>
 @stop
 
 @section('content')
     <div class="card">
-       {{-- <div class="card-header">
-            <form action="{{ route('plans.search') }}" method="POST" class="for form-inline">
-                @csrf
-                <input type="text" name="filter" placeholder="Nome" class="form-control">
-            </form>
-        </div> --}}
         <div class="card-body">
             <table class="table table-condensed">
                 <thead>
@@ -28,15 +24,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($profiles as $profile)
+                    @foreach($permissions as $permission)
                         <tr>
                             <td>
-                                {{ $profile->name }}
+                                {{ $permission->name }}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-warning">Detalhes</a>
-                                <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-success">Editar</a>
-                                <a href="{{ route('profiles.permissions', $profile->id) }}" class="btn btn-info"><i class="fas fa-lock"></i></a>
+                                <a href="{{ route('profiles.permission.detach', [$profile->id, $permission->id]) }}" class="btn btn-warning">Desvincular</a>
                             </td>
                         </tr>
                     @endforeach
@@ -45,9 +39,9 @@
         </div>
         <div class="card-footer">
             @if (isset($filters))
-                {!! $profiles->appends($filters)->links() !!}
+                {!! $permissions->appends($filters)->links() !!}
             @else
-                {!! $profiles->links() !!}
+                {!! $permissions->links() !!}
             @endif
         </div>
     </div>

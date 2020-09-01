@@ -1,24 +1,18 @@
 @extends('adminlte::page')
 
-@section('title', 'Perfis')
+@section('title', "Perfis da permissão {{ $permission->name }}")
 
 @section('content_header')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('profiles.index') }}">Perfis</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('permissions.index') }}">Perfis</a></li>
     </ol>
 
-    <h1>Perfis <a href="{{ route('profiles.create') }}" class="btn btn-dark">ADD</a></h1>
+    <h1>Perfis da permissão <strong>{{ $permission->name }}</strong></h1>
 @stop
 
 @section('content')
     <div class="card">
-       {{-- <div class="card-header">
-            <form action="{{ route('plans.search') }}" method="POST" class="for form-inline">
-                @csrf
-                <input type="text" name="filter" placeholder="Nome" class="form-control">
-            </form>
-        </div> --}}
         <div class="card-body">
             <table class="table table-condensed">
                 <thead>
@@ -28,15 +22,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($profiles as $profile)
+                    @foreach($profiles as $profile)
                         <tr>
                             <td>
                                 {{ $profile->name }}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-warning">Detalhes</a>
-                                <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-success">Editar</a>
-                                <a href="{{ route('profiles.permissions', $profile->id) }}" class="btn btn-info"><i class="fas fa-lock"></i></a>
+                                <a href="{{ route('profiles.permission.detach', [$profile->id, $profile->id]) }}" class="btn btn-warning">Desvincular</a>
                             </td>
                         </tr>
                     @endforeach

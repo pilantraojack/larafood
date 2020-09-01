@@ -9,9 +9,9 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('pemissions.store') }}" class="form" method="POST">
+            <form action="{{ route('permissions.store') }}" class="form" method="POST">
 
-                @include('admin.pages.pemissions.partials.form')
+                @include('admin.pages.permissions.partials.form')
             </form>
         </div>
     </div>
