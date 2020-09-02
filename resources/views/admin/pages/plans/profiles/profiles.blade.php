@@ -1,14 +1,17 @@
 @extends('adminlte::page')
 
-@section('title', 'Perfis')
+@section('title', "Perfis do Plano {{ $plan->name }}")
 
 @section('content_header')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('profiles.index') }}">Perfis</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('plans.index') }}">Planos</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('plans.profiles', $plan->id) }}" class="active">Perfis</a></li>
     </ol>
 
-    <h1>Perfis <a href="{{ route('profiles.create') }}" class="btn btn-dark">ADD</a></h1>
+    <h1>Perfis do Plano <strong>{{ $plan->name }}</strong></h1>
+    <hr>
+    <a href="{{ route('plans.profiles.available', $plan->id) }}" class="btn btn-dark">ADD NOVO PERFIL</a>
 @stop
 
 @section('content')
@@ -22,16 +25,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($profiles as $profile)
+                    @foreach($profiles as $profile)
                         <tr>
                             <td>
                                 {{ $profile->name }}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-info">Editar</a>
-                                <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-warning">Detalhes</a>
-                                <a href="{{ route('profiles.permissions', $profile->id) }}" class="btn btn-primary"><i class="fas fa-lock"></i></a>
-                                <a href="{{ route('profiles.plans', $profile->id) }}" class="btn btn-dark"><i class="fas fa-list-alt"></i></a>
+                                <a href="{{ route('plans.profile.detach', [$plan->id, $profile->id]) }}" class="btn btn-warning">Desvincular</a>
                             </td>
                         </tr>
                     @endforeach
