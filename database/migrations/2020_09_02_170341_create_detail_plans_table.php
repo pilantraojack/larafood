@@ -13,13 +13,16 @@ class CreateDetailPlansTable extends Migration
      */
     public function up()
     {
-        Schema::create('detail_plans', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('details_plan', function (Blueprint $table) {
+            $table->id();
             $table->unsignedBigInteger('plan_id');
-            $table->string('name')->nullable();
+            $table->string('name');
             $table->timestamps();
 
-            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
+            $table->foreign('plan_id')
+                    ->references('id')
+                    ->on('plans')
+                    ->onDelete('cascade');
         });
     }
 

@@ -11,13 +11,15 @@
     </ol>
 
     <h1>Detalhes do Plano {{ $plan->name }}</h1>
+    <a class="btn btn-dark mb-2" href="{{ route('details.plan.create', $plan->url) }}">ADD</a>
+
 @stop
 
 @section('content')
-    <p>Listagem dos Planos</p>
-
     <div class="card">
         <div class="card-body">
+            @include('admin.includes.alerts')
+
             <table class="table table-condensed">
                 <thead>
                     <tr>
@@ -32,13 +34,20 @@
                                 {{ $detail->name }}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning">Detalhes</a>
-                                <a href="{{ route('plans.edit', $plan->url) }}" class="btn btn-success">Editar</a>
+                                <a href="{{ route('details.plan.edit', [$plan->url, $detail->id]) }}" class="btn btn-success">Editar</a>
+                                <a href="{{ route('details.plan.show', [$plan->url, $detail->id]) }}" class="btn btn-warning">Detalhes</a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+        </div>
+        <div class="card-footer">
+            @if(isset($filters))
+                {!! $details->appends($filters)->links() !!}
+            @else
+                {!! $details->links() !!}
+            @endif
         </div>
     </div>
 @endsection

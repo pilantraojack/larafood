@@ -40,7 +40,7 @@
                                 R$ {{number_format($plan->price, 2, ',', '.') }}
                             </td>
                             <td style="width=10px;">
-                                {{-- <a href="{{ route('details.plan.index', $plan->url) }}" class="btn btn-primary">Detalhes</a> --}}
+                                <a href="{{ route('details.plan.index', $plan->url) }}" class="btn btn-primary">Detalhes</a>
                                 <a href="{{ route('plans.show', $plan->url) }}" class="btn btn-warning">Ver</a>
                                 <a href="{{ route('plans.edit', $plan->url) }}" class="btn btn-success">Editar</a>
                                 <a href="{{ route('plans.profiles', $plan->id) }}" class="btn btn-success"><i class="fas fa-address-book"></i> </a>
