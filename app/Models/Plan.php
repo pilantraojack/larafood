@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Models;
+use App\Models\DetailPlan;
+use App\Models\Tenant;
+use App\Models\Profile;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -28,7 +31,7 @@ class Plan extends Model
     }
 
     public function tenants(){
-        return $this->hasMany(Tenant::class);
+        return $this->hasMany(Plan::class);
     }
 
     public function profiles(){

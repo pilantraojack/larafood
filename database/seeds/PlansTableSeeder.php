@@ -15,7 +15,7 @@ class PlansTableSeeder extends Seeder
         Plan::create([
             'name' => 'Business',
             'url' => 'business',
-            'price' => '499.99',
+            'price' => 499.99,
             'description' => 'Plano Empresarial',
         ]);
     }

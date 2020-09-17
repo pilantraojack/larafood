@@ -32,10 +32,7 @@ class CreateTenantsTable extends Migration
             $table->boolean('sub_active')->default(false); //Assinatura ativa
             $table->boolean('sub_suspended')->default(false); //Assinatura cancelada
 
-            $table->foreign('plan_id')->references('id')->on('plans');
-
-
-
+            $table->foreign('plan_id')->references('id')->on('plans')->onDelete('cascade');
             $table->timestamps();
         });
     }
