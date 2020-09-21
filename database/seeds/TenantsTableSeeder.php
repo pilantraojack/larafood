@@ -1,7 +1,9 @@
 <?php
 
-use App\Models\Plan;
-use App\Models\Tenant;
+use App\Models\{
+    Plan,
+    Tenant
+};
 use Illuminate\Database\Seeder;
 
 class TenantsTableSeeder extends Seeder

@@ -1,7 +1,9 @@
 <?php
 
-use App\Models\Tenant;
-use App\Models\User;
+use App\Models\{
+    Tenant,
+    User
+};
 use Illuminate\Database\Seeder;
 
 class UsersTableSeeder extends Seeder

@@ -31,7 +31,7 @@ class Plan extends Model
     }
 
     public function tenants(){
-        return $this->hasMany(Plan::class);
+        return $this->hasMany(Tenant::class);
     }
 
     public function profiles(){
