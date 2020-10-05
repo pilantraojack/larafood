@@ -19,6 +19,10 @@ Route::prefix('admin')
         ->middleware('auth')
         ->group(function() {
 
+    // Routes Users
+    Route::any('users/search', 'UserController@search')->name('users.search');
+    Route::resource('users'  , 'UserController');
+
     // PLan x Profile
     Route::get('plans/{id}/profile/{idProfile}/detach'  , 'ACL\PlanProfileController@detachProfilePlan')->name('plans.profile.detach');
     Route::post('plans/{id}/profiles/'                  , 'ACL\PlanProfileController@attachProfilesPlan')->name('plans.profiles.attach');
