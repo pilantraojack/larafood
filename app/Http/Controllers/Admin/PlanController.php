@@ -79,16 +79,12 @@ class PlanController extends Controller
     }
 
     public function search(Request $request) {
+        $plans = $this->repository->search($request->filter);
 
-        // $filters = $request->except('_token');
-        // // $plans = $this->repository->search($request->filter);
-        // $plans = Plan::search($request->filters);
-        // dd($plans);
+        return view('admin.pages.plans.index', [
+            'plans' => $plans,
+        ]);
 
-        // return view('plans.index', [
-        //     'plans' => $plans,
-        //     'filters' => $filters,
-        // ]);
     }
 
     public function edit($url){

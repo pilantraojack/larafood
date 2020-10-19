@@ -110,9 +110,5 @@ class DetailPlanController extends Controller
 
     }
 
-
-
-
-
 }
 

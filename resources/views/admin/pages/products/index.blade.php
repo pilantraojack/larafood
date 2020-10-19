@@ -1,21 +1,21 @@
 @extends('adminlte::page')
 
-@section('title', 'Categorias')
+@section('title', 'Produtos')
 
 @section('content_header')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('categories.index') }}" class="active">Categorias</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('products.index') }}" class="active">Produtos</a></li>
     </ol>
 @stop
 
 @section('content')
-    <p>Listagem dos Categorias</p>
+    <p>Listagem dos Produtos</p>
 
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-dark mb-2" href="{{ route('categories.create') }}">Nova Categoria</a>
-            <form action="{{ route('categories.search') }}" method="POST" class="form form-inline">
+            <a class="btn btn-dark mb-2" href="{{ route('products.create') }}">Novo Produto</a>
+            <form action="{{ route('products.search') }}" method="POST" class="form form-inline">
                 @csrf
                 <input type="text" name="filter" id="filter" placeholder="Nome" class="form-control col-md-4 ">
                 <button type="submit" class="btn btn-dark ml-2">Filtrar</button>
@@ -25,19 +25,19 @@
             <table class="table table-condensed">
                 <thead>
                     <tr>
-                        <th>Nome</th>
-                        <th>Descrição</th>
+                        <th>Imagem</th>
+                        <th>Título</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($categories as $category)
+                    @foreach ($products as $product)
                         <tr>
-                            <td>{{ $category->name }}</td>
-                            <td>{{ $category->email }}</td>
+                            <td>{{ $product->image }}</td>
+                            <td>{{ $product->title }}</td>
                             <td style="width=10px;">
-                                <a href="{{ route('categories.show', $category->id) }}" class="btn btn-warning">Ver</a>
-                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-success">Editar</a>
+                                <a href="{{ route('products.show', $product->id) }}" class="btn btn-warning">Ver</a>
+                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-success">Editar</a>
                             </td>
                         </tr>
                     @endforeach

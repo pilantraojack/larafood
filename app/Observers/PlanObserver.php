@@ -2,8 +2,8 @@
 
 namespace App\Observers;
 
-use Illuminate\Support\Str;
 use App\Models\Plan;
+use Illuminate\Support\Str;
 
 class PlanObserver
 {

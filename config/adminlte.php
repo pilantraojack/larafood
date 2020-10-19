@@ -239,6 +239,12 @@ return [
             'icon' => 'fas fa-layer-group'
         ],
 
+        [
+            'text' => 'Produtos',
+            'url'  => 'admin/products',
+            'icon' => 'fas fa-layer-group'
+        ],
+
     ],
 
     /*

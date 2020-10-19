@@ -1,9 +1,9 @@
 @extends('adminlte::page')
 
-@section('title', 'Detalhes da Categoria')
+@section('title', 'Detalhes do Produto')
 
 @section('content_header')
-    <h1>Detalhes da Categoria <b>{{ $category->name }}</b>
+    <h1>Detalhes do Produto <b>{{ $product->title }}</b>
 @stop
 
 @section('content')
@@ -11,17 +11,20 @@
         <div class="card-body">
             <ul>
                 <li>
-                    <strong>Nome: </strong> {{ $category->name }}
+                    {{ $product->image }}
                 </li>
                 <li>
-                    <strong>URL: </strong> {{ $category->url }}
+                    <strong>Título: </strong> {{ $product->title }}
                 </li>
                 <li>
-                    <strong>Descrição: </strong> {{ $category->description }}
+                    <strong>Flag: </strong> {{ $product->flag }}
+                </li>
+                <li>
+                    <strong>Descrição: </strong> {{ $product->description }}
                 </li>
             </ul>
 
-            <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
+            <form action="{{ route('products.destroy', $product->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Deletar</button>

@@ -22,6 +22,10 @@ class Category extends Model
 
         static::observe(TenantObserver::class);
     }
+
+    public function products(){
+        $this->belongsToMany(Product::class);
+    }
 }
 
 
