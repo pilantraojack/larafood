@@ -6,7 +6,7 @@
 </div>
 <div class="form-group">
     <label for="email">Descrição</label>
-    <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{ $category->description }}</textarea>
+    <textarea name="description" id="description" cols="30" rows="10" class="form-control"></textarea>
 </div>
 <div class="form-group">
     <label for="password">Senha</label>

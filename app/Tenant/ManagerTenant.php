@@ -3,11 +3,10 @@
 namespace App\Tenant;
 
 use App\Models\Tenant;
-use phpDocumentor\Reflection\Types\Boolean;
 
 class ManagerTenant{
-    public function getTenantIdentify(){
-        auth()->user()->tenant_id;
+    public function getTenantIdentify():int {
+        return auth()->user()->tenant_id;
     }
 
     public function getTenant(): Tenant{
