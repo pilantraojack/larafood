@@ -2,8 +2,8 @@
 
 namespace App\Observers;
 
-use App\Models\Tenant;
 use Illuminate\Support\Str;
+use App\Models\Tenant;
 
 class TenantObserver
 {
@@ -28,7 +28,5 @@ class TenantObserver
     public function updating(Tenant $tenant)
     {
         $tenant->url = Str::kebab($tenant->name);
-
     }
-
 }

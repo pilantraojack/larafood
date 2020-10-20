@@ -2,9 +2,9 @@
 
 namespace App\Observers;
 
-// chamar primeiro o model
-use App\Models\Product;
 use Illuminate\Support\Str;
+use App\Models\Product;
+
 
 class ProductObserver
 {

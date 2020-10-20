@@ -15,11 +15,11 @@
     <div class="card">
         <div class="card-header">
             <a class="btn btn-dark mb-2" href="{{ route('plans.create') }}">Novo Plano</a>
-            {{-- <form action="{{ route('plans.search') }}" method="POST" class="form form-inline">
+            <form action="{{ route('plans.search') }}" method="POST" class="form form-inline">
                 @csrf
-                <input type="text" name="filter" id="filter" placeholder="Nome" class="form-control col-md-4 ">
+                <input type="text" name="filter" placeholder="Nome" class="form-control col-md-4 ">
                 <button type="submit" class="btn btn-dark ml-2">Filtrar</button>
-            </form> --}}
+            </form>
         </div>
         <div class="card-body">
             <table class="table table-condensed">
@@ -50,5 +50,8 @@
                 </tbody>
             </table>
         </div>
+        <div class="card-footer">
+            {!! $plans->links() !!}
+        </div>
     </div>
-@endsection
+@stop

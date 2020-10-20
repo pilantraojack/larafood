@@ -15,6 +15,7 @@ class PlanObserver
      */
     public function creating(Plan $plan)
     {
+        // pega o valor de name e transforma em kebab case, que usa hífens ao invés de espaços
         $plan->url = Str::kebab($plan->name);
     }
 
@@ -29,6 +30,5 @@ class PlanObserver
         $plan->url = Str::kebab($plan->name);
 
     }
-
 
 }

@@ -52,7 +52,7 @@ class ProductController extends Controller
         if($request->hasFile('image') && $request->image->isValid()){
             $data['image'] = $request->image->store("tenants/{$tenant->uuid}/products");
         }
-        dd($data);
+        // return $tenant;
         $this->repository->create($data);
 
         return redirect()->route('products.index');

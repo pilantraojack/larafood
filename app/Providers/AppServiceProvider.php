@@ -3,16 +3,16 @@
 namespace App\Providers;
 
 use App\Models\{
-    Category,
     Plan,
-    Product,
-    Tenant
+    Tenant,
+    Category,
+    Product
 };
 use App\Observers\{
-    CategoryObserver,
     PlanObserver,
-    ProductObserver,
-    TenantObserver
+    TenantObserver,
+    CategoryObserver,
+    ProductObserver
 };
 use Illuminate\Support\ServiceProvider;
 

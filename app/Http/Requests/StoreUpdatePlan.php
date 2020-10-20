@@ -23,13 +23,24 @@ class StoreUpdatePlan extends FormRequest
      */
     public function rules()
     {
+        // pega o segmento 3 da url, que no caso mostra o nome do plano
         $url = $this->segment(3);
         // dd($url);
 
         return [
+            // o name precisa ser único, a nao ser que seja no metodo edita, então ele compara com o valor da url
             'name' => "required|min:3|max:255|unique:plans,name,{$url},url",
             'description' => 'nullable|min:3|max:255',
+            // o preço utiliza validação de expressão regular, precisa ser em aspas duplas
+            // garante que tem o ponto e duas casa após o ponto, e que o valor seja numérico
             'price' => "required|regex:/^\d+(\.\d{1,2})?$/",
+        ];
+    }
+
+    public function messages() {
+        return [
+            'required' => __('mdci.Field :attribute is required.'),
+            'min'      => __('mdci.Field :attribute must have a minimun of :min characters.')
         ];
     }
 }
