@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateUser;
 use App\Models\User;
-use Request;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -22,7 +22,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = $this->repository->latest()->tenantUser()->paginate();
+        // traz somente o próprio usuário
+        // $users = $this->repository->latest()->tenantUser()->paginate();
+
+        // traz todos os usuários
+        $users = $this->repository->get();
 
         return view('admin.pages.users.index', compact('users'));
     }

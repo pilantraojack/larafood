@@ -25,16 +25,15 @@ class StoreUpdateProduct extends FormRequest
     {
         $id = $this->segment(3);
 
-        $rules = [
+        return [
             'title' => ['required', 'min:3', 'max:255', "unique:products,title,{$id},id"],
-            'description' => ['required', 'min:3', 'max:500'],
-            'image' => ['required', 'image'],
+            'description' => ['required', 'min:3', 'max:10000'],
+            'image' => ['required'],
             'price' => "required|regex:/^\d+(\.\d{1,2})?$/",
-
         ];
 
         if ($this->method() == 'PUT') {
-            $rules['image'] = ['nullable', 'image'];
+            $rules['image'] = ['nullable'];
         }
 
         return $rules;

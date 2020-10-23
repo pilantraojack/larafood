@@ -4,6 +4,7 @@ namespace App\Services;
 use App\Models\Plan;
 
 
+// essa classe serve para trasferir a responsabilidade do register controller
 class TenantService
 {
     private $plan, $data = [];
@@ -32,7 +33,6 @@ class TenantService
     }
 
     public function storeUser($tenant) {
-
         $user = $tenant->users()->create([
             'name' => $this->data['name'],
             'email' => $this->data['email'],
@@ -41,10 +41,5 @@ class TenantService
 
         return $user;
     }
-
-
-
-
-
 
 }

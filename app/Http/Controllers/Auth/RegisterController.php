@@ -51,11 +51,11 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'min:3', 'max:255'],
-            'email' => ['required', 'string', 'email', 'min:3', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'max:16', 'confirmed'],
-            'empresa' => ['required', 'string', 'min:3', 'max:255', 'unique:tenants,name' ],
-            'cnpj' => ['required', 'numeric', 'min:14', 'max:255', 'unique:tenants' ],
+            // 'name' => ['required', 'string', 'min:3', 'max:255'],
+            // 'email' => ['required', 'string', 'email', 'min:3', 'max:255', 'unique:users'],
+            // 'password' => ['required', 'string', 'min:6', 'max:16', 'confirmed'],
+            // 'empresa' => ['required', 'string', 'min:3', 'max:255', 'unique:tenants,name' ],
+            // 'cnpj' => ['required', 'numeric', 'min:14', 'max:14', 'unique:tenants' ],
         ]);
     }
 
@@ -67,6 +67,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         if (!$plan = session('plan')) {
             return redirect()->route('site.home');
         }

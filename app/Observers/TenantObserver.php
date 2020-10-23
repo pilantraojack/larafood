@@ -2,30 +2,30 @@
 
 namespace App\Observers;
 
-use Illuminate\Support\Str;
 use App\Models\Tenant;
+use Illuminate\Support\Str;
 
 class TenantObserver
 {
     /**
-     * Handle the tenant "creating" event.
+     * Handle the tenant "create" event.
      *
      * @param  \App\Models\Tenant  $tenant
      * @return void
      */
-    public function creating(Tenant $tenant)
+    public function create(Tenant $tenant)
     {
-        $tenant->uuid = Str::uuid();
+        $tenant->id = Str::id();
         $tenant->url = Str::kebab($tenant->name);
     }
 
     /**
-     * Handle the tenant "updated" event.
+     * Handle the tenant "updating" event.
      *
      * @param  \App\Models\Tenant  $tenant
      * @return void
      */
-    public function updating(Tenant $tenant)
+    public function update(Tenant $tenant)
     {
         $tenant->url = Str::kebab($tenant->name);
     }

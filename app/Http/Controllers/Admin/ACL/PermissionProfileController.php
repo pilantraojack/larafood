@@ -85,6 +85,4 @@ class PermissionProfileController extends Controller
 
     }
 
-
-
 }

@@ -2,9 +2,8 @@
 
 namespace App\Observers;
 
-use Illuminate\Support\Str;
 use App\Models\Product;
-
+use Illuminate\Support\Str;
 
 class ProductObserver
 {
@@ -20,7 +19,7 @@ class ProductObserver
     }
 
     /**
-     * Handle the product "updated" event.
+     * Handle the product "updating" event.
      *
      * @param  \App\Models\Product  $product
      * @return void
@@ -28,7 +27,6 @@ class ProductObserver
     public function updating(Product $product)
     {
         $product->flag = Str::kebab($product->title);
-
     }
 
 }

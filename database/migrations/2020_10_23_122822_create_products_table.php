@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('title')->unique();
             $table->string('flag')->unique();
             $table->string('image');
-            $table->double('price', 10, 2)->nullable();
+            $table->double('price', 10, 2);
             $table->text('description');
             $table->timestamps();
 
