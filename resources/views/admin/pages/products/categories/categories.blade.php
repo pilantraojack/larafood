@@ -9,7 +9,7 @@
         <li class="breadcrumb-item active"><a href="{{ route('products.categories', $product->id) }}" class="active">Categorias</a></li>
     </ol>
 
-    <h1>Perfis do Plano <strong>{{ $product->title }}</strong></h1>
+    <h1>Categorias do Produto <strong>{{ $product->title }}</strong></h1>
     <hr>
     <a href="{{ route('products.categories.available', $product->id) }}" class="btn btn-dark">ADD NOVA CATEGORIA</a>
 @stop

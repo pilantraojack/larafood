@@ -50,8 +50,6 @@ class ProductController extends Controller
         $tenant = auth()->user()->tenant;
         $data['tenant_id'] = $tenant->id;
 
-
-
         if($request->hasFile('image') && $request->image->isValid()){
             $data['image'] = $request->image->store("tenants/{$tenant->uuid}/products");
         }

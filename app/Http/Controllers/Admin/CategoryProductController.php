@@ -38,7 +38,7 @@ class CategoryProductController extends Controller
         return view('admin.pages.categories.products.products', compact('category', 'products'));
     }
 
-    // Traz as permissoes que ainda nao estao vinculadas ao perfil
+    // Traz as categorias que ainda nao estao vinculadas ao produto
     public function categoriesAvailable(Request $request, $idProduct){
 
         if(!$product = $this->product->find($idProduct)){
@@ -51,7 +51,7 @@ class CategoryProductController extends Controller
         return view('admin.pages.products.categories.available', compact('product', 'categories', 'filters'));
     }
 
-    // Vincula uma permissao ao perfil
+    // Vincula uma categoria ao produto
     public function attachCategoriesProduct(Request $request, $idProduct){
 
         if(!$product = $this->product->find($idProduct)){
@@ -69,7 +69,7 @@ class CategoryProductController extends Controller
 
     }
 
-    // Desvincula uma permissao ao perfil
+    // Desvincula uma categoria ao produto
     public function detachCategoryProduct($idProduct, $idCategory){
         $product = $this->product->find($idProduct);
         $category = $this->category->find($idCategory);

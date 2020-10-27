@@ -19,12 +19,16 @@ Route::prefix('admin')
         ->middleware('auth')
         ->group(function() {
 
+    // Routes Tables
+    Route::any('tables/search', 'TableController@search')->name('tables.search');
+    Route::resource('tables'  , 'TableController');
+
     // Product x Category
-    Route::get('products/{id}/category/{idCategory}/detach'  , 'ACL\CategoryController@detachCategoryProduct')->name('products.category.detach');
-    Route::post('products/{id}/categories/'                  , 'ACL\CategoryController@attachCategoryProduct')->name('products.categories.attach');
-    Route::any('products/{id}/categories/create'             , 'ACL\CategoryController@categoriesAvailable')->name('products.categories.available');
-    Route::get('products/{id}/categories'                    , 'ACL\CategoryController@categories')->name('products.categories');
-    Route::get('permissions/{id}/products'                 , 'ACL\CategoryController@products')->name('categories.products');
+    Route::get('products/{id}/category/{idCategory}/detach'  , 'CategoryController@detachCategoryProduct')->name('products.category.detach');
+    Route::post('products/{id}/categories/'                  , 'CategoryController@attachCategoryProduct')->name('products.categories.attach');
+    Route::any('products/{id}/categories/create'             , 'CategoryController@categoriesAvailable')->name('products.categories.available');
+    Route::get('products/{id}/categories'                    , 'CategoryController@categories')->name('products.categories');
+    Route::get('permissions/{id}/products'                 , 'CategoryController@products')->name('categories.products');
 
     // Routes Products
     Route::any('products/search', 'ProductController@search')->name('products.search');
