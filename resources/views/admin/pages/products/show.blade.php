@@ -9,7 +9,7 @@
 @section('content')
     <div class="card">
         <div class="card-body">
-            <img src="{{ url("storage/{$product->image}") }}">
+            <img src="{{ url("storage/$product->image") }}" width="50" height="50" alt="Image">
             <ul>
                 <li>
                     <strong>Título: </strong> {{ $product->title }}

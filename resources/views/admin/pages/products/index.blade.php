@@ -35,7 +35,7 @@
                         <tr>
                             <td>
                                 @if($product->image)
-                                    <img src="{{ url("storage/{$product->image}") }}" width="50" height="50" alt="Image">
+                                    <img src="{{ url("storage/$product->image") }}" width="50" height="50" alt="Image">
                                 @else
                                     {{ '-' }}
                                 @endif
@@ -44,7 +44,7 @@
                             <td style="width=10px;">
                                 <a href="{{ route('products.categories', $product->id) }}" class="btn btn-warning"><i class="fas fa-layer-group"></i></a>
                                 <a href="{{ route('products.edit', $product->id) }}" class="btn btn-info">Editar</a>
-                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-success">Ver</a>
+                                <a href="{{ route('products.show', $product->id) }}" class="btn btn-success">Ver</a>
                             </td>
                         </tr>
                     @endforeach

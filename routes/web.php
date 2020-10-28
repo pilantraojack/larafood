@@ -19,6 +19,10 @@ Route::prefix('admin')
         ->middleware('auth')
         ->group(function() {
 
+            Route::get('test-acl', function(){
+                dd(auth()->user()->permissions());
+            });
+
     // Routes Tables
     Route::any('tables/search', 'TableController@search')->name('tables.search');
     Route::resource('tables'  , 'TableController');
