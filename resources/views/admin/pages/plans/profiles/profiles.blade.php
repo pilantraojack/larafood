@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', "Perfis do Plano {{ $plan->name }}")
+@section('title', "Perfis do Plano")
 
 @section('content_header')
     <ol class="breadcrumb">

@@ -1,17 +1,16 @@
 @extends('adminlte::page')
 
-@section('title', "Categorias do produto")
+@section('title', "Permissões do cargo")
 
 @section('content_header')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('products.index') }}">Planos</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('products.categories', $product->id) }}" class="active">Categorias</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Cargos</a></li>
     </ol>
 
-    <h1>Categorias do Produto <strong>{{ $product->title }}</strong></h1>
+    <h1>Permissões do cargo <strong>{{ $role->name }}</strong></h1>
     <hr>
-    <a href="{{ route('products.categories.available', $product->id) }}" class="btn btn-dark">ADD NOVA CATEGORIA</a>
+    <a href="{{ route('roles.permissions.available', $role->id) }}" class="btn btn-dark">ADD NOVA PERMISSÃO</a>
 @stop
 
 @section('content')
@@ -25,13 +24,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($categories as $category)
+                    @foreach($permissions as $permission)
                         <tr>
                             <td>
-                                {{ $category->name }}
+                                {{ $permission->name }}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('products.categories.detach', [$product->id, $category->id]) }}" class="btn btn-warning">Desvincular</a>
+                                <a href="{{ route('roles.permission.detach', [$role->id, $permission->id]) }}" class="btn btn-warning">Desvincular</a>
                             </td>
                         </tr>
                     @endforeach
@@ -40,9 +39,9 @@
         </div>
         <div class="card-footer">
             @if (isset($filters))
-                {!! $categories->appends($filters)->links() !!}
+                {!! $permissions->appends($filters)->links() !!}
             @else
-                {!! $categories->links() !!}
+                {!! $permissions->links() !!}
             @endif
         </div>
     </div>

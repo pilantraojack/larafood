@@ -23,16 +23,31 @@ Route::prefix('admin')
                 dd(auth()->user()->permissions());
             });
 
+    // Permission x Role
+    Route::get('roles/{id}/permission/{idPermission}/detach', 'ACL\PermissionRoleController@detachPermissionRole')->name('roles.permission.detach');
+    Route::post('roles/{id}/permissions/'                   , 'ACL\PermissionRoleController@attachPermissionsRole')->name('roles.permissions.attach');
+    Route::any('roles/{id}/permissions/create'              , 'ACL\PermissionRoleController@permissionsAvailable')->name('roles.permissions.available');
+    Route::get('roles/{id}/permissions/index'               , 'ACL\PermissionRoleController@permissions')->name('roles.permissions');
+    Route::get('permissions/{id}/role/index'             , 'ACL\PermissionRoleController@roles')->name('permissions.roles');
+
+    // Routes Roles
+    Route::any('roles/search', 'ACL\RoleController@search')->name('roles.search');
+    Route::resource('roles', 'ACL\RoleController');
+
+    // Routes Tenants
+    Route::any('tenants/search', 'TenantController@search')->name('tenants.search');
+    Route::resource('tenants'  , 'TenantController');
+
     // Routes Tables
     Route::any('tables/search', 'TableController@search')->name('tables.search');
     Route::resource('tables'  , 'TableController');
 
     // Product x Category
-    Route::get('products/{id}/category/{idCategory}/detach'  , 'CategoryController@detachCategoryProduct')->name('products.category.detach');
-    Route::post('products/{id}/categories/'                  , 'CategoryController@attachCategoryProduct')->name('products.categories.attach');
-    Route::any('products/{id}/categories/create'             , 'CategoryController@categoriesAvailable')->name('products.categories.available');
-    Route::get('products/{id}/categories'                    , 'CategoryController@categories')->name('products.categories');
-    Route::get('permissions/{id}/products'                 , 'CategoryController@products')->name('categories.products');
+    Route::get('products/{id}/category/{idCategory}/detach'  , 'CategoryProductController@detachCategoriesProduct')->name('products.categories.detach');
+    Route::post('products/{id}/categories/'                  , 'CategoryProductController@attachCategoriesProduct')->name('products.categories.attach');
+    Route::any('products/{id}/categories/create'             , 'CategoryProductController@categoriesAvailable')->name('products.categories.available');
+    Route::get('products/{id}/categories'                    , 'CategoryProductController@categories')->name('products.categories');
+    Route::get('permissions/{id}/products'                   , 'CategoryProductController@products')->name('categories.products');
 
     // Routes Products
     Route::any('products/search', 'ProductController@search')->name('products.search');
@@ -46,7 +61,7 @@ Route::prefix('admin')
     Route::any('users/search', 'UserController@search')->name('users.search');
     Route::resource('users'  , 'UserController');
 
-    // PLan x Profile
+    // Plan x Profile
     Route::get('plans/{id}/profile/{idProfile}/detach'  , 'ACL\PlanProfileController@detachProfilePlan')->name('plans.profile.detach');
     Route::post('plans/{id}/profiles/'                  , 'ACL\PlanProfileController@attachProfilesPlan')->name('plans.profiles.attach');
     Route::any('plans/{id}/profiles/create'             , 'ACL\PlanProfileController@profilesAvailable')->name('plans.profiles.available');

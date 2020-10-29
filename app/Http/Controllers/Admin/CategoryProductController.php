@@ -70,7 +70,7 @@ class CategoryProductController extends Controller
     }
 
     // Desvincula uma categoria ao produto
-    public function detachCategoryProduct($idProduct, $idCategory){
+    public function detachCategoriesProduct($idProduct, $idCategory){
         $product = $this->product->find($idProduct);
         $category = $this->category->find($idCategory);
 
