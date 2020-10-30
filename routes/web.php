@@ -23,6 +23,13 @@ Route::prefix('admin')
                 dd(auth()->user()->permissions());
             });
 
+    // Role x User
+    Route::get('users/{id}/role/{idRole}/detach'     , 'ACL\RoleUserController@detachRolesUser')->name('users.role.detach');
+    Route::post('users/{id}/roles/'                  , 'ACL\RoleUserController@attachRolesUser')->name('users.roles.attach');
+    Route::any('users/{id}/roles/create'             , 'ACL\RoleUserController@rolesAvailable')->name('users.roles.available');
+    Route::get('users/{id}/roles'                    , 'ACL\RoleUserController@roles')->name('users.roles');
+    Route::get('roles/{id}/users'                    , 'ACL\RoleUserController@users')->name('roles.users');
+
     // Permission x Role
     Route::get('roles/{id}/permission/{idPermission}/detach', 'ACL\PermissionRoleController@detachPermissionRole')->name('roles.permission.detach');
     Route::post('roles/{id}/permissions/'                   , 'ACL\PermissionRoleController@attachPermissionsRole')->name('roles.permissions.attach');
@@ -66,7 +73,7 @@ Route::prefix('admin')
     Route::post('plans/{id}/profiles/'                  , 'ACL\PlanProfileController@attachProfilesPlan')->name('plans.profiles.attach');
     Route::any('plans/{id}/profiles/create'             , 'ACL\PlanProfileController@profilesAvailable')->name('plans.profiles.available');
     Route::get('plans/{id}/profiles'                    , 'ACL\PlanProfileController@profiles')->name('plans.profiles');
-    Route::get('permissions/{id}/plans'                 , 'ACL\PlanProfileController@plans')->name('profiles.plans');
+    Route::get('profiles/{id}/plans'                 , 'ACL\PlanProfileController@plans')->name('profiles.plans');
 
     // Permission x Profile
     Route::get('profiles/{id}/permission/{idPermission}/detach', 'ACL\PermissionProfileController@detachPermissionProfile')->name('profiles.permission.detach');

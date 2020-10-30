@@ -23,7 +23,6 @@ class CreateRolesTable extends Migration
         /**
          * Pivot table: permissions x roles
          */
-
         Schema::create('permission_role', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('permission_id');
