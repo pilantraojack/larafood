@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateTenant;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
-use Storage;
+use Illuminate\Support\Facades\Storage;
 
 class TenantController extends Controller
 {
@@ -47,8 +47,11 @@ class TenantController extends Controller
     public function store(StoreUpdateTenant $request)
     {
         $data = $request->all();
+        // return $data;
+
         $tenant = auth()->user()->tenant;
         $data['tenant_id'] = $tenant->id;
+        $data['plan_id'] = $tenant->plan_id;
 
         if($request->hasFile('logo') && $request->logo->isValid()){
             $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}/tenants");

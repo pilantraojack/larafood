@@ -1,8 +1,6 @@
 @include('admin.includes.alerts')
 
 <div class="form-group">
-    <input type="hidden" name="plan_id" value="1">
-
     <label for="name">* Nome</label>
     <input type="text" name="name" id="name" class="form-control" placeholder="Nome" value="{{ $tenant->name ?? old('title')}}">
 </div>

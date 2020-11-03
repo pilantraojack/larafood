@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Services;
+
+use Illuminate\Support\Str;
 use App\Models\Plan;
 
 
@@ -22,10 +24,12 @@ class TenantService
 
     public function storeTenant() {
         $data = $this->data;
+        // dd($this->data);
 
         return $this->plan->tenants()->create([
             'cnpj'  => $data['cnpj'],
             'name'  => $data['empresa'],
+            'url'   => Str::kebab($data['empresa']),
             'email' => $data['email'],
             'subscription' => now(),
             'expires_at' => now()->addDays(7),
