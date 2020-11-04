@@ -4,12 +4,28 @@ namespace App\Services;
 
 use Illuminate\Support\Str;
 use App\Models\Plan;
-
+use App\Repositories\Contracts\TenantRepositoryInterface;
 
 // essa classe serve para trasferir a responsabilidade do register controller
 class TenantService
 {
     private $plan, $data = [];
+    private $repository;
+
+    public function __construct(TenantRepositoryInterface $repository)
+    {
+        $this->repository = $repository;
+    }
+
+    public function getAllTenants()
+    {
+        return $this->repository->getAllTenants();
+    }
+
+    public function getTenantByUuid(string $uuid)
+    {
+        return $this->repository->getTenantByUuid($uuid);
+    }
 
     public function make(Plan $plan, array $data){
         $this->plan = $plan;
@@ -29,8 +45,8 @@ class TenantService
         return $this->plan->tenants()->create([
             'cnpj'  => $data['cnpj'],
             'name'  => $data['empresa'],
-            'url'   => Str::kebab($data['empresa']),
             'email' => $data['email'],
+
             'subscription' => now(),
             'expires_at' => now()->addDays(7),
         ]);

@@ -6,11 +6,7 @@
 </div>
 <div class="form-group">
     <label for="email">Descrição</label>
-    <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{ $category->description ?? old('description') }}</textarea>
-</div>
-<div class="form-group">
-    <label for="password">Senha</label>
-    <input type="password" name="password" id="password" class="form-control" placeholder="Senha" value="{{ $user->password ?? old('password')}}">
+    <textarea name="description" id="description" cols="10" rows="5" class="form-control">{{ $category->description ?? old('description') }}</textarea>
 </div>
 <div class="form-group">
     <button type="submit" class="btn btn-dark">Salvar</button>

@@ -10,7 +10,7 @@ class TenantObserver{
     /**
      * Handle the category "create" event.
      *
-     * @param Illuminate\Database\Eloquent\Model $model
+     * @param Model $model
      * @return void
      */
     public function create(Model $model)

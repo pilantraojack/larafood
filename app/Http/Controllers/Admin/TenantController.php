@@ -52,9 +52,10 @@ class TenantController extends Controller
         $tenant = auth()->user()->tenant;
         $data['tenant_id'] = $tenant->id;
         $data['plan_id'] = $tenant->plan_id;
+        // $data['url'] = $tenant->url;
 
         if($request->hasFile('logo') && $request->logo->isValid()){
-            $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}/tenants");
+            $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}/logo");
         }
 
         // return $data;
@@ -110,7 +111,7 @@ class TenantController extends Controller
         $data = $request->all();
         $tenant = auth()->user()->tenant;
         $data['tenant_id'] = $tenant->id;
-
+        $data['plan_id'] = $tenant->plan_id;
 
         if($request->hasFile('logo') && $request->logo->isValid()){
             if(Storage::exists($tenant->logo)){
@@ -119,6 +120,8 @@ class TenantController extends Controller
 
             $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}/tenants");
         }
+
+        // return $data;
 
         $tenant->update($data);
 
