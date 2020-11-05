@@ -4,6 +4,7 @@ namespace App\Http\Resources;
 
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
+use phpDocumentor\Reflection\Types\Void_;
 
 class TenantResource extends JsonResource
 {
@@ -24,5 +25,10 @@ class TenantResource extends JsonResource
             'date_created' => Carbon::parse($this->created_at)->format('d/m/Y'),
         ];
     }
+
+    public function fodase()
+    {
+        $fodase = $this->name;
+        return $fodase;
+    }
 }
-aaaaaaaaaaaaaaaaaaaaaaa
