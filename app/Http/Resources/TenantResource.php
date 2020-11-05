@@ -26,9 +26,4 @@ class TenantResource extends JsonResource
         ];
     }
 
-    public function fodase()
-    {
-        $fodase = $this->name;
-        return $fodase;
-    }
 }
