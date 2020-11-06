@@ -10,7 +10,8 @@ class CategoryRepository implements CategoryRepositoryInterface
 {
     protected $table;
 
-    public function __construct(Category $category)
+    // public function __construct(Category $category)
+    public function __construct()
     {
         $this->table = 'categories';
     }

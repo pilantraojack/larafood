@@ -4,7 +4,6 @@ namespace App\Services;
 
 use App\Repositories\Contracts\CategoryRepositoryInterface;
 use App\Repositories\Contracts\TenantRepositoryInterface;
-use App\Repositories\TenantRepository;
 
 class CategoryService
 {

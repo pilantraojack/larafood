@@ -5,9 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\TenantFormRequest;
 use App\Http\Resources\CategoryResource;
-use App\Repositories\Contracts\CategoryRepositoryInterface;
 use App\Services\CategoryService;
-use Illuminate\Http\Request;
 
 class CategoryApiController extends Controller
 {
