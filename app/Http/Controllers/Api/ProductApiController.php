@@ -31,7 +31,7 @@ class ProductApiController extends Controller
 
     public function show(TenantFormRequest $request, $flag)
     {
-        if(!$product = $this->productService->getCategoryByFlag($flag)){
+        if(!$product = $this->productService->getProductByFlag($flag)){
             return response()->json(['message' => 'Product Not Found'], 404);
         }
 

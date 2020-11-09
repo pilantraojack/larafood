@@ -18,14 +18,40 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/tenants/{uuid}', 'Api\TenantApiController@show');
-Route::get('/tenants', 'Api\TenantApiController@index');
+// Api v1 group
+Route::group([
+    'prefix' => 'v1',
+    'namespace' => 'Api'
+], function () {
+    Route::get('/tenants/{uuid}', 'Api\TenantApiController@show');
+    Route::get('/tenants', 'Api\TenantApiController@index');
 
-Route::get('/categories/{url}', 'Api\CategoryApiController@show');
-Route::get('/categories', 'Api\CategoryApiController@categoriesByTenant');
+    Route::get('/categories/{url}', 'Api\CategoryApiController@show');
+    Route::get('/categories', 'Api\CategoryApiController@categoriesByTenant');
 
-Route::get('/tables/{identify}', 'Api\TableApiController@show');
-Route::get('/tables', 'Api\TableApiController@tablesByTenant');
+    Route::get('/tables/{identify}', 'Api\TableApiController@show');
+    Route::get('/tables', 'Api\TableApiController@tablesByTenant');
 
-Route::get('/products/{flag}', 'Api\ProductApiController@show');
-Route::get('/products', 'Api\ProductApiController@productsByTenant');
+    Route::get('/products/{flag}', 'Api\ProductApiController@show');
+    Route::get('/products', 'Api\ProductApiController@productsByTenant');
+});
+
+// Api v2 group
+Route::group([
+    'prefix' => 'v2',
+    'namespace' => 'Api'
+], function () {
+    Route::get('/tenants/{uuid}', 'Api\TenantApiController@show');
+    Route::get('/tenants', 'Api\TenantApiController@index');
+
+    Route::get('/categories/{url}', 'Api\CategoryApiController@show');
+    Route::get('/categories', 'Api\CategoryApiController@categoriesByTenant');
+
+    Route::get('/tables/{identify}', 'Api\TableApiController@show');
+    Route::get('/tables', 'Api\TableApiController@tablesByTenant');
+
+    Route::get('/products/{flag}', 'Api\ProductApiController@show');
+    Route::get('/products', 'Api\ProductApiController@productsByTenant');
+});
+
+

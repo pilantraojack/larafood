@@ -32,6 +32,6 @@ class ProductRepository implements ProductRepositoryInterface
     {
         return DB::table($this->table)
                     ->where('flag', $flag)
-                    ->get();
+                    ->first();
     }
 }
