@@ -47,7 +47,7 @@ class TenantController extends Controller
     public function store(StoreUpdateTenant $request)
     {
         $data = $request->all();
-        // return $data;
+        // dd($data);
 
         $tenant = auth()->user()->tenant;
         $data['tenant_id'] = $tenant->id;
@@ -55,7 +55,9 @@ class TenantController extends Controller
         // $data['url'] = $tenant->url;
 
         if($request->hasFile('logo') && $request->logo->isValid()){
-            $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}/logo");
+            $data['url'] = $request->logo->store("tenants/{$tenant->uuid}/logo");
+        } else {
+            $data['url'] = 'tenants/default.png';
         }
 
         // return $data;

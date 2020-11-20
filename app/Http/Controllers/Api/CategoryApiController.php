@@ -22,7 +22,7 @@ class CategoryApiController extends Controller
             return response()->json(['message' => 'Token Not Found'], 404);
         }
 
-        $categories = $this->categoryService->getCategoriesByUuid($request->uuid);
+        $categories = $this->categoryService->getCategoriesByUuid($request->token_company);
 
         return CategoryResource::collection($categories);
     }

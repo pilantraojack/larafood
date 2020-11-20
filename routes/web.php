@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DetailPlanController;
+use App\Models\Client;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('teste', function() {
+    $client = Client::first();
+
+    $token = $client->createToken('token-teste');
+
+    // dd($token->plainTextToken);
+});
 
 Route::prefix('admin')
         ->namespace('Admin')

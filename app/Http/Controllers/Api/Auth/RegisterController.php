@@ -14,6 +14,8 @@ class RegisterController extends Controller
 
     public function __construct(ClientService $clientService)
     {
+        return response()->json($clientService);
+
         $this->$clientService = $clientService;
     }
 

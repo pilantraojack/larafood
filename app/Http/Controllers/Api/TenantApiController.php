@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\TenantResource;
 use App\Services\TenantService;
 use Illuminate\Http\Request;
-use PhpParser\Node\Expr\New_;
 
 class TenantApiController extends Controller
 {
