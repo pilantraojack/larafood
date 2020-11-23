@@ -13,7 +13,7 @@ class TenantObserver
      * @param  \App\Models\Tenant  $tenant
      * @return void
      */
-    public function create(Tenant $tenant)
+    public function creating(Tenant $tenant)
     {
         $tenant->uuid = Str::uuid();
         $tenant->url  = Str::kebab($tenant->name);
@@ -25,7 +25,7 @@ class TenantObserver
      * @param  \App\Models\Tenant  $tenant
      * @return void
      */
-    public function update(Tenant $tenant)
+    public function updating(Tenant $tenant)
     {
         $tenant->url = Str::kebab($tenant->name);
     }
