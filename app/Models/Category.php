@@ -14,6 +14,7 @@ class Category extends Model
     protected $fillable = [
         'id',
         'tenant_id',
+        'uuid',
         'name',
         'url',
         'description'

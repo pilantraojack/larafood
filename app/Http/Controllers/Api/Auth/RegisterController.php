@@ -14,15 +14,18 @@ class RegisterController extends Controller
 
     public function __construct(ClientService $clientService)
     {
-        return response()->json($clientService);
 
         $this->$clientService = $clientService;
+        // return response()->json($clientService);
     }
 
     public function store(StoreClient $request)
     {
+        // return response()->json($this->clientService->toArray());
+
         $client = $this->clientService->createNewClient($request->all());
 
+        // return $client;
         return new ClientResource($client);
     }
 }

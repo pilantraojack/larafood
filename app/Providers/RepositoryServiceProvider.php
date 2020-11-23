@@ -28,30 +28,24 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(
-            TenantRepositoryInterface::class,
-            TenantRepository::class
-        );
+        // Map to Bind Repositories and Interfaces
+        $toBind = [
+            // Tenant
+            TenantRepositoryInterface::class   => TenantRepository::class,
+            // Category
+            CategoryRepositoryInterface::class => CategoryRepository::class,
+            // Table
+            TableRepositoryInterface::class    => TableRepository::class,
+            // Product
+            ProductRepositoryInterface::class  => ProductRepository::class,
+            // Client
+            ClientRepositoryInterface::class   => ClientRepository::class,
+        ];
 
-        $this->app->bind(
-            CategoryRepositoryInterface::class,
-            CategoryRepository::class
-        );
+        foreach($toBind as $interface => $repository){
+            $this->app->bind( $interface, $repository );
+        }
 
-        $this->app->bind(
-            TableRepositoryInterface::class,
-            TableRepository::class
-        );
-
-        $this->app->bind(
-            ProductRepositoryInterface::class,
-            ProductRepository::class
-        );
-
-        $this->app->bind(
-            ClientRepositoryInterface::class,
-            ClientRepository::class
-        );
     }
 
     /**

@@ -51,6 +51,7 @@ class TenantController extends Controller
 
         $tenant = auth()->user()->tenant;
         $data['tenant_id'] = $tenant->id;
+        $data['uuid'] = $tenant->uuid;
         $data['plan_id'] = $tenant->plan_id;
         // $data['url'] = $tenant->url;
 

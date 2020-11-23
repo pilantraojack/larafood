@@ -12,6 +12,7 @@ class Table extends Model
     protected $fillable = [
         'id',
         'tenant_id',
+        'uuid',
         'identify',
         'description'
     ];

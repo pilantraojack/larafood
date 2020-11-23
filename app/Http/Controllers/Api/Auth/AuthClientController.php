@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\ClientResource;
 use App\Models\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -30,6 +31,18 @@ class AuthClientController extends Controller
 
     public function me(Request $request)
     {
-        $request->user();
+        $client = $request->user();
+
+        return new ClientResource($client);
+    }
+
+    public function logout(Request $request)
+    {
+        $client = $request->user();
+
+        //Revoke all client tokens...
+        $client->tokens()->delete();
+
+        return response()->json([], 204);
     }
 }
