@@ -55,7 +55,7 @@ class TenantController extends Controller
         // $data['url'] = $tenant->url;
 
         if($request->hasFile('logo') && $request->logo->isValid()){
-            $data['url'] = $request->logo->store("tenants/{$tenant->uuid}/logo");
+            $data['url'] = $request->logo->store("tenants/{$tenant->uuid}/tenants");
         } else {
             $data['url'] = 'tenants/default.png';
         }

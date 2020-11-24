@@ -10,11 +10,13 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    private $repository;
+    protected $repository;
 
     public function __construct(Product $product)
     {
         $this->repository = $product;
+
+        $this->middleware((['can:products']));
     }
     /**
      * Display a listing of the resource.
@@ -48,17 +50,18 @@ class ProductController extends Controller
     {
         $data = $request->all();
         $tenant = auth()->user()->tenant;
-        $data['tenant_id'] = $tenant->id;
+        // $data['tenant_id'] = $tenant->id;
 
         if($request->hasFile('image') && $request->image->isValid()){
             $data['image'] = $request->image->store("tenants/{$tenant->uuid}/products");
         }
 
         // return $data;
-        // return $tenant->id;
+        // return $tenant;
+        // return $this->repository->all();
         $this->repository->create($data);
 
-        return redirect()->route('products.index', compact('tenant'));
+        return redirect()->route('products.index');
     }
 
     /**
@@ -107,7 +110,7 @@ class ProductController extends Controller
 
         $data = $request->all();
         $tenant = auth()->user()->tenant;
-        $data['tenant_id'] = $tenant->id;
+        // $data['tenant_id'] = $tenant->id;
 
 
         if($request->hasFile('image') && $request->image->isValid()){

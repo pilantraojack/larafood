@@ -8,15 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class TenantObserver{
     /**
-     * Handle the category "create" event.
+     * Handle the category "creating" event.
      *
      * @param Model $model
      * @return void
      */
-    public function create(Model $model)
+    public function creating(Model $model)
     {
         $managerTenant = app(ManagerTenant::class);
+        $identify = $managerTenant->getTenantIdentify();
 
-        $model->tenant_id = $managerTenant->getTenantIdentify();
+        if($identify)
+            $model->tenant_id = $identify;
     }
 }

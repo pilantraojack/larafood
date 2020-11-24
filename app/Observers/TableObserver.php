@@ -2,8 +2,8 @@
 
 namespace App\Observers;
 
-use App\Models\Table;
 use Illuminate\Support\Str;
+use App\Models\Table;
 
 class TableObserver
 {

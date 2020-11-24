@@ -2,8 +2,8 @@
 
 namespace App\Observers;
 
-use App\Models\Tenant;
 use Illuminate\Support\Str;
+use App\Models\Tenant;
 
 class TenantObserver
 {

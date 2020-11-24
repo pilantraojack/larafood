@@ -27,7 +27,7 @@ class StoreUpdateTable extends FormRequest
 
         return [
             'identify' => ['required', 'min:3', 'max:255', "unique:tables,identify,{$id},id"],
-            'description' => ['required', 'min:3', 'max:10000'],
+            'description' => ['required', 'min:3', 'max:1000'],
         ];
     }
 }

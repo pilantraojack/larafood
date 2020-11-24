@@ -45,13 +45,14 @@ class TableController extends Controller
      */
     public function store(StoreUpdateTable $request)
     {
-        $data = $request->all();
-        $tenant = auth()->user()->tenant;
-        $data['tenant_id'] = $tenant->id;
+        // $data = $request->all();
+        // $tenant = auth()->user()->tenant;
+        // $data['tenant_id'] = $tenant->id;
 
         // return $request;
 
-        $this->repository->create($data);
+        // $this->repository->create($data);
+        $this->repository->create($request->all);
 
         return redirect()->route('tables.index');
     }
