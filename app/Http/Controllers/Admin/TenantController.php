@@ -15,6 +15,7 @@ class TenantController extends Controller
     public function __construct(Tenant $tenant)
     {
         $this->repository = $tenant;
+
     }
     /**
      * Display a listing of the resource.
@@ -52,10 +53,11 @@ class TenantController extends Controller
         $tenant = auth()->user()->tenant;
         $data['tenant_id'] = $tenant->id;
         $data['plan_id'] = $tenant->plan_id;
-        // $data['url'] = $tenant->url;
+        $data['url'] = $tenant->url;
 
         if($request->hasFile('logo') && $request->logo->isValid()){
             $data['url'] = $request->logo->store("tenants/{$tenant->uuid}/tenants");
+            // $data['url'] = $request->logo->store("tenants/{$tenant->uuid}");
         } else {
             $data['url'] = 'tenants/default.png';
         }
@@ -120,7 +122,8 @@ class TenantController extends Controller
                 Storage::delete($tenant->logo);
             }
 
-            $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}/tenants");
+            // $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}/tenants");
+            $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}");
         }
 
         // return $data;

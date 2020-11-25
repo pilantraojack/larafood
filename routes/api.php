@@ -33,19 +33,28 @@ Route::group([
     'prefix' => 'v1',
     'namespace' => 'Api'
 ], function () {
+    // Tenants
     Route::get('/tenants/{uuid}', 'TenantApiController@show');
     Route::get('/tenants', 'TenantApiController@index');
 
+    // Categories
     Route::get('/categories/{identify}', 'CategoryApiController@show');
     Route::get('/categories', 'CategoryApiController@categoriesByTenant');
 
+    // Tables
     Route::get('/tables/{identify}', 'TableApiController@show');
     Route::get('/tables', 'TableApiController@tablesByTenant');
 
+    // Products
     Route::get('/products/{identify}', 'ProductApiController@show');
     Route::get('/products', 'ProductApiController@productsByTenant');
 
+    // Client
     Route::post('/client', 'Auth\RegisterController@store');
+
+    // Orders
+    Route::post('/orders', 'OrderApiController@store');
+    Route::get('/orders/{identify}', 'OrderApiController@show');
 
 });
 

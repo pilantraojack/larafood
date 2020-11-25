@@ -6,6 +6,7 @@ use App\Repositories\Contracts\{
     TenantRepositoryInterface,
     CategoryRepositoryInterface,
     ClientRepositoryInterface,
+    OrderRepositoryInterface,
     ProductRepositoryInterface,
     TableRepositoryInterface
 };
@@ -13,6 +14,7 @@ use App\Repositories\{
     TenantRepository,
     CategoryRepository,
     ClientRepository,
+    OrderRepository,
     ProductRepository,
     TableRepository
 };
@@ -40,6 +42,9 @@ class RepositoryServiceProvider extends ServiceProvider
             ProductRepositoryInterface::class  => ProductRepository::class,
             // Client
             ClientRepositoryInterface::class   => ClientRepository::class,
+            // Order
+            OrderRepositoryInterface::class   => OrderRepository::class,
+
         ];
 
         foreach($toBind as $interface => $repository){

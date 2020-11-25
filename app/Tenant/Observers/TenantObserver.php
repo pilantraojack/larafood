@@ -13,8 +13,10 @@ class TenantObserver{
      * @param Model $model
      * @return void
      */
+    // TODO: Pode ser comentado este cara, em tese. Fazer testes
     public function creating(Model $model)
     {
+        // Verificar este código
         $managerTenant = app(ManagerTenant::class);
         $identify = $managerTenant->getTenantIdentify();
 
