@@ -26,6 +26,8 @@ Route::group([
 ], function() {
     Route::get('/auth/me', 'Api\Auth\AuthClientController@me');
     Route::post('/auth/logout', 'Api\Auth\AuthClientController@logout');
+
+    Route::post('/auth/v1/orders', 'Api\OrderApiController@store');
 });
 
 // Api v1 group
