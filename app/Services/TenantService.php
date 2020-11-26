@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Str;
 use App\Models\Plan;
 use App\Repositories\Contracts\TenantRepositoryInterface;
 
@@ -17,9 +16,9 @@ class TenantService
         $this->repository = $repository;
     }
 
-    public function getAllTenants(int $per_page)
+    public function getAllTenants()
     {
-        return $this->repository->getAllTenants($per_page);
+        return $this->repository->getAllTenants();
     }
 
     public function getTenantByUuid(string $uuid)
