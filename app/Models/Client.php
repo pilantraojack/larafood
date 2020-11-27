@@ -18,4 +18,15 @@ class Client extends Authenticatable
         'email_verified_at',
         'password'
     ];
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    public function evaluations()
+    {
+        return $this->hasMany(Evaluation::class);
+    }
+
 }

@@ -56,9 +56,6 @@ class ProductController extends Controller
             $data['image'] = $request->image->store("tenants/{$tenant->uuid}/products");
         }
 
-        // return $data;
-        // return $tenant;
-        // return $this->repository->all();
         $this->repository->create($data);
 
         return redirect()->route('products.index');

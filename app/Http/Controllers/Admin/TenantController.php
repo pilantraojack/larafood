@@ -56,10 +56,10 @@ class TenantController extends Controller
         $data['url'] = $tenant->url;
 
         if($request->hasFile('logo') && $request->logo->isValid()){
-            $data['url'] = $request->logo->store("tenants/{$tenant->uuid}/tenants");
-            // $data['url'] = $request->logo->store("tenants/{$tenant->uuid}");
+            $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}/tenants");
+            // $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}");
         } else {
-            $data['url'] = 'tenants/default.png';
+            $data['logo'] = 'tenants/default.png';
         }
 
         // return $data;
@@ -122,8 +122,7 @@ class TenantController extends Controller
                 Storage::delete($tenant->logo);
             }
 
-            // $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}/tenants");
-            $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}");
+            $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}/tenants");
         }
 
         // return $data;

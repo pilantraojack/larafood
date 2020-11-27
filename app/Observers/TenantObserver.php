@@ -37,8 +37,19 @@ class TenantObserver
      * @param  \App\Models\Tenant  $tenant
      * @return void
      */
-    public function updating(Tenant $tenant)
+    public function updating(Model $model)
     {
-        $tenant->url = Str::kebab($tenant->name);
+        // $tenant->url = Str::kebab($tenant->name);
+        if($model instanceof  Tenant){
+            $model->uuid = Str::uuid();
+            $model->url  = Str::kebab($model->name);
+        }else{
+            // Verificar este código
+            $managerTenant = app(ManagerTenant::class);
+            $identify = $managerTenant->getTenantIdentify();
+
+            if($identify)
+                $model->tenant_id = $identify;
+        }
     }
 }

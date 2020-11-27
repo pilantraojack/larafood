@@ -6,6 +6,7 @@ use App\Repositories\Contracts\{
     TenantRepositoryInterface,
     CategoryRepositoryInterface,
     ClientRepositoryInterface,
+    EvaluationRepositoryInterface,
     OrderRepositoryInterface,
     ProductRepositoryInterface,
     TableRepositoryInterface
@@ -14,6 +15,7 @@ use App\Repositories\{
     TenantRepository,
     CategoryRepository,
     ClientRepository,
+    EvaluationRepository,
     OrderRepository,
     ProductRepository,
     TableRepository
@@ -44,6 +46,8 @@ class RepositoryServiceProvider extends ServiceProvider
             ClientRepositoryInterface::class   => ClientRepository::class,
             // Order
             OrderRepositoryInterface::class   => OrderRepository::class,
+            // Evaluation
+            EvaluationRepositoryInterface::class => EvaluationRepository::class,
 
         ];
 

@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Repositories\ClientRepository;
 use App\Repositories\Contracts\ClientRepositoryInterface;
 
 class ClientService
