@@ -8,6 +8,14 @@ class Evaluation extends Model
 {
     protected $table = 'order_evaluations';
 
+    protected $fillable = [
+        'id',
+        'order_id',
+        'client_id',
+        'stars',
+        'comment'
+    ];
+
     public function order()
     {
         return $this->belongsto(Client::class);
