@@ -61,7 +61,6 @@ class CategoryTest extends TestCase
         $category = factory(Category::class)->create();
         $tenant = factory(Tenant::class)->create();
 
-        // $response = $this->getJson("/api/v1/categories/{$category->uuid}?token_company={$tenant->uuid}");
         $response = $this->getJson("/api/v1/categories/{$category->uuid}?token_company={$tenant->uuid}");
 
         $response->assertStatus(200);
