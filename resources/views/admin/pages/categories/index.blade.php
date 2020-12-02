@@ -10,6 +10,8 @@
 @stop
 
 @section('content')
+@include('admin.includes.alerts')
+
     <p>Listagem dos Categorias</p>
 
     <div class="card">
