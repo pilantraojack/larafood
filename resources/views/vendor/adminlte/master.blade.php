@@ -55,8 +55,14 @@
 
 @if(! config('adminlte.enabled_laravel_mix'))
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+<script src="{{ asset('js/jquery.mask.min.js') }}"></script>
+<script src="{{ asset('js/masks.js') }}"></script>
+
+
+
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('vendor/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
+
 
 @include('adminlte::plugins', ['type' => 'js'])
 
