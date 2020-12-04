@@ -51,7 +51,7 @@
                         @endif
                     </div>
                     <div class="input-group mb-3">
-                        <input type="text" name="cnpj" class="form-control {{ $errors->has('cnpj') ? 'is-invalid' : '' }}" value="{{ old('cnpj') }}"
+                        <input type="text" name="cnpj" id="cnpj" class="form-control {{ $errors->has('cnpj') ? 'is-invalid' : '' }}" value="{{ old('cnpj') }}"
                                placeholder="CNPJ" autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">

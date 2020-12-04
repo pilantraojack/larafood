@@ -15,7 +15,7 @@ class RoleController extends Controller
     {
         $this->repository = $role;
 
-        $this->middleware(['can:cargos']);
+        $this->middleware(['can:roles']);
     }
     /**
      * Display a listing of the resource.

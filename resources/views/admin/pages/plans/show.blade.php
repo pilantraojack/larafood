@@ -17,7 +17,7 @@
                     <strong>URL: </strong> {{ $plan->url }}
                 </li>
                 <li>
-                    <strong>Preço: </strong> R$ {{number_format($plan->price, 2, ',', '.') }}
+                    <strong>Preço: </strong> R$ {{ $plan->price }}
                 </li>
                 <li>
                     <strong>Description: </strong> {{ $plan->description }}

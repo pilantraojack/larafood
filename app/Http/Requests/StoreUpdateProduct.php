@@ -29,7 +29,7 @@ class StoreUpdateProduct extends FormRequest
             'title' => ['required', 'min:3', 'max:255', "unique:products,title,{$id},id"],
             'description' => ['required', 'min:3', 'max:500'],
             'image' => ['required'],
-            'price' => "required|regex:/^\d+(\.\d{1,2})?$/",
+            'price' => "required",
         ];
 
         if ($this->method() == 'PUT') {
@@ -37,5 +37,12 @@ class StoreUpdateProduct extends FormRequest
         }
 
         return $rules;
+    }
+
+    public function messages() {
+        return [
+            'required' => __('mdci.Field :attribute is required.'),
+            'min'      => __('mdci.Field :attribute must have a minimun of :min characters.')
+        ];
     }
 }

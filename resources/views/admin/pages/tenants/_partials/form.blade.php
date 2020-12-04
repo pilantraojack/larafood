@@ -14,7 +14,7 @@
 </div>
 <div class="form-group">
     <label for="cnpj">* CNPJ</label>
-    <input type="number" name="cnpj" id="cnpj" class="form-control" placeholder="CNPJ" value="{{ $tenant->cnpj ?? old('cnpj')}}">
+    <input type="text" name="cnpj" id="cnpj" class="form-control" placeholder="CNPJ" value="{{ $tenant->cnpj ?? old('cnpj')}}">
 </div>
 <div class="form-group">
     <label for="active">* Ativo ?</label>
