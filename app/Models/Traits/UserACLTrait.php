@@ -6,14 +6,15 @@ use App\Models\Tenant;
 
 trait UserACLTrait
 {
-    public function permissions(): array{
-        $permissionsPlan =  $this->permissionsPlan();
-        $permissionsRole =  $this->permissionsRole();
+    public function permissions(): array
+    {
+        $permissionsPlan = $this->permissionsPlan();
+        $permissionsRole = $this->permissionsRole();
 
         $permissions = [];
-        foreach($permissionsRole as $permissionRole) {
-            if(in_array($permissionRole, $permissionsPlan))
-                array_push($permissions, $permissionsPlan);
+        foreach ($permissionsRole as $permission) {
+            if (in_array($permission, $permissionsPlan))
+                array_push($permissions, $permission);
         }
 
         return $permissions;
