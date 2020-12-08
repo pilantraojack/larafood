@@ -53,11 +53,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'min:3', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'max:16', 'confirmed'],
             'empresa' => ['required', 'string', 'min:3', 'max:255', 'unique:tenants,name'],
-<<<<<<< HEAD
-            'cnpj' => ['required', 'numeric', 'digits:14', 'unique:tenants'],
-=======
             'cnpj' => ['required', 'string', 'min:14', 'max:18', 'unique:tenants'],
->>>>>>> e522e9340af50f02acd7825ebb4f41c4b9a1113b
         ]);
     }
 
