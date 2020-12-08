@@ -3,7 +3,12 @@
 @section('title', 'Detalhes do Plano')
 
 @section('content_header')
-    <h1>Detalhes do Plano <b>{{ $plan->name }}</b>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard" >Dashboard</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('plans.index') }}" title="Planos" class="active">Planos</a></li>
+    </ol>
+    <br>
+    <h1>Detalhes do Plano: <b>{{ $plan->name }}</b>
 @stop
 
 @section('content')
@@ -27,7 +32,7 @@
             <form action="{{ route('plans.destroy', $plan->url) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Deletar Plano</button>
+                <button type="submit" class="btn btn-danger" title="Deletar Plano">Deletar Plano</button>
             </form>
         </div>
     </div>

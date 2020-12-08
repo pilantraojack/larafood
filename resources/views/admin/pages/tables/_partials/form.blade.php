@@ -6,9 +6,9 @@
 </div>
 <div class="form-group">
     <label for="email">Descrição</label>
-    <textarea name="description" id="description" cols="30" rows="10" class="form-control">{{ $category->description ?? old('description') }}</textarea>
+    <textarea name="description" id="description" cols="20" rows="5" class="form-control">{{ $category->description ?? old('description') }}</textarea>
 </div>
 <div class="form-group">
-    <button type="submit" class="btn btn-dark">Salvar</button>
+    <button type="submit" class="btn btn-dark" title="Salvar">Salvar</button>
 </div>
 

@@ -3,6 +3,11 @@
 @section('title', 'Novo Cargo')
 
 @section('content_header')
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" data-toggle="tooltip" title="Dashboard" >Dashboard</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('roles.index') }}" data-toggle="tooltip" title="Cargos" class="active">Cargos</a></li>
+    </ol>
+    <br>
     <h1>Novo Cargo</h1>
 @stop
 

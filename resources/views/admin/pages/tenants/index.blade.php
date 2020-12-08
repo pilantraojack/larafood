@@ -4,21 +4,21 @@
 
 @section('content_header')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('tenants.index') }}" class="active">Tenants</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" data-toggle="tooltip" title="Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('tenants.index') }}" data-toggle="tooltip" title="Tenants" class="active">Tenants</a></li>
     </ol>
 @stop
 
 @section('content')
-    <p>Listagem dos Tenants</p>
+    <h3>Listagem dos Tenants</h3>
 
     <div class="card">
         <div class="card-header">
-            <a class="btn btn-dark mb-2" href="{{ route('tenants.create') }}">Nova Empresa</a>
+            <a class="btn btn-dark mb-2" href="{{ route('tenants.create') }}" data-toggle="tooltip" title="Novo Tenant">Novo Tenant</a>
             <form action="{{ route('tenants.search') }}" method="POST" class="form form-inline">
                 @csrf
                 <input type="text" name="filter" id="filter" placeholder="Nome" class="form-control col-md-4 ">
-                <button type="submit" class="btn btn-dark ml-2">Filtrar</button>
+                <button type="submit" class="btn btn-dark ml-2" data-toggle="tooltip" title="Filtrar">Filtrar</button>
             </form>
         </div>
         <div class="card-body">
@@ -42,8 +42,9 @@
                             </td>
                             <td>{{ $tenant->name }}</td>
                             <td style="width=10px;">
-                                <a href="{{ route('tenants.edit', $tenant->id) }}" class="btn btn-info">Editar</a>
-                                <a href="{{ route('tenants.show', $tenant->id) }}" class="btn btn-success">Ver</a>
+                                <a href="{{ route('tenants.edit', $tenant->id) }}" class="btn btn-info" data-toggle="tooltip" title="Editar">Editar</a>
+
+                                <a href="{{ route('tenants.show', $tenant->id) }}" class="btn btn-success" data-toggle="tooltip" title="Detalhes">Detalhes</a>
                             </td>
                         </tr>
                     @endforeach

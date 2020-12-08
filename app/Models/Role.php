@@ -12,6 +12,18 @@ class Role extends Model
         'description'
     ];
 
+    // método para pesquisa, recebe o $filters, qué onde o usuário vai digitar a busca, o valor fica null para evitar erros
+    public function search($filter = null){
+        // paga o resultado, amarzena em uma variável,
+        // busca o campo name ou campo description, compara com o LIKE onde é igual ao que foi digitado no campo filter
+        $results = $this->where('name', 'LIKE', "%{$filter}%")
+                        ->orWhere('description', 'LIKE', "%{$filter}%")
+                        ->paginate();
+        // retorna os resultados
+        return $results;
+
+    }
+
     /**
      * Get Permissions
      */

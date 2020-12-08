@@ -4,11 +4,11 @@
 
 @section('content_header')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Perfis</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" data-toggle="tooltip" title="Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('roles.index') }}" data-toggle="tooltip" title="Cargos">Cargos</a></li>
     </ol>
-
-    <h1>Permissões disponíveis do cargo <strong>{{ $role->name }}</strong></h1>
+    <br>
+    <h1>Permissões disponíveis do cargo: <strong>{{ $role->name }}</strong></h1>
 @stop
 
 @section('content')
@@ -17,7 +17,7 @@
             <form action="{{ route('roles.permissions.available', $role->id) }}" method="POST" class="for form-inline">
                 @csrf
                 <input type="text" name="filter" placeholder="Nome" class="form-control">
-                <button type="submit" class="btn btn-dark">Filtrar</button>
+                <button type="submit" class="btn btn-dark ml-2" data-toggle="tooltip" title="Filtrar">Filtrar</button>
             </form>
         </div>
         <div class="card-body">
@@ -45,7 +45,7 @@
                         <tr>
                             <td colspan="500">
                                 @include('admin.includes.alerts')
-                                <button type="submit" class="btn btn-success">Vincular</button>
+                                <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Vincular">Vincular</button>
                             </td>
                         </tr>
                     </form>

@@ -4,14 +4,13 @@
 
 @section('content_header')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('products.index') }}">Planos</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('products.categories', $product->id) }}" class="active">Categorias</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('products.index') }}" title="Planos">Planos</a></li>
     </ol>
-
-    <h1>Categorias do Produto <strong>{{ $product->title }}</strong></h1>
+    <br>
+    <h1>Categorias do Produto: <strong>{{ $product->title }}</strong></h1>
     <hr>
-    <a href="{{ route('products.categories.available', $product->id) }}" class="btn btn-dark">ADD NOVA CATEGORIA</a>
+    <a href="{{ route('products.categories.available', $product->id) }}" title="Nova Categoria" class="btn btn-dark">Nova Categoria</a>
 @stop
 
 @section('content')

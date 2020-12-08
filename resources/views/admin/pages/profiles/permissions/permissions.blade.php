@@ -4,17 +4,18 @@
 
 @section('content_header')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('profiles.index') }}">Perfis</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" data-toggle="tooltip" title="Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('profiles.index') }}" data-toggle="tooltip" title="Perfis">Perfis</a></li>
     </ol>
-
+    <br>
     <h1>Permissões do perfil <strong>{{ $profile->name }}</strong></h1>
-    <hr>
-    <a href="{{ route('profiles.permissions.available', $profile->id) }}" class="btn btn-dark">ADD NOVA PERMISSÃO</a>
 @stop
 
 @section('content')
     <div class="card">
+        <div class="card-header">
+            <a href="{{ route('profiles.permissions.available', $profile->id) }}" class="btn btn-dark" data-toggle="tooltip" title="Nova Permissão">Nova Permissão</a>
+        </div>
         <div class="card-body">
             <table class="table table-condensed">
                 <thead>
@@ -30,7 +31,7 @@
                                 {{ $permission->name }}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('profiles.permission.detach', [$profile->id, $permission->id]) }}" class="btn btn-warning">Desvincular</a>
+                                <a href="{{ route('profiles.permission.detach', [$profile->id, $permission->id]) }}" class="btn btn-warning" data-toggle="tooltip" title="Desvincular">Desvincular</a>
                             </td>
                         </tr>
                     @endforeach
