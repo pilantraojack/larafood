@@ -36,6 +36,5 @@ class ProductApiController extends Controller
         }
 
         return new ProductResource($product);
-
     }
 }

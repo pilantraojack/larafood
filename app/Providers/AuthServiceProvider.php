@@ -27,6 +27,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
+        if($this->app->runningInConsole()) return;
+
         // traz a lista de todas as permissões cadastradas
         $permissions = Permission::all();
         // verifica se o usuário tem uma permissão específica
