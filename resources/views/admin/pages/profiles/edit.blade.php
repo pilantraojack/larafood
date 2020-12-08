@@ -3,7 +3,12 @@
 @section('title', 'Editar Perfil')
 
 @section('content_header')
-    <h1>Editar Perfil</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" data-toggle="tooltip" title="Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('profiles.index') }}" data-toggle="tooltip" title="Perfis" class="active">Perfis</a></li>
+    </ol>
+    <br>
+    <h3>Editar Perfil</h3>
 @stop
 
 @section('content')

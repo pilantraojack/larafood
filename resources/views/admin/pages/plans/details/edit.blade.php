@@ -4,13 +4,11 @@
 
 @section('content_header')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('plans.index') }}">Planos</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('plans.show', $plan->url) }}">{{ $plan->name }}</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('details.plan.index', $plan->url) }}">Detalhes</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('details.plan.edit', [$plan->url, $detail->id]) }}" class="active">Editar</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard" >Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('plans.index') }}" title="Planos" >Planos</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('details.plan.index', $plan->url) }}" title="Detalhes do Plano">Detalhes do Plano</a></li>
     </ol>
-
+    <br>
     <h1>Editar detalhe: {{ $detail->name }}</h1>
 @stop
 

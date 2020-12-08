@@ -4,15 +4,23 @@
 
 @section('content_header')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('profiles.index') }}">Perfis</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" data-toggle="tooltip" title="Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('profiles.index') }}" data-toggle="tooltip" title="Perfis" class="active">Perfis</a></li>
     </ol>
-
-    <h1>Perfis <a href="{{ route('profiles.create') }}" class="btn btn-dark">ADD</a></h1>
 @stop
 
 @section('content')
+    <h3>Listagem dos Perfis</h3>
+
     <div class="card">
+        <div class="card-header">
+            <a class="btn btn-dark mb-2" href="{{ route('profiles.create') }}"  data-toggle="tooltip" title="Novo Perfil">Novo Perfil</a>
+            <form action="{{ route('profiles.search') }}" method="POST" class="form form-inline">
+                @csrf
+                <input type="text" name="filter" placeholder="Nome" class="form-control col-md-4 ">
+                <button type="submit" class="btn btn-dark ml-2" data-toggle="tooltip" title="Filtrar">Filtrar</button>
+            </form>
+        </div>
         <div class="card-body">
             <table class="table table-condensed">
                 <thead>
@@ -28,10 +36,10 @@
                                 {{ $profile->name }}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-info">Editar</a>
-                                <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-warning">Detalhes</a>
-                                <a href="{{ route('profiles.permissions', $profile->id) }}" class="btn btn-primary"><i class="fas fa-lock"></i></a>
-                                <a href="{{ route('profiles.plans', $profile->id) }}" class="btn btn-dark"><i class="fas fa-list-alt"></i></a>
+                                <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-info" data-toggle="tooltip" title="Editar">Editar</a>
+                                <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-warning" data-toggle="tooltip" title="Detalhes">Detalhes</a>
+                                <a href="{{ route('profiles.permissions', $profile->id) }}" class="btn btn-primary" data-toggle="tooltip" title="Permissões"><i class="fas fa-lock"></i></a>
+                                <a href="{{ route('profiles.plans', $profile->id) }}" class="btn btn-dark" data-toggle="tooltip" title="Planos"><i class="fas fa-list-alt"></i></a>
                             </td>
                         </tr>
                     @endforeach

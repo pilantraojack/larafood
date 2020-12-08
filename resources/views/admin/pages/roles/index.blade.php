@@ -4,22 +4,23 @@
 
 @section('content_header')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('roles.index') }}">Cargos</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" data-toggle="tooltip" title="Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('roles.index') }}" data-toggle="tooltip" title="Cargos">Cargos</a></li>
     </ol>
-
-    <h1>Cargos <a href="{{ route('roles.create') }}" class="btn btn-dark">ADD</a></h1>
+    <br>
+    <h3>Listagem dos Cargos </h3>
 @stop
 
 @section('content')
     <div class="card">
-        {{-- <div class="card-header">
+        <div class="card-header">
+            <a href="{{ route('roles.create') }}" class="btn btn-dark mb-2" data-toggle="tooltip" title="Novo Cargo">Novo Cargo</a>
             <form action="{{ route('roles.search') }}" method="POST" class="form form-inline">
                 @csrf
-                <input type="text" name="filter" placeholder="Filtro" class="form-control" value="{{ $filters['filters'] }}">
-                <button type="submit" class="btn btn-dark">Filtrar</button>
+                <input type="text" name="filter" placeholder="Nome" class="form-control col-md-4 ">
+                <button type="submit" class="btn btn-dark ml-2" data-toggle="tooltip" title="Filtrar">Filtrar</button>
             </form>
-        </div> --}}
+        </div>
         <div class="card-body">
             <table class="table table-condensed">
                 <thead>
@@ -35,21 +36,17 @@
                                 {{ $role->name }}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-info">Editar</a>
-                                <a href="{{ route('roles.show', $role->id) }}" class="btn btn-warning">Detalhes</a>
-                                <a href="{{ route('roles.permissions', $role->id) }}" class="btn btn-primary"><i class="fas fa-lock"></i></a>
+                                <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-info" data-toggle="tooltip" title="Editar">Editar</a>
+                                <a href="{{ route('roles.show', $role->id) }}" class="btn btn-warning" data-toggle="tooltip" title="Detalhes">Detalhes</a>
+                                <a href="{{ route('roles.permissions', $role->id) }}" class="btn btn-primary" data-toggle="tooltip" title="Permissões"><i class="fas fa-lock"></i></a>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
         </div>
-        {{-- <div class="card-footer">
-            @if (isset($filters))
-                {!! $roles->appends($filters)->links() !!}
-            @else
-                {!! $roles->links() !!}
-            @endif
-        </div> --}}
+        <div class="card-footer">
+            {!! $roles->links() !!}
+        </div>
     </div>
 @endsection

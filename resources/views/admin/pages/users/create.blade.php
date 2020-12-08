@@ -3,6 +3,11 @@
 @section('title', 'Novo Usuário')
 
 @section('content_header')
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('users.index') }}" title="Usuários" class="active">Usuários</a></li>
+    </ol>
+    <br>
     <h1>Novo Usuário</h1>
 @stop
 

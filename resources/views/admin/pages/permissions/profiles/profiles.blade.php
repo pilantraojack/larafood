@@ -4,11 +4,11 @@
 
 @section('content_header')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('permissions.index') }}">Perfis</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('permissions.index') }}" title="Perfis">Perfis</a></li>
     </ol>
-
-    <h1>Perfis da permissão <strong>{{ $permission->name }}</strong></h1>
+    <br>
+    <h1>Perfis da permissão: <strong>{{ $permission->name }}</strong></h1>
 @stop
 
 @section('content')
@@ -28,7 +28,7 @@
                                 {{ $profile->name }}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('profiles.permission.detach', [$profile->id, $profile->id]) }}" class="btn btn-warning">Desvincular</a>
+                                <a href="{{ route('profiles.permission.detach', [$profile->id, $profile->id]) }}" class="btn btn-warning" data-toggle="tooltip" title="Desvincular">Desvincular</a>
                             </td>
                         </tr>
                     @endforeach

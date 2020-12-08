@@ -4,13 +4,12 @@
 
 @section('content_header')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('plans.index') }}">Planos</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('plans.profiles', $plan->id) }}">Perfis</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('plans.profiles.available', $plan->id) }}" class="active">Disponíveis</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('plans.index') }}" title="Planos">Planos</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('plans.profiles', $plan->id) }}" title="Perfis">Perfis</a></li>
     </ol>
-
-    <h1>Perfis disponíveis para o plano <strong>{{ $plan->name }}</strong></h1>
+    <br>
+    <h1>Perfis disponíveis para o plano: <strong>{{ $plan->name }}</strong></h1>
 @stop
 
 @section('content')
@@ -19,7 +18,7 @@
             <form action="{{ route('plans.profiles.available', $plan->id) }}" method="POST" class="for form-inline">
                 @csrf
                 <input type="text" name="filter" placeholder="Nome" class="form-control">
-                <button type="submit" class="btn btn-dark">Filtrar</button>
+                <button type="submit" class="btn btn-dark ml-2" title="Filtrar">Filtrar</button>
             </form>
         </div>
         <div class="card-body">
@@ -47,7 +46,7 @@
                         <tr>
                             <td colspan="500">
                                 @include('admin.includes.alerts')
-                                <button type="submit" class="btn btn-success">Vincular</button>
+                                <button type="submit" class="btn btn-success" title="Vincular">Vincular</button>
                             </td>
                         </tr>
                     </form>

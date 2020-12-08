@@ -4,18 +4,18 @@
 
 @section('content_header')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('plans.index') }}">Planos</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('plans.profiles', $plan->id) }}" class="active">Perfis</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('plans.index') }}" title="Planos">Planos</a></li>
     </ol>
-
+    <br>
     <h1>Perfis do Plano <strong>{{ $plan->name }}</strong></h1>
-    <hr>
-    <a href="{{ route('plans.profiles.available', $plan->id) }}" class="btn btn-dark">ADD NOVO PERFIL</a>
 @stop
 
 @section('content')
     <div class="card">
+        <div class="card-header">
+            <a href="{{ route('plans.profiles.available', $plan->id) }}" class="btn btn-dark" title="Novo Perfil">Novo Perfil</a>
+        </div>
         <div class="card-body">
             <table class="table table-condensed">
                 <thead>
@@ -31,7 +31,7 @@
                                 {{ $profile->name }}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('plans.profile.detach', [$plan->id, $profile->id]) }}" class="btn btn-warning">Desvincular</a>
+                                <a href="{{ route('plans.profile.detach', [$plan->id, $profile->id]) }}" class="btn btn-warning" title="Desvincular">Desvincular</a>
                             </td>
                         </tr>
                     @endforeach

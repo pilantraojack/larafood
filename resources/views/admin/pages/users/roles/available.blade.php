@@ -4,10 +4,10 @@
 
 @section('content_header')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('users.index') }}" class="active">Perfis</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard" >Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('users.index') }}" title="Usuários" class="active">Usuários</a></li>
     </ol>
-
+    <br>
     <h1>Cargos disponíveis do usuário <strong>{{ $user->name }}</strong></h1>
 @stop
 
@@ -17,7 +17,7 @@
             <form action="{{ route('users.roles.available', $user->id) }}" method="POST" class="for form-inline">
                 @csrf
                 <input type="text" name="filter" placeholder="Nome" class="form-control">
-                <button type="submit" class="btn btn-dark">Filtrar</button>
+                <button type="submit" class="btn btn-dark ml-2" title="Filtrar">Filtrar</button>
             </form>
         </div>
         <div class="card-body">
@@ -45,7 +45,7 @@
                         <tr>
                             <td colspan="500">
                                 @include('admin.includes.alerts')
-                                <button type="submit" class="btn btn-success">Vincular</button>
+                                <button type="submit" class="btn btn-success" title="Vincular">Vincular</button>
                             </td>
                         </tr>
                     </form>

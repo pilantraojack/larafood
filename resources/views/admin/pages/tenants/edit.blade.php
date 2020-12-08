@@ -3,7 +3,12 @@
 @section('title', 'Editar Empresa')
 
 @section('content_header')
-    <h1>Editar Empresa</h1>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" data-toggle="tooltip" title="Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('tenants.index') }}" data-toggle="tooltip" title="Tenants" class="active">Tenants</a></li>
+    </ol>
+    <br>
+    <h1>Editar Tenant</h1>
 @stop
 
 @section('content')
