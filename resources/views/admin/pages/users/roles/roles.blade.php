@@ -8,7 +8,7 @@
         <li class="breadcrumb-item"><a href="{{ route('users.index') }}" title="Usuários">Usuários</a></li>
     </ol>
     <br>
-    <h1>Cargos do usuário<strong>:{{ $user->name }}</strong></h1>
+    <h1>Cargos do usuário<strong>: {{ $user->name }}</strong></h1>
     <hr>
     <a href="{{ route('users.roles.available', $user->id) }}" class="btn btn-dark" title="Novo Cargo">Novo Cargo</a>
 @stop

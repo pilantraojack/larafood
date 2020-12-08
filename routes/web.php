@@ -31,6 +31,8 @@ Route::prefix('admin')
             Route::get('test-acl', function(){
 
             });
+    // Home
+    Route::get('/', 'HomeController@index')->name('admin.index');
 
     // Role x User
     Route::get('users/{id}/role/{idRole}/detach'     , 'ACL\RoleUserController@detachRolesUser')->name('users.role.detach');
@@ -118,7 +120,7 @@ Route::prefix('admin')
     Route::get('plans/{url}', 'PlanController@show')->name('plans.show');
     Route::post('plans', 'PlanController@store')->name('plans.store');
     Route::get('plans', 'PlanController@index')->name('plans.index');
-    Route::get('/', 'PlanController@index')->name('admin.index');
+    // Route::get('/', 'PlanController@index')->name('admin.index');
 
 });
     // Routes Site
