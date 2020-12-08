@@ -3,7 +3,12 @@
 @section('title', 'Detalhes da Permissão')
 
 @section('content_header')
-    <h1>Detalhes da Permissão <b>{{ $permission->name }}</b>
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
+    <li class="breadcrumb-item"><a href="{{ route('permissions.index') }}" title="Permissões">Permissões</a></li>
+</ol>
+<br>
+    <h1>Detalhes da Permissão: <b>{{ $permission->name }}</b>
 @stop
 
 @section('content')
@@ -21,7 +26,7 @@
             <form action="{{ route('permissions.destroy', $permission->id) }}" method="POST">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Deletar Permissão</button>
+                <button type="submit" class="btn btn-danger" title="Excluir Permissão">Excluir Permissão</button>
             </form>
         </div>
     </div>

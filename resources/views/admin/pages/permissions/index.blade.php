@@ -4,18 +4,17 @@
 
 @section('content_header')
     <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('permissions.index') }}">Permissões</a></li>
-        {{-- <li class="breadcrumb-item"><a href="{{ route('permissions.show', $plan->url) }}">{{ $plan->name }}</a></li>
-        <li class="breadcrumb-item active"><a href="{{ route('permissions.plan.index', $plan->url) }}" class="active">Detalhes</a></li> --}}
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('permissions.index') }}" title="Permissões">Permissões</a></li>
     </ol>
-
-    <h1>Permissões <a href="{{ route('permissions.create') }}" class="btn btn-dark">ADD</a></h1>
+    <br>
+    <h1>Permissões</h1>
 @stop
 
 @section('content')
     <div class="card">
        <div class="card-header">
+           <a href="{{ route('permissions.create') }}" title="Nova Permissão" class="btn btn-dark mb-2">Nova Permissão</a>
             <form action="{{ route('permissions.search') }}" method="POST" class="for form-inline">
                 @csrf
                 <input type="text" name="filter" placeholder="Nome" class="form-control">
@@ -36,9 +35,9 @@
                                 {{ $permission->name }}
                             </td>
                             <td style="width=10px;">
-                                <a href="{{ route('permissions.show', $permission->id) }}" class="btn btn-warning">Detalhes</a>
-                                <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-success">Editar</a>
-                                <a href="{{ route('permissions.profiles', $permission->id) }}" class="btn btn-info"><i class="fas fa-id-badge"></i></a>
+                                <a href="{{ route('permissions.show', $permission->id) }}" class="btn btn-warning" title="Detalhes">Detalhes</a>
+                                <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-success" title="Editar">Editar</a>
+                                <a href="{{ route('permissions.profiles', $permission->id) }}" class="btn btn-info" title="Perfis"><i class="fas fa-id-badge"></i></a>
                             </td>
                         </tr>
                     @endforeach

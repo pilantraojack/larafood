@@ -119,19 +119,29 @@ class RoleController extends Controller
         return redirect()->route('roles.index');
     }
 
-    public function search(Request $request)
-    {
-        $filters = $request->only('filter');
+    // public function search(Request $request)
+    // {
+    //     $filters = $request->only('filter');
 
-        $roles = $this->repository
-                        ->where(function($query) use ($request) {
-                            if($request->filter) {
-                                $query->where('name', $request->filter);
-                                $query->orWhere('description', 'LIKE', "%{$request->filter}%");
-                            }
-                        })
-                        ->paginate();
-        return view('admin.pages.roles.index', compact('roles', 'filters'));
+    //     $roles = $this->repository
+    //                     ->where(function($query) use ($request) {
+    //                         if($request->filter) {
+    //                             $query->where('name', $request->filter);
+    //                             $query->orWhere('description', 'LIKE', "%{$request->filter}%");
+    //                         }
+    //                     })
+    //                     ->paginate();
+    //     return view('admin.pages.roles.index', compact('roles', 'filters'));
+    // }
+
+    // função para busca, parte dela está no model
+    public function search(Request $request){
+        // passa a função do model para o objeto, com o $request->filter, que é o campo de busca
+        $roles = $this->repository->search($request->filter);
+        // retorna a lista com os resultados equivalentes à busca
+        return view('admin.pages.roles.index', [
+            'roles' => $roles,
+        ]);
     }
 
 }

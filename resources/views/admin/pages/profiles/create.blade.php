@@ -3,6 +3,11 @@
 @section('title', 'Novo Perfil')
 
 @section('content_header')
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item active"><a href="{{ route('profiles.index') }}" title="Perfis" class="active">Perfis</a></li>
+    </ol>
+    <br>
     <h1>Novo Perfil</h1>
 @stop
 
