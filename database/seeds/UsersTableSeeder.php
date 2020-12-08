@@ -22,5 +22,6 @@ class UsersTableSeeder extends Seeder
             'email'     => 'dev@011brasil.com.br',
             'password'  => bcrypt('#larafood'),
         ]);
+
     }
 }

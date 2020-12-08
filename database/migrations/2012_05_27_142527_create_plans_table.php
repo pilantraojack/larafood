@@ -17,7 +17,7 @@ class CreatePlansTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->string('url')->unique()->nullable();
-            $table->double('price', 10, 2)->nullable();
+            $table->string('price')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
         });

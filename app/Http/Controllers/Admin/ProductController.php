@@ -50,11 +50,11 @@ class ProductController extends Controller
     {
         $data = $request->all();
         $tenant = auth()->user()->tenant;
-        // $data['tenant_id'] = $tenant->id;
 
         if($request->hasFile('image') && $request->image->isValid()){
             $data['image'] = $request->image->store("tenants/{$tenant->uuid}/products");
         }
+        dd($request);
 
         $this->repository->create($data);
 
@@ -117,7 +117,7 @@ class ProductController extends Controller
 
             $data['image'] = $request->image->store("tenants/{$tenant->uuid}/products");
         }
-
+        // dd($request);
         $product->update($data);
 
         return redirect()->route('products.index');

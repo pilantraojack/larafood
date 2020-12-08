@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="text-center">
-        <h1 class="title-plan">Escolha o plano</h1>
+        <h1 class="title-plan">Escolha um plano</h1>
     </div>
     <div class="row">
         @foreach($plans as $plan)
@@ -15,7 +15,7 @@
                         <div class="inner-content">
                             <div class="price-value">
                                 <span class="currency">R$</span>
-                                <span class="amount">{{ number_format($plan->price, 2, ',', '.') }}</span>
+                                <span class="amount">{{ $plan->price }}</span>
                                 <span class="duration">Por Mês</span>
                             </div>
                             @foreach($plan->details as $detail)

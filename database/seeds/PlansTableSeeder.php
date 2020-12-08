@@ -13,10 +13,11 @@ class PlansTableSeeder extends Seeder
     public function run()
     {
         Plan::create([
-            'name' => 'Business',
-            'url' => 'business',
-            'price' => 499.99,
-            'description' => 'Plano Empresarial',
+            'name' => 'Developer Mode',
+            'url' => 'developer mode',
+            'price' => 666.00,
+            'description' => 'Plano Developer',
         ]);
+
     }
 }
