@@ -24,7 +24,8 @@ class StoreUpdateRole extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => "required|min:3|max:255|unique:roles,name",
+            'description' => 'nullable|min:3|max:255',
         ];
     }
 }

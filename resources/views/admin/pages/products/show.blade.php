@@ -12,23 +12,38 @@
 @stop
 
 @section('content')
-    <div class="card">
-        <div class="card-body">
-            <img src="{{ url("storage/$product->image") }}" width="50" height="50" alt="Image">
-            <ul>
-                <li>
-                    <strong>Título: </strong> {{ $product->title }}
-                </li>
-                <li>
-                    <strong>Flag: </strong> {{ $product->flag }}
-                </li>
-            </ul>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body d-flex">
+                    <div class="col-6">
+                        <label for="nome" class="label-desc">Nome</label>
+                        <p class="text-desc"> {{ $product->title ?? 'uninformed' }}</p>
 
-            <form action="{{ route('products.destroy', $product->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger" title="Excluir">Excluir</button>
-            </form>
+                        <label for="image" class="label-desc"></label>
+                        <p><img src="{{ url("storage/$product->image") }}" width="50" height="50" alt="Image"></p>
+                    </div>
+                    <div class="col-6">
+                        <label for="description">Description</label>
+                        <p class="text-desc"> {{ $product->description ?? 'uninformed' }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4 d-flex">
+                            <form action="{{ route('products.destroy', $product->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" title="Excluir Produto"><i class="fas fa-trash"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

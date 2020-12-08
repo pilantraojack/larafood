@@ -12,25 +12,38 @@
 @stop
 
 @section('content')
-    <div class="card">
-        <div class="card-body">
-            <ul>
-                <li>
-                    <strong>Nome: </strong> {{ $user->name }}
-                </li>
-                <li>
-                    <strong>E-mail: </strong> {{ $user->email }}
-                </li>
-                <li>
-                    <strong>Empresa: </strong> {{ $user->tenant->name }}
-                </li>
-            </ul>
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body d-flex">
+                    <div class="col-6">
+                        <label for="name" class="label-desc">Name</label>
+                        <p class="text-desc"> {{ $user->name ?? 'uninformed' }}</p>
 
-            <form action="{{ route('users.destroy', $user->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="btn btn-danger" title="Excluir">Excluir</button>
-            </form>
+                        <label for="empresa" class="label-desc">Empresa</label>
+                        <p class="text-desc"> {{ $user->tenant->name ?? 'uninformed' }}</p>
+                    </div>
+                    <div class="col-6">
+                        <label for="email">Description</label>
+                        <p class="text-desc"> {{ $user->email ?? 'uninformed' }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 col-lg-4 d-flex">
+                            <form action="{{ route('users.destroy', $user->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" title="Excluir Usuário"><i class="fas fa-trash"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

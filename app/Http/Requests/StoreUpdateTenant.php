@@ -24,7 +24,16 @@ class StoreUpdateTenant extends FormRequest
     public function rules()
     {
         return [
-            //
+            // 'name' => ['required', 'string', 'min:3', 'max:255', 'unique:tenants,name'],
+            // 'email' => ['required', 'string', 'email', 'min:3', 'max:255', 'unique:users'],
+            // 'cnpj' => ['required', 'string', 'min:14', 'max:18', 'unique:tenants'],
+        ];
+    }
+
+    public function messages() {
+        return [
+            'required' => __('mdci.Field :attribute is required.'),
+            'min'      => __('mdci.Field :attribute must have a minimun of :min characters.')
         ];
     }
 }

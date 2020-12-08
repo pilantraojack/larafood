@@ -18,7 +18,7 @@ class TenantsTableSeeder extends Seeder
         $plan = Plan::first();
 
         $plan->tenants()->create([
-            'cnpj' => '321321232132',
+            'cnpj' => '51.702.420/0001-50',
             'name' => 'Prerigo',
             'url'  => 'prerigo',
             'email'=> 'prerigo@fodase.com',
