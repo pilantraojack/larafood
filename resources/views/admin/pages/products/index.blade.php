@@ -42,7 +42,7 @@
                                 @endif
                             </td>
                             <td>{{ $product->title }}</td>
-                            <td>{{ $product->price }}</td>
+                            <td>${{ $product->price }}</td>
                             <td style="width=10px;">
                                 <a href="{{ route('products.categories', $product->id) }}" class="btn btn-warning" title="Categorias"><i class="fas fa-layer-group"></i></a>
                                 <a href="{{ route('products.edit', $product->id) }}" class="btn btn-info" title="Editar">Editar</a>

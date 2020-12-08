@@ -13,7 +13,7 @@
     <input type="text" name="email" id="email" class="form-control" placeholder="Nome" value="{{ $tenant->email ?? old('email')}}">
 </div>
 <div class="form-group">
-    <label for="cnpj">* CNPJ</label>
+    <label for="cnpj">CNPJ</label>
     <input type="text" name="cnpj" id="cnpj" class="form-control" placeholder="CNPJ" value="{{ $tenant->cnpj ?? old('cnpj')}}">
 </div>
 <div class="form-group">
