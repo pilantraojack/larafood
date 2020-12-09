@@ -26,10 +26,7 @@
                         <label for="name" class="label-desc">Nome</label>
                         <p class="text-desc"> {{ $tenant->name ?? 'uninformed' }}</p>
 
-                        <label for="url">Url</label>
-                        <p class="text-desc"> {{ $tenant->url ?? 'uninformed' }}</p>
-
-                        <label for="logo" class="label-desc"></label>
+                        <label for="logo" class="label-desc">Logo</label>
                         <p><img src="{{ url("storage/$tenant->logo") }}" width="50" height="50" alt="Image"></p>
                     </div>
                     <div class="col-6">
@@ -57,9 +54,6 @@
 
                         <label for="expire" class="label-desc">Expira em</label>
                         <p class="text-desc"> {{ $tenant->expires_at->format('d/m/y') ?? 'uninformed' }}</p>
-
-                        <label for="id" class="label-desc">Id</label>
-                        <p class="text-desc"> {{ $tenant->sub_id ?? 'uninformed' }}</p>
                     </div>
                     <div class="col-6">
                         <label for="active" class="label-desc">Ativo ?</label>

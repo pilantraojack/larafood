@@ -42,7 +42,7 @@
                                 @endif
                             </td>
                             <td>{{ $product->title }}</td>
-                            <td>${{ $product->price }}</td>
+                            <td>R$ {{ $product->price }}</td>
                             <td class="d-flex justify-content-center">
                                 <a href="{{ route('products.categories', $product->id) }}" class="btn btn-warning mr-2" title="Categorias"><i class="fas fa-layer-group"></i></a>
                                 <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary mr-2" title="Detalhes"><i class="fas fa-search"></i></a>

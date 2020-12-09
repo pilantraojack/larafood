@@ -20,12 +20,15 @@
                         <label for="nome" class="label-desc">Nome</label>
                         <p class="text-desc"> {{ $product->title ?? 'uninformed' }}</p>
 
-                        <label for="image" class="label-desc"></label>
+                        <label for="image" class="label-desc">Image</label>
                         <p><img src="{{ url("storage/$product->image") }}" width="50" height="50" alt="Image"></p>
                     </div>
                     <div class="col-6">
                         <label for="description">Description</label>
                         <p class="text-desc"> {{ $product->description ?? 'uninformed' }}</p>
+
+                        <label for="price">Price</label>
+                        <p class="text-desc">R$ {{ $product->price ?? 'uninformed' }}</p>
                     </div>
                 </div>
             </div>

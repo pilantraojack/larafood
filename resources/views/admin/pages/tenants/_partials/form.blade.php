@@ -6,7 +6,7 @@
 </div>
 <div class="form-group">
     <label for="logo">Logo</label>
-    <input type="file" name="logo" id="logo" class="form-control-file">
+    <input type="file" name="logo" id="logo" accept="*"  class="form-control-file" value="">
 </div>
 <div class="form-group">
     <label for="email">E-mail</label>
@@ -30,11 +30,11 @@
 
 <div class="form-group">
     <label for="subscription">Data Assinatura (início)</label>
-    <input type="date" name="subscription" class="form-control" placeholder="Data Assinatura">
+    <input type="date" name="subscription" class="form-control data" placeholder="Data Assinatura" value="{{$tenant->subscription->format('d/m/y') }}">
 </div>
 <div class="form-group">
     <label for="expires_at">Expira em (final)</label>
-    <input type="date" name="expires_at" class="form-control" placeholder="Expira em">
+    <input type="date" name="expires_at" class="form-control data" placeholder="Expira em" value="{{$tenant->expires_at->format('d/m/y') }}">
 </div>
 <div class="form-group">
     <label for="sub_active">Assinatura Ativa ?</label>

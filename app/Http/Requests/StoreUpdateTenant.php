@@ -28,6 +28,12 @@ class StoreUpdateTenant extends FormRequest
             // 'email' => ['required', 'string', 'email', 'min:3', 'max:255', 'unique:users'],
             // 'cnpj' => ['required', 'string', 'min:14', 'max:18', 'unique:tenants'],
         ];
+
+        if ($this->method() == 'PUT') {
+            $rules['image'] = ['nullable'];
+        }
+
+        return $rules;
     }
 
     public function messages() {

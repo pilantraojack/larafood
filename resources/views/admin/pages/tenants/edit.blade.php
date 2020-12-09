@@ -14,7 +14,7 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('tenants.update', $tenant->id) }}" class="form" method="POST" enctype="mutipart/form-data">
+            <form action="{{ route('tenants.update', $tenant->id) }}" class="form" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 @include('admin.pages.tenants._partials.form')
