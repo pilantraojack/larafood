@@ -3,15 +3,15 @@
 @section('title', 'Detalhes da Permissão')
 
 @section('content_header')
-<ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
-    <li class="breadcrumb-item"><a href="{{ route('permissions.index') }}" title="Permissões">Permissões</a></li>
-</ol>
-<br>
-    <h1>Detalhes da Permissão: <b>{{ $permission->name }}</b>
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('permissions.index') }}" title="Permissões">Permissões</a></li>
+    </ol>
 @stop
 
 @section('content')
+    <h3>Detalhes da Permissão: <b>{{ $permission->name }}</b></h3>
+
     <div class="row">
         <div class="col-md-8">
             <div class="card">

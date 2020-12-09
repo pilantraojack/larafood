@@ -10,7 +10,7 @@
 @stop
 
 @section('content')
-    <h3>Listagem dos Produtos</h3>
+    <h3>Produtos</h3>
 
     <div class="card">
         <div class="card-header">

@@ -7,11 +7,11 @@
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
         <li class="breadcrumb-item"><a href="{{ route('permissions.index') }}" title="Perfis">Perfis</a></li>
     </ol>
-    <br>
-    <h1>Perfis da permissão: <strong>{{ $permission->name }}</strong></h1>
 @stop
 
 @section('content')
+    <h3>Perfis da permissão: <strong>{{ $permission->name }}</strong></h3>
+
     <div class="card">
         <div class="card-body">
             <table class="table table-condensed">

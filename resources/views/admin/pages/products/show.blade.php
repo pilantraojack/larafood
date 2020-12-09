@@ -7,11 +7,11 @@
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
         <li class="breadcrumb-item active"><a href="{{ route('products.index') }}" class="active" title="Produtos">Produtos</a></li>
     </ol>
-    <br>
-    <h1>Detalhes do Produto<b>: {{ $product->name }}</b>
 @stop
 
 @section('content')
+    <h3>Detalhes do Produto<b>: {{ $product->name }}</b></h3>
+
     <div class="row">
         <div class="col-md-8">
             <div class="card">

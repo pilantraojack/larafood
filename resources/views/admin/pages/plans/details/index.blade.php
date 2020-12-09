@@ -7,11 +7,11 @@
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard" >Dashboard</a></li>
         <li class="breadcrumb-item"><a href="{{ route('plans.index') }}" title="Planos" >Planos</a></li>
     </ol>
-    <br>
-    <h1>Detalhes do Plano: {{ $plan->name }}</h1>
 @stop
 
 @section('content')
+    <h3>Detalhes do Plano: {{ $plan->name }}</h3>
+
     <div class="card">
         <div class="card-header">
             <a class="btn btn-dark mb-2" href="{{ route('details.plan.create', $plan->url) }}" title="Adicionar Detalhe">Novo Detalhe</a>

@@ -7,11 +7,11 @@
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard" >Dashboard</a></li>
         <li class="breadcrumb-item"><a href="{{ route('users.index') }}" title="Usuários" class="active">Usuários</a></li>
     </ol>
-    <br>
-    <h1>Cargos disponíveis do usuário<strong>: {{ $user->name }}</strong></h1>
 @stop
 
 @section('content')
+    <h3>Cargos disponíveis do usuário<strong>: {{ $user->name }}</strong></h3>
+
     <div class="card">
        <div class="card-header">
             <form action="{{ route('users.roles.available', $user->id) }}" method="POST" class="for form-inline">

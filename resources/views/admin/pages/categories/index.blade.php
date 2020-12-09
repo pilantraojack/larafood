@@ -12,7 +12,7 @@
 @section('content')
 @include('admin.includes.alerts')
 
-    <h3>Listagem das Categorias</h3>
+    <h3>Categorias</h3>
 
     <div class="card">
         <div class="card-header">

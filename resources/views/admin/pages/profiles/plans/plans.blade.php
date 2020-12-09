@@ -7,11 +7,11 @@
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" data-toggle="tooltip" title="Dashboard">Dashboard</a></li>
         <li class="breadcrumb-item"><a href="{{ route('profiles.index') }}" data-toggle="tooltip" title="Perfis">Perfis</a></li>
     </ol>
-    <br>
-    <h1>Planos do perfil: <strong>{{ $profile->name }}</strong></h1>
 @stop
 
 @section('content')
+    <h3>Planos do perfil: <strong>{{ $profile->name }}</strong></h3>
+
     <div class="card">
         <div class="card-body">
             <table class="table table-condensed">

@@ -8,11 +8,11 @@
         <li class="breadcrumb-item"><a href="{{ route('plans.index') }}" title="Planos">Planos</a></li>
         <li class="breadcrumb-item"><a href="{{ route('plans.profiles', $plan->id) }}" title="Perfis">Perfis</a></li>
     </ol>
-    <br>
-    <h1>Perfis disponíveis para o plano: <strong>{{ $plan->name }}</strong></h1>
 @stop
 
 @section('content')
+    <h3>Perfis disponíveis para o plano: <strong>{{ $plan->name }}</strong></h3>
+
     <div class="card">
        <div class="card-header">
             <form action="{{ route('plans.profiles.available', $plan->id) }}" method="POST" class="for form-inline">

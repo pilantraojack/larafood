@@ -11,6 +11,13 @@ class Tenant extends Model
 {
     protected $table = 'tenants';
 
+    protected $dates = [
+        'subscription',
+        'expires_at',
+        'created_at',
+        'updated_at'
+    ];
+
     protected $fillable = [
         'id',
         'uuid',

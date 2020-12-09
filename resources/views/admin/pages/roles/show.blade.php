@@ -7,11 +7,11 @@
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" data-toggle="tooltip" title="Dashboard" >Dashboard</a></li>
         <li class="breadcrumb-item active"><a href="{{ route('roles.index') }}" data-toggle="tooltip" title="Cargos" class="active">Cargos</a></li>
     </ol>
-    <br>
-    <h1>Detalhes do Cargo: <b>{{ $role->name }}</b>
 @stop
 
 @section('content')
+    <h3>Detalhes do Cargo: <b>{{ $role->name }}</b></h3>
+
     <div class="row">
         <div class="col-md-8">
             <div class="card">

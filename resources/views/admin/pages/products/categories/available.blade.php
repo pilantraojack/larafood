@@ -7,11 +7,11 @@
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
         <li class="breadcrumb-item"><a href="{{ route('products.index') }}" title="Produtos">Produtos</a></li>
     </ol>
-    <br>
-    <h1>Categorias disponíveis para o produto<strong>: {{ $product->title }}</strong></h1>
 @stop
 
 @section('content')
+    <h3>Categorias disponíveis para o produto<strong>: {{ $product->title }}</strong></h3>
+
     <div class="card">
        <div class="card-header">
             <form action="{{ route('products.categories.available', $product->id) }}" method="POST" class="for form-inline">

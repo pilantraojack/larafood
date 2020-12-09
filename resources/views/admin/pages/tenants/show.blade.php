@@ -12,49 +12,64 @@
 @stop
 
 @section('content')
-    <div class="card">
-        <div class="card-body">
-            <img src="{{ url("storage/$tenant->logo") }}" width="50" height="50" alt="Image">
-            <ul>
-                <li>
-                    <strong>Plano: </strong> {{ $tenant->plan->name }}
-                </li>
-                <li>
-                    <strong>Nome: </strong> {{ $tenant->name }}
-                </li>
-                <li>
-                    <strong>Url: </strong> {{ $tenant->url }}
-                </li>
-                <li>
-                    <strong>E-mail: </strong> {{ $tenant->email }}
-                </li>
-                <li>
-                    <strong>CNPJ: </strong> {{ $tenant->cnpj }}
-                </li>
-                <li>
-                    <strong>Ativo: </strong> {{ $tenant->active == 'Y' ? 'SIM' : 'NÃO' }}
-                </li>
-            </ul>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Tenant</h3>
+                </div>
+                <div class="card-body d-flex justify-content-between">
+                    <div class="col-6">
+                        <label for="plano" class="label-desc">Plano</label>
+                        <p class="text-desc"> {{ $tenant->plan->name ?? 'uninformed' }}</p>
 
-            <hr>
-            <h3>Assinatura</h3>
-            <ul>
-                <li>
-                    <strong>Data Assinatura: </strong> {{ $tenant->subscription }}
-                </li>
-                <li>
-                    <strong>Expira em: </strong> {{ $tenant->expires_at }}
-                </li>
-                <li>
-                    <strong>Id: </strong> {{ $tenant->sub_id }}
-                </li>
-                <li>
-                    <strong>Ativo ?: </strong> {{ $tenant->sub_active ? 'SIM' : 'NÃO' }}
-                </li>
-                <li>
-                    <strong>Cancelou ?: </strong> {{ $tenant->sub_suspended ? 'SIM' : 'NÃO' }}
-                </li>
-            </ul>
+                        <label for="name" class="label-desc">Nome</label>
+                        <p class="text-desc"> {{ $tenant->name ?? 'uninformed' }}</p>
+
+                        <label for="url">Url</label>
+                        <p class="text-desc"> {{ $tenant->url ?? 'uninformed' }}</p>
+
+                        <label for="logo" class="label-desc"></label>
+                        <p><img src="{{ url("storage/$tenant->logo") }}" width="50" height="50" alt="Image"></p>
+                    </div>
+                    <div class="col-6">
+                        <label for="email" class="label-desc">Email</label>
+                        <p class="text-desc"> {{ $tenant->email ?? 'uninformed' }}</p>
+
+                        <label for="cnpj">CNPJ</label>
+                        <p class="text-desc"> {{ $tenant->cnpj ?? 'uninformed' }}</p>
+
+                        <label for="ativo" class="label-desc">Ativo</label>
+                        <p class="text-desc"> {{ $tenant->active == 'Y' ? 'SIM' : 'NÃO' }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Assinatura</h3>
+                </div>
+                <div class="card-body d-flex justify-content-between">
+                    <div class="col-6">
+                        <label for="sub" class="label-desc">Assinatura</label>
+                        <p class="text-desc"> {{ $tenant->subscription->format('d/m/y') ?? 'uninformed' }}</p>
+
+                        <label for="expire" class="label-desc">Expira em</label>
+                        <p class="text-desc"> {{ $tenant->expires_at->format('d/m/y') ?? 'uninformed' }}</p>
+
+                        <label for="id" class="label-desc">Id</label>
+                        <p class="text-desc"> {{ $tenant->sub_id ?? 'uninformed' }}</p>
+                    </div>
+                    <div class="col-6">
+                        <label for="active" class="label-desc">Ativo ?</label>
+                        <p class="text-desc"> {{ $tenant->sub_active ? 'SIM' : 'NÃO' }}</p>
+
+                        <label for="suspended">Cancelou ?</label>
+                        <p class="text-desc"> {{ $tenant->sub_suspended ? 'SIM' : 'NÃO' }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection

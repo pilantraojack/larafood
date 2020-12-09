@@ -7,11 +7,11 @@
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
         <li class="breadcrumb-item active"><a href="{{ route('tables.index') }}" title="Mesas" class="active">Mesas</a></li>
     </ol>
-    <br>
-    <h1>Editar Mesa</h1>
 @stop
 
 @section('content')
+    <h3>Editar Mesa</h3>
+
     <div class="card">
         <div class="card-body">
             <form action="{{ route('tables.update', $table->id) }}" class="form" method="POST">

@@ -7,14 +7,15 @@
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
         <li class="breadcrumb-item"><a href="{{ route('users.index') }}" title="Usuários">Usuários</a></li>
     </ol>
-    <br>
-    <h1>Cargos do usuário<strong>: {{ $user->name }}</strong></h1>
-    <hr>
-    <a href="{{ route('users.roles.available', $user->id) }}" class="btn btn-dark" title="Novo Cargo">Novo Cargo</a>
 @stop
 
 @section('content')
+    <h3>Cargos do usuário<strong>: {{ $user->name }}</strong></h3>
+
     <div class="card">
+        <div class="card-header">
+            <a href="{{ route('users.roles.available', $user->id) }}" class="btn btn-dark" title="Novo Cargo">Novo Cargo</a>
+        </div>
         <div class="card-body">
             <table class="table table-condensed">
                 <thead>

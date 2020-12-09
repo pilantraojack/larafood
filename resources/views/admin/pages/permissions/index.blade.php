@@ -8,16 +8,18 @@
         <li class="breadcrumb-item"><a href="{{ route('permissions.index') }}" title="Permissões">Permissões</a></li>
     </ol>
     <br>
-    <h1>Permissões</h1>
 @stop
 
 @section('content')
+    <h3>Permissões</h3>
+
     <div class="card">
        <div class="card-header">
            <a href="{{ route('permissions.create') }}" title="Nova Permissão" class="btn btn-dark mb-2">Nova Permissão</a>
             <form action="{{ route('permissions.search') }}" method="POST" class="for form-inline">
                 @csrf
                 <input type="text" name="filter" placeholder="Nome" class="form-control">
+                <button type="submit" class="btn btn-dark ml-2" title="Filtrar">Filtrar</button>
             </form>
         </div>
         <div class="card-body">
