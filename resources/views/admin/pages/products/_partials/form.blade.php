@@ -17,6 +17,6 @@
     <textarea name="description" id="description" cols="20" rows="5" class="form-control">{{ $product->description ?? old('description') }}</textarea>
 </div>
 <div class="form-group">
-    <button type="submit" class="btn btn-dark" title="Salvar">Salvar</button>
+    <button type="submit" class="btn btn-success" title="Salvar">Salvar</button>
 </div>
 

@@ -6,6 +6,7 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard" >Dashboard</a></li>
         <li class="breadcrumb-item"><a href="{{ route('plans.index') }}" title="Planos" >Planos</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('details.plan.index', $plan->url) }}" title="Detalhes do Plano">Detalhes do Plano</a></li>
     </ol>
     <br>
     <h1>Detalhes do detalhe: {{ $detail->name }}</h1>

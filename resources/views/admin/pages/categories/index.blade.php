@@ -29,7 +29,7 @@
                     <tr>
                         <th>Nome</th>
                         <th>Descrição</th>
-                        <th>Ações</th>
+				    	<th scope="col"><center>Ações</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,11 +37,11 @@
                         <tr>
                             <td>{{ $category->name }}</td>
                             <td>{{ $category->description }}</td>
-                            <td style="width=10px;">
-                                <a href="{{ route('categories.show', $category->id) }}" class="btn btn-warning" title="Detalhes"
-                                >Detalhes</a>
-                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-success" title="Editar"
-                                >Editar</a>
+                            <td class="d-flex justify-content-center">
+                                <a href="{{ route('categories.show', $category->id) }}" class="btn btn-primary mr-2" title="Detalhes"
+                                ><i class="fas fa-search"></i></a>
+                                <a href="{{ route('categories.edit', $category->id) }}" class="btn btn-info" title="Editar"
+                                ><i class="fas fa-pen"></i></a>
                             </td>
                         </tr>
                     @endforeach

@@ -21,7 +21,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Ações</th>
+                        <th scope="col"><center>Ações</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +30,7 @@
                             <td>
                                 {{ $role->name }}
                             </td>
-                            <td style="width=10px;">
+                            <td class="d-flex justify-content-center">
                                 <a href="{{ route('users.role.detach', [$user->id, $role->id]) }}" class="btn btn-warning">Desvincular</a>
                             </td>
                         </tr>

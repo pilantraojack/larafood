@@ -23,7 +23,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Ações</th>
+                        <th scope="col"><center>Ações</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,9 +32,10 @@
                             <td>
                                 {{ $detail->name }}
                             </td>
-                            <td style="width=10px;">
-                                <a href="{{ route('details.plan.edit', [$plan->url, $detail->id]) }}" class="btn btn-success" title="Editar" >Editar</a>
-                                <a href="{{ route('details.plan.show', [$plan->url, $detail->id]) }}" class="btn btn-warning" title="Detalhes" >Detalhes</a>
+                            <td class="d-flex justify-content-center">
+                                <a href="{{ route('details.plan.show', [$plan->url, $detail->id]) }}" class="btn btn-primary mr-2" title="Detalhes"><i class="fas fa-search"></i></a>
+
+                                <a href="{{ route('details.plan.edit', [$plan->url, $detail->id]) }}" class="btn btn-info" title="Editar"><i class="fas fa-pen"></i></a>
                             </td>
                         </tr>
                     @endforeach

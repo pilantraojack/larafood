@@ -27,7 +27,7 @@
                     <tr>
                         <th>Nome</th>
                         <th>E-mail</th>
-                        <th>Ações</th>
+                        <th scope="col"><center>Ações</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,10 +35,10 @@
                         <tr>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
-                            <td style="width=10px;">
-                                <a href="{{ route('users.show', $user->id) }}" class="btn btn-warning" title="Detalhes">Detalhes</a>
-                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-success" title="Editar">Editar</a>
-                                <a href="{{ route('users.roles', $user->id) }}" class="btn btn-info" title="Cargos"><i class="fas fa-address-card"></i></a>
+                            <td class="d-flex justify-content-center">
+                                <a href="{{ route('users.show', $user->id) }}" class="btn btn-primary mr-2" title="Detalhes"><i class="fas fa-search"></i></a>
+                                <a href="{{ route('users.edit', $user->id) }}" class="btn btn-info mr-2" title="Editar"><i class="fas fa-pen"></i></a>
+                                <a href="{{ route('users.roles', $user->id) }}" class="btn btn-warning mr-2" title="Cargos"><i class="fas fa-address-card"></i></a>
                             </td>
                         </tr>
                     @endforeach

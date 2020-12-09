@@ -26,7 +26,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Ações</th>
+                        <th scope="col"><center>Ações</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,10 +35,13 @@
                             <td>
                                 {{ $profile->name }}
                             </td>
-                            <td style="width=10px;">
-                                <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-info" data-toggle="tooltip" title="Editar">Editar</a>
-                                <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-warning" data-toggle="tooltip" title="Detalhes">Detalhes</a>
-                                <a href="{{ route('profiles.permissions', $profile->id) }}" class="btn btn-primary" data-toggle="tooltip" title="Permissões"><i class="fas fa-lock"></i></a>
+                            <td class="d-flex justify-content-center">
+                                <a href="{{ route('profiles.show', $profile->id) }}" class="btn btn-primary mr-2" data-toggle="tooltip" title="Detalhes"><i class="fas fa-search"></i></a>
+
+                                <a href="{{ route('profiles.edit', $profile->id) }}" class="btn btn-info mr-2" data-toggle="tooltip" title="Editar"><i class="fas fa-pen"></i></a>
+
+                                <a href="{{ route('profiles.permissions', $profile->id) }}" class="btn btn-warning mr-2" data-toggle="tooltip" title="Permissões"><i class="fas fa-lock"></i></a>
+
                                 <a href="{{ route('profiles.plans', $profile->id) }}" class="btn btn-dark" data-toggle="tooltip" title="Planos"><i class="fas fa-list-alt"></i></a>
                             </td>
                         </tr>

@@ -53,6 +53,6 @@
     </select>
 </div>
 <div class="form-group">
-    <button type="submit" class="btn btn-dark" data-toogle="tooltip" title="Salvar">Salvar</button>
+    <button type="submit" class="btn btn-success" data-toogle="tooltip" title="Salvar">Salvar</button>
 </div>
 

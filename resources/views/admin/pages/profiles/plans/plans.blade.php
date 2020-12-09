@@ -18,7 +18,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Ações</th>
+                        <th scope="col"><center>Ações</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,7 +27,7 @@
                             <td>
                                 {{ $plan->name }}
                             </td>
-                            <td style="width=10px;">
+                            <td class="d-flex justify-content-center">
                                 <a href="{{ route('plans.profile.detach', [$plan->id, $profile->id]) }}" class="btn btn-warning" data-toggle="tooltip" title="Desvincular">Desvincular</a>
                             </td>
                         </tr>

@@ -22,12 +22,12 @@
             </form>
         </div>
         <div class="card-body">
-            <table class="table table-condensed">
+            <table class="table">
                 <thead>
                     <tr>
                         <th>Logo</th>
                         <th>Nome</th>
-                        <th>Ações</th>
+                        <th scope="col"><center>Ações</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,10 +41,11 @@
                                 @endif
                             </td>
                             <td>{{ $tenant->name }}</td>
-                            <td style="width=10px;">
-                                <a href="{{ route('tenants.edit', $tenant->id) }}" class="btn btn-info" data-toggle="tooltip" title="Editar">Editar</a>
+                            <td class="d-flex justify-content-center">
+                                <a href="{{ route('tenants.show', $tenant->id) }}" class="btn btn-primary mr-2" data-toggle="tooltip" title="Detalhes"><i class="fas fa-search"></i></a>
 
-                                <a href="{{ route('tenants.show', $tenant->id) }}" class="btn btn-success" data-toggle="tooltip" title="Detalhes">Detalhes</a>
+                                <a href="{{ route('tenants.edit', $tenant->id) }}" class="btn btn-info" data-toggle="tooltip" title="Editar"><i class="fas fa-pen"></i></a>
+                            </a>
                             </td>
                         </tr>
                     @endforeach

@@ -13,5 +13,5 @@
     <input type="password" name="password" id="password" class="form-control" placeholder="Senha" value="{{ $user->password ?? old('password')}}">
 </div>
 <div class="form-group">
-    <button type="submit" class="btn btn-dark" title="Salvar">Salvar</button>
+    <button type="submit" class="btn btn-success" title="Salvar">Salvar</button>
 </div>

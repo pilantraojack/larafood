@@ -27,7 +27,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Ações</th>
+                        <th scope="col"><center>Ações</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -36,10 +36,10 @@
                             <td>
                                 {{ $permission->name }}
                             </td>
-                            <td style="width=10px;">
-                                <a href="{{ route('permissions.show', $permission->id) }}" class="btn btn-warning" title="Detalhes">Detalhes</a>
-                                <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-success" title="Editar">Editar</a>
-                                <a href="{{ route('permissions.profiles', $permission->id) }}" class="btn btn-info" title="Perfis"><i class="fas fa-id-badge"></i></a>
+                            <td class="d-flex justify-content-center">
+                                <a href="{{ route('permissions.show', $permission->id) }}" class="btn btn-primary mr-2" title="Detalhes"><i class="fas fa-search"></i></a>
+                                <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-info mr-2" title="Editar"><i class="fas fa-pen"></i></a>
+                                <a href="{{ route('permissions.profiles', $permission->id) }}" class="btn btn-warning" title="Perfis"><i class="fas fa-id-badge"></i></a>
                             </td>
                         </tr>
                     @endforeach

@@ -28,7 +28,7 @@
                         <th>Imagem</th>
                         <th>Título</th>
                         <th>Preço</th>
-                        <th>Ações</th>
+                        <th scope="col"><center>Ações</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,10 +43,10 @@
                             </td>
                             <td>{{ $product->title }}</td>
                             <td>${{ $product->price }}</td>
-                            <td style="width=10px;">
-                                <a href="{{ route('products.categories', $product->id) }}" class="btn btn-warning" title="Categorias"><i class="fas fa-layer-group"></i></a>
-                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-info" title="Editar">Editar</a>
-                                <a href="{{ route('products.show', $product->id) }}" class="btn btn-success" title="Detalhes">Detalhes</a>
+                            <td class="d-flex justify-content-center">
+                                <a href="{{ route('products.categories', $product->id) }}" class="btn btn-warning mr-2" title="Categorias"><i class="fas fa-layer-group"></i></a>
+                                <a href="{{ route('products.show', $product->id) }}" class="btn btn-primary mr-2" title="Detalhes"><i class="fas fa-search"></i></a>
+                                <a href="{{ route('products.edit', $product->id) }}" class="btn btn-info" title="Editar"><i class="fas fa-pen"></i></a>
                             </td>
                         </tr>
                     @endforeach

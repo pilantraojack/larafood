@@ -27,7 +27,7 @@
                     <tr>
                         <th>Nome</th>
                         <th>Preço</th>
-                        <th>Ações</th>
+                        <th scope="col"><center>Ações</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,12 +39,11 @@
                             <td>
                                 R$ {{$plan->price}}
                             </td>
-                            <td style="width=10px;">
-
-                                <a href="{{ route('plans.show', $plan->url) }}" title="Detalhes" class="btn btn-warning">Detalhes</a>
-                                <a href="{{ route('plans.edit', $plan->url) }}" title="Editar" class="btn btn-success">Editar</a>
-                                <a href="{{ route('details.plan.index', $plan->url) }}" class="btn btn-primary" title="Detalhes do Plano">Detalhes do Plano</a>
-                                <a href="{{ route('plans.profiles', $plan->id) }}" title="Perfis do Plano" class="btn btn-info"><i class="fas fa-address-book"></i> </a>
+                            <td class="d-flex justify-content-center">
+                                <a href="{{ route('plans.show', $plan->url) }}" title="Detalhes" class="btn btn-primary mr-2"><i class="fas fa-search"></i></a>
+                                <a href="{{ route('plans.edit', $plan->url) }}" title="Editar" class="btn btn-info mr-2"><i class="fas fa-pen"></i></a>
+                                <a href="{{ route('details.plan.index', $plan->url) }}" class="btn btn-primary mr-2" title="Detalhes do Plano">Detalhes</a>
+                                <a href="{{ route('plans.profiles', $plan->id) }}" title="Perfis do Plano" class="btn btn-secondary"><i class="fas fa-address-book"></i> </a>
                             </td>
                         </tr>
                     @endforeach

@@ -5,7 +5,7 @@
 @section('content_header')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}" title="Dashboard">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('products.index') }}" title="Planos">Planos</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('products.index') }}" title="Produtos">Produtos</a></li>
     </ol>
 @stop
 
@@ -21,7 +21,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Ações</th>
+                        <th scope="col"><center>Ações</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +30,7 @@
                             <td>
                                 {{ $category->name }}
                             </td>
-                            <td style="width=10px;">
+                            <td class="d-flex justify-content-center">
                                 <a href="{{ route('products.categories.detach', [$product->id, $category->id]) }}" class="btn btn-warning">Desvincular</a>
                             </td>
                         </tr>

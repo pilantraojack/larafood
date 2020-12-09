@@ -10,5 +10,5 @@
     <input type="text" name="description" id="description" class="form-control" placeholder="Descrição" value="{{ $role->description ?? old('description')}}">
 </div>
 <div class="form-group">
-    <button type="submit" class="btn btn-dark" data-toggle="tooltip" title="Salvar">Salvar</button>
+    <button type="submit" class="btn btn-success" data-toggle="tooltip" title="Salvar">Salvar</button>
 </div>

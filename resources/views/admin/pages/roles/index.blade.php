@@ -26,7 +26,7 @@
                 <thead>
                     <tr>
                         <th>Nome</th>
-                        <th>Ações</th>
+                        <th scope="col"><center>Ações</center></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,10 +35,10 @@
                             <td>
                                 {{ $role->name }}
                             </td>
-                            <td style="width=10px;">
-                                <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-info" data-toggle="tooltip" title="Editar">Editar</a>
-                                <a href="{{ route('roles.show', $role->id) }}" class="btn btn-warning" data-toggle="tooltip" title="Detalhes">Detalhes</a>
-                                <a href="{{ route('roles.permissions', $role->id) }}" class="btn btn-primary" data-toggle="tooltip" title="Permissões"><i class="fas fa-lock"></i></a>
+                            <td class="d-flex justify-content-center">
+                                <a href="{{ route('roles.show', $role->id) }}" class="btn btn-primary mr-2" data-toggle="tooltip" title="Detalhes"><i class="fas fa-search"></i></a>
+                                <a href="{{ route('roles.edit', $role->id) }}" class="btn btn-info mr-2" data-toggle="tooltip" title="Editar"><i class="fas fa-pen"></i></a>
+                                <a href="{{ route('roles.permissions', $role->id) }}" class="btn btn-warning" data-toggle="tooltip" title="Permissões"><i class="fas fa-lock"></i></a>
                             </td>
                         </tr>
                     @endforeach
