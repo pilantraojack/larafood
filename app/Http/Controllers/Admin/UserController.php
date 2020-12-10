@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -105,7 +106,9 @@ class UserController extends Controller
         }
 
         $data = $request->only(['name', 'email']);
-
+        Log::message('------');
+        Log::message($data);
+        Log::message('------');
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
         }

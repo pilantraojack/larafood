@@ -6,7 +6,7 @@
 </div>
 <div class="form-group">
     <label for="email">Descrição</label>
-    <textarea name="description" id="description" cols="20" rows="5" class="form-control">{{ $category->description ?? old('description') }}</textarea>
+    <textarea name="description" id="description" cols="20" rows="5" class="form-control">{{ $table->description ?? old('description') }}</textarea>
 </div>
 <div class="form-group">
     <button type="submit" class="btn btn-success" title="Salvar">Salvar</button>
