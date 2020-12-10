@@ -56,7 +56,7 @@
 @if(! config('adminlte.enabled_laravel_mix'))
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('js/jquery.mask.min.js') }}"></script>
-<script src="{{ asset('js/masks.js') }}"></script>
+<script src="{{ asset('js/forms.js') }}"></script>
 
 
 

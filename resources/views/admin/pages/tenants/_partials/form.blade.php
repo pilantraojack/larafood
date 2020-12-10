@@ -30,11 +30,11 @@
 
 <div class="form-group">
     <label for="subscription">Data Assinatura (início)</label>
-    <input type="date" name="subscription" class="form-control data" placeholder="Data Assinatura" value="{{$tenant->subscription->format('d/m/y') }}">
+    <input type="date" name="subscription" class="form-control" placeholder="Data Assinatura">
 </div>
 <div class="form-group">
     <label for="expires_at">Expira em (final)</label>
-    <input type="date" name="expires_at" class="form-control data" placeholder="Expira em" value="{{$tenant->expires_at->format('d/m/y') }}">
+    <input type="date" name="expires_at" class="form-control" placeholder="Expira em">
 </div>
 <div class="form-group">
     <label for="sub_active">Assinatura Ativa ?</label>
@@ -42,14 +42,6 @@
         <option selected disabled>Select...</option>
         <option value="1" @if(isset($tenant) && $tenant->sub_active) selected @endif >Sim</option>
         <option value="0" @if(isset($tenant) && $tenant->sub_active) selected @endif >Não</option>
-    </select>
-</div>
-<div class="form-group">
-    <label for="sub_suspended">Assinatura Cancelada ?</label>
-    <select name="sub_suspended" class="form-control">
-        <option selected disabled>Select...</option>
-        <option value="1" @if(isset($tenant) && $tenant->sub_suspended) selected @endif >Sim</option>
-        <option value="0" @if(isset($tenant) && $tenant->sub_suspended) selected @endif >Não</option>
     </select>
 </div>
 <div class="form-group">

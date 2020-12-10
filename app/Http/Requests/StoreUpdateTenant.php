@@ -23,23 +23,30 @@ class StoreUpdateTenant extends FormRequest
      */
     public function rules()
     {
-        return [
-            // 'name' => ['required', 'string', 'min:3', 'max:255', 'unique:tenants,name'],
-            // 'email' => ['required', 'string', 'email', 'min:3', 'max:255', 'unique:users'],
-            // 'cnpj' => ['required', 'string', 'min:14', 'max:18', 'unique:tenants'],
-        ];
+        $id = $this->segment(3);
 
-        if ($this->method() == 'PUT') {
-            $rules['image'] = ['nullable'];
-        }
+        $rules = [
+            'name' => ['required', 'min:3', 'max:255', "unique:tenants,name,{$id},id"],
+            'email' => ['required', 'min:3', 'max:255', "unique:tenants,email,{$id},id"],
+            'cnpj' => ['required', 'min:14', 'max:18', "unique:tenants,cnpj,{$id},id"],
+            'logo' => ['nullable', 'image'],
+            'active' => ['required', 'in:Y,N'],
+
+            // subscription
+            'subscription' => ['nullable', 'date'],
+            'expires_at' => ['nullable', 'date'],
+            'subscription_id' => ['nullable', 'max:255'],
+            'subscription_active' => ['nullable', 'boolean'],
+            'subscription_suspended' => ['nullable', 'boolean'],
+        ];
 
         return $rules;
     }
 
     public function messages() {
         return [
-            'required' => __('mdci.Field :attribute is required.'),
-            'min'      => __('mdci.Field :attribute must have a minimun of :min characters.')
+            'required' => 'Field :attribute is required.',
+            'min'      => 'Field :attribute must have a minimun of :min characters.'
         ];
     }
 }
