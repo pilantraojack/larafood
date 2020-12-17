@@ -28,7 +28,7 @@
                         <p class="text-desc"> {{ $product->description ?? 'uninformed' }}</p>
 
                         <label for="price">Price</label>
-                        <p class="text-desc">R$ {{ $product->price ?? 'uninformed' }}</p>
+                        <p class="text-desc">R$ {{ number_format($product->price, 2, ",", ".") ?? 'uninformed' }}</p>
                     </div>
                 </div>
             </div>

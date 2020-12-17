@@ -22,11 +22,10 @@
 
                         <label for="url">Url</label>
                         <p class="text-desc"> {{ $plan->url ?? 'uninformed' }}</p>
-
                     </div>
                     <div class="col-6">
                         <label for="price">Preço</label>
-                        <p class="text-desc"> {{ $plan->price ?? 'uninformed' }}</p>
+                        <p class="text-desc"> {{ number_format($plan->price, 2, ",", ".") ?? 'uninformed' }}</p>
 
                         <label for="desciption">Description</label>
                         <p class="text-desc"> {{ $plan->description ?? 'uninformed' }}</p>

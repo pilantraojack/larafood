@@ -6,7 +6,7 @@
 </div>
 <div class="form-group">
     <label for="name">Preço</label>
-    <input type="text" name="price" id="price" class="form-control money" placeholder="$" value="{{ $product->price ?? old('price')}}">
+    <input type="number" step="0.01" name="price" id="price" class="form-control" placeholder="R$" value="{{ $product->price ?? old('price')}}">
 </div>
 <div class="form-group">
     <label for="name">Imagem</label>

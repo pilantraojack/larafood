@@ -50,17 +50,22 @@
                 <div class="card-body d-flex justify-content-between">
                     <div class="col-6">
                         <label for="sub" class="label-desc">Assinatura</label>
-                        <p class="text-desc"> {{ $tenant->subscription->format('d/m/y') ?? 'uninformed' }}</p>
+                        @if($tenant->subscription)
+                            <p class="text-desc"> {{ $tenant->subscription->format('d/m/y')}}</p>
+                        @else
+                            <p class="text-desc"> {{ '-' }}</p>
+                        @endif
 
                         <label for="expire" class="label-desc">Expira em</label>
-                        <p class="text-desc"> {{ $tenant->expires_at->format('d/m/y') ?? 'uninformed' }}</p>
+                        @if($tenant->expires_at)
+                            <p class="text-desc"> {{ $tenant->expires_at->format('d/m/y')}}</p>
+                        @else
+                            <p class="text-desc"> {{ '-' }}</p>
+                        @endif
                     </div>
                     <div class="col-6">
                         <label for="active" class="label-desc">Ativo ?</label>
                         <p class="text-desc"> {{ $tenant->sub_active ? 'SIM' : 'NÃO' }}</p>
-
-                        <label for="suspended">Cancelou ?</label>
-                        <p class="text-desc"> {{ $tenant->sub_suspended ? 'SIM' : 'NÃO' }}</p>
                     </div>
                 </div>
             </div>

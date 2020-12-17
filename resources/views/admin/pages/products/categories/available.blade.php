@@ -24,7 +24,9 @@
             <table class="table table-condensed">
                 <thead>
                     <tr>
-                        <th width="50px">#</th>
+                        <th width="50px">
+                            <input type="checkbox" id="check-all" title="Marcar/Desmarcar Tudo">
+                        </th>
                         <th>Nome</th>
                     </tr>
                 </thead>
@@ -35,7 +37,7 @@
                         @foreach($categories as $category)
                             <tr>
                                 <td>
-                                    <input type="checkbox" name="categories[]" value="{{ $category->id }}">
+                                    <input type="checkbox" class="checks" name="categories[]" value="{{ $category->id }}">
                                 </td>
                                 <td>
                                     {{ $category->name }}

@@ -13,13 +13,23 @@ class PermissionsTableSeeder extends Seeder
     public function run()
     {
         Permission::create([
-            'name' => 'tenants',
-            'description' => 'Acesso à tenants',
+            'name' => 'categories',
+            'description' => 'Acesso à categories',
+        ]);
+
+        Permission::create([
+            'name' => 'permissions',
+            'description' => 'Acesso à permissions',
         ]);
 
         Permission::create([
             'name' => 'plans',
             'description' => 'Acesso à plans',
+        ]);
+
+        Permission::create([
+            'name' => 'products',
+            'description' => 'Acesso à products',
         ]);
 
         Permission::create([
@@ -33,8 +43,13 @@ class PermissionsTableSeeder extends Seeder
         ]);
 
         Permission::create([
-            'name' => 'permissions',
-            'description' => 'Acesso à permissions',
+            'name' => 'tables',
+            'description' => 'Acesso à tables',
+        ]);
+
+        Permission::create([
+            'name' => 'tenants',
+            'description' => 'Acesso à tenants',
         ]);
 
         Permission::create([
@@ -42,19 +57,5 @@ class PermissionsTableSeeder extends Seeder
             'description' => 'Acesso à users',
         ]);
 
-        Permission::create([
-            'name' => 'categories',
-            'description' => 'Acesso à categories',
-        ]);
-
-        Permission::create([
-            'name' => 'products',
-            'description' => 'Acesso à products',
-        ]);
-
-        Permission::create([
-            'name' => 'tables',
-            'description' => 'Acesso à tables',
-        ]);
     }
 }

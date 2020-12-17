@@ -37,13 +37,13 @@
                                 {{ $plan->name }}
                             </td>
                             <td>
-                                R$ {{$plan->price}}
+                                R$ {{ number_format($plan->price, 2, ",", ".") }}
                             </td>
                             <td class="d-flex justify-content-center">
                                 <a href="{{ route('plans.show', $plan->url) }}" title="Detalhes" class="btn btn-primary mr-2"><i class="fas fa-search"></i></a>
                                 <a href="{{ route('plans.edit', $plan->url) }}" title="Editar" class="btn btn-info mr-2"><i class="fas fa-pen"></i></a>
-                                <a href="{{ route('details.plan.index', $plan->url) }}" class="btn btn-primary mr-2" title="Detalhes do Plano">Detalhes</a>
-                                <a href="{{ route('plans.profiles', $plan->id) }}" title="Perfis do Plano" class="btn btn-secondary"><i class="fas fa-address-book"></i> </a>
+                                <a href="{{ route('plans.profiles', $plan->id) }}" title="Perfis do Plano" class="btn btn-secondary mr-2"><i class="fas fa-address-book"></i> </a>
+                                <a href="{{ route('details.plan.index', $plan->url) }}" class="btn btn-primary" title="Detalhes do Plano">Detalhes</a>
                             </td>
                         </tr>
                     @endforeach

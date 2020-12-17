@@ -17,5 +17,15 @@ class RolesTableSeeder extends Seeder
             'description' => 'Todas as permissões'
         ]);
 
+        Role::create([
+            'name' => 'Admin',
+            'description' => 'Todas as permissões'
+        ]);
+
+        Role::create([
+            'name' => 'User',
+            'description' => 'Algumas permissões'
+        ]);
+
     }
 }

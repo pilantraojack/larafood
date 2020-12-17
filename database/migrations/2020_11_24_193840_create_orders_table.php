@@ -35,7 +35,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('qty');
-            $table->double('price', 10, 2);
+            $table->decimal('price', 10, 2);
 
             $table->foreign('order_id')
                         ->references('id')
