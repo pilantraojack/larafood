@@ -37,4 +37,11 @@ class StoreUpdateUser extends FormRequest
 
         return $rules;
     }
+
+    public function messages() {
+        return [
+            'required' => 'Campo :attribute é obrigatório.',
+            'min'      => 'Campo :attribute precisa ter no mínimo :min caracteres.'
+        ];
+    }
 }

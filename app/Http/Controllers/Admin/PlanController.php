@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePlan;
 use App\Models\Plan;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PlanController extends Controller
 {
@@ -40,9 +41,23 @@ class PlanController extends Controller
     // função que salva o plano no banco, injeta o request para fazer as validações
     public function store(StoreUpdatePlan $request){
 
-        $this->repository->create($request->all());
+        try{
+            DB::beginTransaction();
+            $this->repository->create($request->all());
 
-        return redirect()->route('plans.index');
+            DB::commit();
+            return redirect()->route('plans.index')
+                                ->withSuccess([
+                                    'titulo' => 'Plano inserido com sucesso !'
+                                ]);
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('plans.index')
+                                ->withErrors([
+                                    'titulo' => 'Error !'
+                                ]);
+        }
     }
 
     // função que traz os detalhes do plano, recebe a url
@@ -108,11 +123,24 @@ class PlanController extends Controller
         // se nao encontrar o plano, redireciona de volta
         if(!$plan)
             return redirect()->back();
-        // se achar o plano, faz o update
-        $plan->update($request->all());
-        // redireciona de volta à lista
-        return redirect()->route('plans.index');
+        try{
+            DB::beginTransaction();
+            // se achar o plano, faz o update
+            $plan->update($request->all());
 
+            DB::commit();
+            return redirect()->route('plans.index')
+                                    ->withSuccess([
+                                        'titulo' => 'Plano atualizado com sucesso !'
+                                    ]);
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('plans.index')
+                                    ->withErrors([
+                                        'titulo' => 'Erro !'
+                                    ]);
+        }
     }
 
 }

@@ -37,4 +37,11 @@ class StoreUpdateCategory extends FormRequest
             'description' => ['required', 'min:3', 'max:10000'],
         ];
     }
+
+    public function messages() {
+        return [
+            'required' => 'Campo :attribute é obrigatório.',
+            'min'      => 'Campo :attribute precisa ter no mínimo of :min caracteres.'
+        ];
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateDetailPlan;
 use App\Models\DetailPlan;
 use App\Models\Plan;
+use Illuminate\Support\Facades\DB;
 
 class DetailPlanController extends Controller
 {
@@ -52,8 +53,23 @@ class DetailPlanController extends Controller
             return redirect()->back();
         }
 
-        $plan->details()->create($request->all());
-        return redirect()->route('details.plan.index', $plan->url);
+        try{
+            DB::beginTransaction();
+            $plan->details()->create($request->all());
+
+            DB::commit();
+            return redirect()->route('details.plan.index', $plan->url)
+                                    ->withSuccess([
+                                        'titulo' => 'Detalhe inserido com sucesso !'
+                                    ]);
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('details.plan.index', $plan->url)
+                                    ->withErrors([
+                                        'titulo' => 'Erro !'
+                                    ]);
+        }
     }
 
     public function edit($urlPlan, $idDetail) {
@@ -78,9 +94,23 @@ class DetailPlanController extends Controller
             return redirect()->back();
         }
 
-        $detail->update($request->all());
-        return redirect()->route('details.plan.index', $plan->url);
+        try{
+            DB::beginTransaction();
+            $detail->update($request->all());
 
+            DB::commit();
+            return redirect()->route('details.plan.index', $plan->url)
+                                    ->withSuccess([
+                                        'titulo' => 'Detalhe atualizado com sucesso !'
+                                    ]);
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('details.plan.index', $plan->url)
+                                    ->withErrors([
+                                        'titulo' => 'Erro !'
+                                    ]);
+        }
     }
 
     public function show($urlPlan, $idDetail) {

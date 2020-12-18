@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateProduct;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
@@ -54,11 +55,24 @@ class ProductController extends Controller
         if($request->hasFile('image') && $request->image->isValid()){
             $data['image'] = $request->image->store("tenants/{$tenant->uuid}/products");
         }
-        // dd($request);
 
-        $this->repository->create($data);
+        try{
+            DB::beginTransaction();
+            $this->repository->create($data);
 
-        return redirect()->route('products.index');
+            DB::commit();
+            return redirect()->route('products.index')
+                                    ->withSuccess([
+                                        'titulo' => 'Produto inserido com sucesso !'
+                                    ]);
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('products.index')
+                                    ->withErrors([
+                                        'titulo' => 'Error !'
+                                    ]);
+        }
     }
 
     /**
@@ -109,18 +123,31 @@ class ProductController extends Controller
         $tenant = auth()->user()->tenant;
         // $data['tenant_id'] = $tenant->id;
 
+        try{
+            DB::beginTransaction();
+            if($request->hasFile('image') && $request->image->isValid()){
+                if(Storage::exists($product->image)){
+                    Storage::delete($product->image);
+                }
 
-        if($request->hasFile('image') && $request->image->isValid()){
-            if(Storage::exists($product->image)){
-                Storage::delete($product->image);
+                $data['image'] = $request->image->store("tenants/{$tenant->uuid}/products");
             }
+            // dd($request);
+            $product->update($data);
 
-            $data['image'] = $request->image->store("tenants/{$tenant->uuid}/products");
+            DB::commit();
+            return redirect()->route('products.index')
+                                    ->withSuccess([
+                                        'titulo' => 'Produto atualizado com sucesso !'
+                                    ]);
+
+        }catch(\Exception $e) {
+            DB::rollback();
+            return redirect()->route('products.index')
+                                    ->withErrors([
+                                        'titulo' => 'Erro !'
+                                    ]);
         }
-        // dd($request);
-        $product->update($data);
-
-        return redirect()->route('products.index');
     }
 
     /**

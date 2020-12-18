@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateTable;
 use App\Models\Table;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TableController extends Controller
 {
@@ -51,12 +52,23 @@ class TableController extends Controller
         $tenant = auth()->user()->tenant;
         $data['tenant_id'] = $tenant->id;
 
-        // return $request;
+        try{
+            DB::beginTransaction();
+            $this->repository->create($data);
 
-        $this->repository->create($data);
-        // $this->repository->create($request->all);
+            DB::commit();
+            return redirect()->route('tables.index')
+                                    ->withSuccess([
+                                        'titulo' => 'Mesa inserida com sucesso !'
+                                    ]);
 
-        return redirect()->route('tables.index');
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('tables.index')
+                                    ->withErrors([
+                                        'titulo' => 'Erro !'
+                                    ]);
+        }
     }
 
     /**
@@ -103,9 +115,23 @@ class TableController extends Controller
             return redirect()->back();
         }
 
-        $table->update($request->all());
+        try{
+            DB::beginTransaction();
+            $table->update($request->all());
 
-        return redirect()->route('tables.index');
+            DB::commit();
+            return redirect()->route('tables.index')
+                                    ->withSuccess([
+                                        'titulo' => 'Mesa atualizada com sucesso !'
+                                    ]);
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('tables.index')
+                                    ->withErrors([
+                                        'titulo' => 'Erro !'
+                                    ]);
+        }
     }
 
     /**

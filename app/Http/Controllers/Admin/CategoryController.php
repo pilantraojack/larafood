@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateCategory;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CategoryController extends Controller
 {
@@ -51,11 +52,23 @@ class CategoryController extends Controller
         $tenant = auth()->user()->tenant;
         $data['tenant_id'] = $tenant->id;
 
-        // return $request;
+        try{
+            DB::beginTransaction();
+            $this->repository->create($data);
 
-        $this->repository->create($data);
+            DB::commit();
+            return redirect()->route('categories.index')
+                                    ->withSuccess([
+                                        'titulo' => 'Categoria inserida com sucesso !'
+                                    ]);
 
-        return redirect()->route('categories.index');
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('categories.index')
+                                    ->withErrors([
+                                        'titulo' => 'Erro !'
+                                    ]);
+        }
     }
 
     /**

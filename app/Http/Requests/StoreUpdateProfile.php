@@ -30,4 +30,11 @@ class StoreUpdateProfile extends FormRequest
             'description' => 'nullable|min:3|max:255',
         ];
     }
+
+    public function messages() {
+        return [
+            'required' => 'Campo :attribute é obrigatório.',
+            'min'      => 'Campo :attribute precisa ter no mínimo :min caracteres.'
+        ];
+    }
 }

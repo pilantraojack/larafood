@@ -27,7 +27,13 @@
                         <p class="text-desc"> {{ $tenant->name ?? 'uninformed' }}</p>
 
                         <label for="logo" class="label-desc">Logo</label>
-                        <p><img src="{{ url("storage/$tenant->logo") }}" width="50" height="50" alt="Image"></p>
+                        <p>
+                            @if($tenant->logo)
+                                <img src="{{ url("storage/$tenant->logo") }}" width="50" height="50" alt="Image">
+                            @else
+                                <img src="{{ url('storage/imgs/no-image.jpg') }}" width="50" height="50" alt="Logo">
+                            @endif
+                        </p>
                     </div>
                     <div class="col-6">
                         <label for="email" class="label-desc">Email</label>

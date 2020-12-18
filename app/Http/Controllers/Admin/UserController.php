@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
@@ -56,9 +57,25 @@ class UserController extends Controller
         $data['tenant_id'] = auth()->user()->tenant_id;
         $data['password'] = bcrypt($data['password']);
 
-        $this->repository->create($data);
+        try{
+            DB::beginTransaction();
+            $this->repository->create($data);
 
-        return redirect()->route('users.index');
+            DB::commit();
+            return redirect()->route('users.index')
+                                    ->withSuccess([
+                                        'titulo' => 'Usuário atualizado com sucesso !'
+                                    ]);
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('users.index')
+                                    ->withErrors([
+                                        'titulo' => 'Error !'
+                                    ]);
+
+        }
+
     }
 
     /**
@@ -106,16 +123,27 @@ class UserController extends Controller
         }
 
         $data = $request->only(['name', 'email']);
-        Log::message('------');
-        Log::message($data);
-        Log::message('------');
         if ($request->password) {
             $data['password'] = bcrypt($request->password);
         }
 
-        $user->update($data);
+        try{
+            DB::beginTransaction();
+            $user->update($data);
 
-        return redirect()->route('users.index');
+            DB::commit();
+            return redirect()->route('users.index')
+                                    ->withSuccess([
+                                        'titulo' => 'Usuário atualizado com sucesso !'
+                                    ]);
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('users.index')
+                                    ->withErrors([
+                                        'titulo' => 'Erro !'
+                                    ]);
+        }
     }
 
     /**

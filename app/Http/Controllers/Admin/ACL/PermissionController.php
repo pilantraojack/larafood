@@ -6,6 +6,7 @@ use App\Models\Permission;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdatePermission;
+use Illuminate\Support\Facades\DB;
 
 class PermissionController extends Controller
 {
@@ -48,11 +49,25 @@ class PermissionController extends Controller
      */
     public function store(StoreUpdatePermission $request)
     {
-        $this->repository->create($request->all());
+        try{
+            DB::beginTransaction();
+            $this->repository->create($request->all());
 
-        return redirect()->route('permissions.index');
+            DB::commit();
+            return redirect()->route('permissions.index')
+                                ->withSuccess([
+                                    'titulo' => 'Permissão inserida com sucesso!'
+                                ]);
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('permissions.index')
+                            ->withErrors([
+                                'titulo' => 'Erro!'
+                            ]);
+        }
+
     }
-
 
     /**
      * Display the specified resource.
@@ -97,9 +112,24 @@ class PermissionController extends Controller
             return redirect()->back();
         }
 
-        $permission->update($request->all());
+        try{
+            DB::beginTransaction();
+            $permission->update($request->all());
 
-        return redirect()->route('permissions.index');
+            DB::commit();
+            return redirect()->route('permissions.index')
+                                ->withSuccess([
+                                    'titulo' => 'Permissão atualizada com sucesso!'
+                                ]);
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('permissions.index')
+                                ->withErrors([
+                                    'titulo' => 'Erro!'
+                                ]);
+
+        }
     }
 
     /**

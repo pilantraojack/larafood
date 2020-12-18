@@ -21,7 +21,13 @@
                         <p class="text-desc"> {{ $product->title ?? 'uninformed' }}</p>
 
                         <label for="image" class="label-desc">Image</label>
-                        <p><img src="{{ url("storage/$product->image") }}" width="50" height="50" alt="Image"></p>
+                        <p>
+                            @if($product->image)
+                                <img src="{{ url("storage/$product->image") }}" width="50" height="50" alt="Image">
+                            @else
+                                <img src="{{ url('storage/imgs/no-image.jpg') }}" width="50" height="50" alt="Logo">
+                            @endif
+                        </p>
                     </div>
                     <div class="col-6">
                         <label for="description">Description</label>

@@ -41,8 +41,8 @@ class StoreUpdateProduct extends FormRequest
 
     public function messages() {
         return [
-            'required' => __('Field :attribute is required.'),
-            'min'      => __('Field :attribute must have a minimun of :min characters.')
+            'required' => 'Campo :attribute é obrigatório.',
+            'min'      => 'Campo :attribute precisa ter no mínimo :min caracteres.'
         ];
     }
 }

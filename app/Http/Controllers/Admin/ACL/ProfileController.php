@@ -6,6 +6,7 @@ use App\Http\Requests\StoreUpdateProfile;
 use App\Http\Controllers\Controller;
 use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ProfileController extends Controller
 {
@@ -47,9 +48,23 @@ class ProfileController extends Controller
      */
     public function store(StoreUpdateProfile $request)
     {
-        $this->repository->create($request->all());
+        try{
+            DB::beginTransaction();
+            $this->repository->create($request->all());
 
-        return redirect()->route('profiles.index');
+            DB::commit();
+            return redirect()->route('profiles.index')
+                                ->withSuccess([
+                                    'titulo' => 'Perfil inserido com sucesso !'
+                                ]);
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('profiles.index')
+                                    ->withErrors([
+                                        'titulo' => 'Erro !'
+                                    ]);
+        }
     }
 
     /**
@@ -96,9 +111,23 @@ class ProfileController extends Controller
             return redirect()->back();
         }
 
-        $profile->update($request->all());
+        try{
+            DB::beginTransaction();
+            $profile->update($request->all());
 
-        return redirect()->route('profiles.index');
+            DB::commit();
+            return redirect()->route('profiles.index')
+                                ->withSuccess([
+                                    'titulo' => 'Perfil atualizado com sucesso !'
+                                ]);
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('profiles.index')
+                                ->withErrors([
+                                    'titulo' => 'Erro !'
+                                ]);
+        }
     }
 
     /**

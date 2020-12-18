@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateRole;
 use App\Models\Role;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RoleController extends Controller
 {
@@ -48,9 +49,23 @@ class RoleController extends Controller
      */
     public function store(StoreUpdateRole $request)
     {
-        $this->repository->create($request->all());
+        try{
+            DB::beginTransaction();
+            $this->repository->create($request->all());
 
-        return redirect()->route('roles.index');
+            DB::commit();
+            return redirect()->route('roles.index')
+                                ->withSuccess([
+                                    'titulo' => 'Cargo inserido com sucesso !'
+                                ]);
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('roles.index')
+                                ->withErrors([
+                                    'titulo' => 'Erro !'
+                                ]);
+        }
     }
 
     /**
@@ -97,9 +112,23 @@ class RoleController extends Controller
             return redirect()->back();
         }
 
-        $role->update($request->all());
+        try{
+            DB::beginTransaction();
+            $role->update($request->all());
 
-        return redirect()->route('roles.index');
+            DB::commit();
+            return redirect()->route('roles.index')
+                                ->withSuccess([
+                                    'titulo' => 'Cargo atualizado com sucesso !'
+                                ]);
+
+        }catch(\Exception $e){
+            return redirect()->route('roles.index')
+                                ->withErrors([
+                                    'titulo' => 'Erro !'
+                                ]);
+
+        }
     }
 
     /**

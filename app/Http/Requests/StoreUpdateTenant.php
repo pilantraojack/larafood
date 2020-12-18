@@ -45,8 +45,8 @@ class StoreUpdateTenant extends FormRequest
 
     public function messages() {
         return [
-            'required' => 'Field :attribute is required.',
-            'min'      => 'Field :attribute must have a minimun of :min characters.'
+            'required' => 'Campo :attribute é obrigatório.',
+            'min'      => 'Campo :attribute precisa ter no mínimo :min caracteres.'
         ];
     }
 }

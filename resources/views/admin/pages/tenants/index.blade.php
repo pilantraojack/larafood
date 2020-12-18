@@ -37,7 +37,7 @@
                                 @if($tenant->logo)
                                     <img src="{{ url("storage/$tenant->logo") }}" width="50" height="50" alt="Image">
                                 @else
-                                    {{ '-' }}
+                                    <img src="{{ url('storage/imgs/no-image.jpg') }}" width="50" height="50" alt="Logo">
                                 @endif
                             </td>
                             <td>{{ $tenant->name }}</td>

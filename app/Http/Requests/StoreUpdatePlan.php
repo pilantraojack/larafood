@@ -37,8 +37,8 @@ class StoreUpdatePlan extends FormRequest
 
     public function messages() {
         return [
-            'required' => __('mdci.Field :attribute is required.'),
-            'min'      => __('mdci.Field :attribute must have a minimun of :min characters.')
+            'required' => 'Campo :attribute é obrigatório.',
+            'min'      => 'Campo :attribute precisa ter no mínimo :min caracteres.'
         ];
     }
 }

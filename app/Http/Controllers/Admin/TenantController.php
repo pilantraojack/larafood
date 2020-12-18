@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateTenant;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
 class TenantController extends Controller
@@ -56,16 +58,29 @@ class TenantController extends Controller
         $data['plan_id'] = $tenant->plan_id;
         $data['url'] = $tenant->url;
 
-        if($request->hasFile('logo') && $request->logo->isValid()){
-            $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}");
-        } else {
-            $data['logo'] = 'tenants/default.png';
+        try{
+            DB::beginTransaction();
+            if($request->hasFile('logo') && $request->logo->isValid()){
+                $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}");
+            } else {
+                $data['logo'] = 'tenants/default.png';
+            }
+
+            $this->repository->create($data);
+
+            DB::commit();
+            return redirect()->route('tenants.index', compact('tenant'))
+                                    ->withSuccess([
+                                        'titulo' => 'Empresa cadastrada com sucesso !'
+                                    ]);
+
+        }catch(\Exception $e){
+            DB::rollback();
+            return redirect()->route('tenants.index', compact('tenant'))
+                                    ->withErrors([
+                                        'titulo' => 'Error !'
+                                    ]);
         }
-
-        // return $data;
-        $this->repository->create($data);
-
-        return redirect()->route('tenants.index', compact('tenant'));
     }
 
     /**
@@ -111,26 +126,40 @@ class TenantController extends Controller
         if(!$tenant = $this->repository->find($id)){
             return redirect()->back();
         }
+        // dd($tenant);
 
         $data = $request->all();
         $tenant = auth()->user()->tenant;
         $data['tenant_id'] = $tenant->id;
         $data['plan_id'] = $tenant->plan_id;
 
-        if($request->hasFile('logo') && $request->logo->isValid()){
-            if(Storage::exists($tenant->logo)){
-                Storage::delete($tenant->logo);
+        try{
+            DB::beginTransaction();
+            if($request->hasFile('logo') && $request->logo->isValid()){
+                if(Storage::exists($tenant->logo)){
+                    Storage::delete($tenant->logo);
+                }
+
+                $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}tenants");
+
             }
+            // return $data;
+            $tenant->update($data);
 
-            $data['logo'] = $request->logo->store("tenants/{$tenant->uuid}tenants");
+            DB::commit();
+            return redirect()->route('tenants.index')
+                                    ->WithSuccess([
+                                        'titulo' => 'Empresa atualizada com sucesso !'
+                                    ]);
 
+        }catch(\Exception $e){
+            DB::rollback();
+            Log::alert('deu merda', ["merda" => $e->getMessage()]);
+            return redirect()->route('tenants.index')
+                                    ->WithErrors([
+                                        'titulo' => 'Erro !'
+                                    ]);
         }
-
-        // return $data;
-
-        $tenant->update($data);
-
-        return redirect()->route('tenants.index');
     }
 
     /**
