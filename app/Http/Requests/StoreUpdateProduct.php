@@ -28,12 +28,12 @@ class StoreUpdateProduct extends FormRequest
         return [
             'title' => ['required', 'min:3', 'max:255', "unique:products,title,{$id},id"],
             'description' => ['required', 'min:3', 'max:500'],
-            'image' => ['required'],
+            'image' => ['required', 'image'],
             'price' => "required",
         ];
 
         if ($this->method() == 'PUT') {
-            $rules['image'] = ['nullable'];
+            $rules['image'] = ['nullable', 'image'];
         }
 
         return $rules;

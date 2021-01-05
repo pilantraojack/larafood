@@ -22,7 +22,7 @@ class ProductRepository implements ProductRepositoryInterface
                     ->where('products.tenant_id', $idTenant)
                     ->where('categories.tenant_id', $idTenant)
                     ->where(function ($query) use ($categories) {
-                        if($categories != [])
+                        if ($categories != [])
                             $query->whereIn('categories.uuid', $categories);
                     })
                     ->select('products.*')

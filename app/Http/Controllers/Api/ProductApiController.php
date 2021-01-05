@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\TenantFormRequest;
 use App\Http\Resources\ProductResource;
 use App\Services\ProductService;
+use Illuminate\Http\Request;
 
 class ProductApiController extends Controller
 {

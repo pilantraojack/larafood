@@ -39,19 +39,11 @@ class TenantService
 
     public function storeTenant() {
         $data = $this->data;
-        // dd($this->data);
-
-        // if($data->hasFile('logo') && $data->logo->isValid()){
-        //     $data['logo'] = $data->logo->store("tenants/{$data->uuid}/logo");
-        // } else {
-        //     $data['logo'] = 'tenants/default.png';
-        // }
 
         return $this->plan->tenants()->create([
             'cnpj'  => $data['cnpj'],
             'name'  => $data['empresa'],
             'email' => $data['email'],
-            // 'logo'  => $data['logo'],
             'subscription' => now(),
             'expires_at' => now()->addDays(7),
         ]);

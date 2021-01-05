@@ -1,6 +1,8 @@
 @include('admin.includes.alerts')
 
 <div class="form-group">
+    <input type="hidden" name="tenant_id"  value="{{ $tenant = auth()->user()->tenant->id }}">
+
     <label for="name">Título</label>
     <input type="text" name="title" id="title" class="form-control" placeholder="Título" value="{{ $product->title ?? old('title')}}">
 </div>
