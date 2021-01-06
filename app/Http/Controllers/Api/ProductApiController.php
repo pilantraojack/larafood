@@ -30,10 +30,10 @@ class ProductApiController extends Controller
         return ProductResource::collection($products);
     }
 
-    public function show(TenantFormRequest $request, $flag)
+    public function show(TenantFormRequest $request, $identify)
     {
-        if(!$product = $this->productService->getProductByFlag($flag)) {
-            return response()->json(['message' => 'Category Not Found'], 404);
+        if(!$product = $this->productService->getProductByUuid($identify)) {
+            return response()->json(['message' => 'Product Not Found'], 404);
         }
 
         return new ProductResource($product);
