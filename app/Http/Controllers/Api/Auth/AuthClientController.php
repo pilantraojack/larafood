@@ -12,20 +12,25 @@ class AuthClientController extends Controller
 {
     public function auth(Request $request)
     {
+        // regras de validação
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
             'device_name' => 'required',
         ]);
 
+        // recupera o cliente pelo email que vem do request
         $client = Client::where('email', $request->email)->first();
 
-        if(!$client || !Hash::check($request->password, $client->password)){
-            return response()->json(['message' => trans('messages.invalid_credentials')], 404);
+        // verifica se achou o cliente, e se achou, verifica se a senha que veio do request é a senha do email
+        if(!$client || !Hash::check($request->password, $client->password)) {
+            return response()->json(['message' => 'Credenciais Inválidas'], 404);
         }
 
+        // se tudo estiver correto, cria o token a partir do device name
         $token = $client->createToken($request->device_name)->plainTextToken;
 
+        // retorna o token em json
         return response()->json(['token' => $token]);
     }
 

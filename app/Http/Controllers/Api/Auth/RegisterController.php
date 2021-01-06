@@ -14,7 +14,7 @@ class RegisterController extends Controller
 
     public function __construct(ClientService $clientService)
     {
-        $this->$clientService = $clientService;
+        $this->clientService = $clientService;
     }
 
     public function store(StoreClient $request)
