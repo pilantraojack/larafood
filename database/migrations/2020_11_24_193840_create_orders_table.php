@@ -1,4 +1,4 @@
-<?php
+ <?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -19,7 +19,7 @@ class CreateOrdersTable extends Migration
             $table->string('identify')->unique();
             $table->integer('client_id')->nullable();
             $table->integer('table_id')->nullable();
-            $table->string('total');
+            $table->double('total', 10, 2);
             $table->enum('status', ['open', 'done', 'rejected', 'working', 'canceled', 'delivering']);
             $table->text('comment')->nullable();
             $table->timestamps();
@@ -35,7 +35,7 @@ class CreateOrdersTable extends Migration
             $table->unsignedBigInteger('order_id');
             $table->unsignedBigInteger('product_id');
             $table->integer('qty');
-            $table->decimal('price', 10, 2);
+            $table->double('price', 10, 2);
 
             $table->foreign('order_id')
                         ->references('id')
