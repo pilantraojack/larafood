@@ -23,24 +23,24 @@ class OrderService
         $this->productRepository = $productRepository;
     }
 
-    public function ordersByClient()
-    {
-        $idClient = $this->getClientIdByOrder();
+    // public function ordersByClient()
+    // {
+    //     $idClient = $this->getClientIdByOrder();
 
-        return $this->orderRepository->getOrdersByClient($idClient);
-    }
+    //     return $this->orderRepository->getOrdersByClient($idClient);
+    // }
 
-    public function getOrderByIdentify(string $identify)
-    {
-        return $this->orderRepository->getOrderByIdentify($identify);
-    }
+    // public function getOrderByIdentify(string $identify)
+    // {
+    //     return $this->orderRepository->getOrderByIdentify($identify);
+    // }
 
     public function createNewOrder(array $order)
     {
         $productsOrder = $this->getProductsByOrder($order['products'] ?? []);
 
         $identify = $this->getIdentifyOrder();
-        $total = $this->getTotalOrder($productsOrder);
+        $total = $this->getTotalOrder([$productsOrder]);
         $status = 'open';
         $tenantId = $this->getTenantIdByOrder($order['token_company']);
         $comment = isset($order['comment']) ? $order['comment'] : '';
@@ -57,24 +57,24 @@ class OrderService
             $tableId
         );
 
-        $this->orderRepository->registerProductsOrder($order->id, $productsOrder);
+        // $this->orderRepository->registerProductsOrder($order->id, $productsOrder);
 
         return $order;
     }
 
-    private function getIdentifyOrder(int $qtyCaracters = 8)
+    private function getIdentifyOrder(int $qtyCharacters = 8)
     {
-        $smallLetters = str_shuffle('abcdefghijklmnopqrstuvxyz');
+        $smallLetters = str_shuffle('abcdefghijklmnopqrstuvwxyz');
 
         $numbers = (((date('Ymd') / 12) * 24) + mt_rand(800, 9999));
-        $numbers = 1234567890;
+        $numbers .= 1234567890;
 
         $characters = $smallLetters.$numbers;
 
-        $identify = substr(str_shuffle($characters), 0, $qtyCaracters);
+        $identify = substr(str_shuffle($characters), 0, $qtyCharacters);
 
         if($this->orderRepository->getOrderByIdentify($identify)){
-            $this->getIdentifyOrder($qtyCaracters + 1);
+            $this->getIdentifyOrder($qtyCharacters + 1);
         }
 
         return $identify;
@@ -106,6 +106,7 @@ class OrderService
         }
 
         return (float) $total;
+        // return (float) 90;
     }
 
     private function getTenantIdByOrder(string $uuid)

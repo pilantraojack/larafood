@@ -4,7 +4,6 @@ namespace App\Repositories;
 
 use App\Models\Order;
 use App\Repositories\Contracts\OrderRepositoryInterface;
-use Illuminate\Support\Facades\DB;
 
 class OrderRepository implements OrderRepositoryInterface
 {
@@ -30,12 +29,13 @@ class OrderRepository implements OrderRepositoryInterface
             'total' => $total,
             'status' => $status,
             'comment' => $comment,
-
         ];
 
         if($clientId) $data['client_id'] = $clientId;
         if($tableId) $data['table_id'] = $tableId;
+
         // dd($data);
+
         $order = $this->entity->create($data);
 
         return $order;
@@ -50,18 +50,18 @@ class OrderRepository implements OrderRepositoryInterface
 
     public function registerProductsOrder(int $orderId, array $products)
     {
-        $order = $this->entity->find($orderId);
+        // $order = $this->entity->find($orderId);
 
-        $orderProducts = [];
+        // $orderProducts = [];
 
-        foreach($products as $product) {
-            $orderProducts[$product['id']] = [
-                'qty' => $product['qty'],
-                'price' => $product['price'],
-            ];
-        }
+        // foreach($products as $product) {
+        //     $orderProducts[$product['id']] = [
+        //         'qty' => $product['qty'],
+        //         'price' => $product['price'],
+        //     ];
+        // }
 
-        $order->products()->attach($orderProducts);
+        // $order->products()->attach($orderProducts);
 
         // foreach($products as $product){
         //     array_push($orderProducts, [
@@ -77,10 +77,10 @@ class OrderRepository implements OrderRepositoryInterface
 
     public function getOrdersByClientId(int $idClient)
     {
-        $orders = $this->entity
-                            ->where('client_id', $idClient)
-                            ->paginate();
-        return $orders;
+    //     $orders = $this->entity
+    //                         ->where('client_id', $idClient)
+    //                         ->paginate();
+    //     return $orders;
     }
 
 }

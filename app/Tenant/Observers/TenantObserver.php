@@ -14,13 +14,13 @@ class TenantObserver{
      * @return void
      */
     // TODO: Pode ser comentado este cara, em tese. Fazer testes
-    // public function creating(Model $model)
-    // {
-    //     // Verificar este código
-    //     $managerTenant = app(ManagerTenant::class);
-    //     $identify = $managerTenant->getTenantIdentify();
+    public function creating(Model $model)
+    {
+        // Verificar este código
+        $managerTenant = app(ManagerTenant::class);
+        $identify = $managerTenant->getTenantIdentify();
 
-    //     if($identify)
-    //         $model->tenant_id = $identify;
-    // }
+        if($identify)
+            $model->tenant_id = $identify;
+    }
 }

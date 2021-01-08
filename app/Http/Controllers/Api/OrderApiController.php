@@ -19,6 +19,7 @@ class OrderApiController extends Controller
 
     public function store(StoreOrder $request)
     {
+        // $order = $this->orderService->createNewOrder($request->all());
         $order = $this->orderService->createNewOrder($request->all());
 
         return new OrderResource($order);
@@ -26,16 +27,16 @@ class OrderApiController extends Controller
 
     public function show($identify)
     {
-        if(!$order = $this->orderService->getOrderByIdentify($identify)){
-            return response()->json(['message' => 'Not Found'], 404);
-        }
+        // if(!$order = $this->orderService->getOrderByIdentify($identify)){
+        //     return response()->json(['message' => 'Not Found'], 404);
+        // }
 
-        return new OrderResource($order);
+        // return new OrderResource($order);
     }
 
-    public function myOrders()
-    {
-        $orders = $this->orderService->ordersByClient();
-        return OrderResource::collection($orders);
-    }
+    // public function myOrders()
+    // {
+    //     $orders = $this->orderService->ordersByClient();
+    //     return OrderResource::collection($orders);
+    // }
 }
