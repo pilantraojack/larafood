@@ -23,24 +23,24 @@ class OrderService
         $this->productRepository = $productRepository;
     }
 
-    // public function ordersByClient()
-    // {
-    //     $idClient = $this->getClientIdByOrder();
+    public function ordersByClient()
+    {
+        $idClient = $this->getClientIdByOrder();
 
-    //     return $this->orderRepository->getOrdersByClient($idClient);
-    // }
+        return $this->orderRepository->getOrdersByClientId($idClient);
+    }
 
-    // public function getOrderByIdentify(string $identify)
-    // {
-    //     return $this->orderRepository->getOrderByIdentify($identify);
-    // }
+    public function getOrderByIdentify(string $identify)
+    {
+        return $this->orderRepository->getOrderByIdentify($identify);
+    }
 
     public function createNewOrder(array $order)
     {
         $productsOrder = $this->getProductsByOrder($order['products'] ?? []);
 
         $identify = $this->getIdentifyOrder();
-        $total = $this->getTotalOrder([$productsOrder]);
+        $total = $this->getTotalOrder($productsOrder);
         $status = 'open';
         $tenantId = $this->getTenantIdByOrder($order['token_company']);
         $comment = isset($order['comment']) ? $order['comment'] : '';
@@ -57,7 +57,7 @@ class OrderService
             $tableId
         );
 
-        // $this->orderRepository->registerProductsOrder($order->id, $productsOrder);
+        $this->orderRepository->registerProductsOrder($order->id, $productsOrder);
 
         return $order;
     }
@@ -83,6 +83,7 @@ class OrderService
     private function getProductsByOrder(array $productsOrder): array
     {
         $products = [];
+
         foreach($productsOrder as $productOrder) {
             $product = $this->productRepository->getProductByUuid($productOrder['identify']);
 
@@ -92,7 +93,6 @@ class OrderService
                 'price' => $product->price,
             ]);
         }
-        // dd($products);
 
         return $products;
     }
@@ -106,7 +106,6 @@ class OrderService
         }
 
         return (float) $total;
-        // return (float) 90;
     }
 
     private function getTenantIdByOrder(string $uuid)

@@ -20,7 +20,7 @@ class EvaluationRepository implements EvaluationRepositoryInterface
             'client_id' => $idClient,
             'order_id' => $idOrder,
             'stars' => $evaluation['stars'],
-            'comment' => isset($evaluation['stars']) ? $evaluation['stars'] : '',
+            'comment' => isset($evaluation['comment']) ? $evaluation['comment'] : '',
         ];
 
         return $this->entity->create($data);

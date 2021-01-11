@@ -8,5 +8,5 @@ interface EvaluationRepositoryInterface
     public function getEvaluationsByOrder(int $idOrder);
     public function getEvaluationsByClient(int $idClient);
     public function getEvaluationsbyId(int $id);
-    public function getEvaluationsbyClientIdByOrderId(int $idOrder, int $idClient);
+    // public function getEvaluationsbyClientIdByOrderId(int $idOrder, int $idClient);
 }
