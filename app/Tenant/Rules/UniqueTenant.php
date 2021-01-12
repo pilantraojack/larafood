@@ -8,17 +8,15 @@ use Illuminate\Support\Facades\DB;
 
 class UniqueTenant implements Rule
 {
-    protected $table, $value, $column;
+    protected $table;
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct(string $table, $value = null, $column = 'id')
+    public function __construct(string $table)
     {
         $this->table = $table;
-        $this->value = $value;
-        $this->column = $column;
     }
 
     /**
@@ -33,12 +31,9 @@ class UniqueTenant implements Rule
         $tenantId = app(ManagerTenant::class)->getTenantIdentify();
 
         $register = DB::table($this->table)
-                            ->where($attribute, $value)
-                            ->where('tenant_id', $tenantId)
-                            ->first();
-
-        if($register && $register->{$this->column} == $this->value);
-            return true;
+                                ->where($attribute, $value)
+                                ->where('tenant_id', $tenantId)
+                                ->first();
 
         return is_null($register);
     }

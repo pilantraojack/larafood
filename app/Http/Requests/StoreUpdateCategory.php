@@ -27,21 +27,15 @@ class StoreUpdateCategory extends FormRequest
         $id = $this->segment(3);
 
         return [
-            // 'name' => ['required', 'min:3', 'max:255', "unique:categories,name,{$id},id"],
             'name' => [
                 'required',
                 'min:3',
                 'max:255',
-                new UniqueTenant('categories', $id),
+                new UniqueTenant('categories'),
             ],
-            'description' => ['required', 'min:3', 'max:10000'],
+            'description' => ['required', 'min:3', 'max:1000'],
         ];
     }
 
-    public function messages() {
-        return [
-            'required' => 'Campo :attribute é obrigatório.',
-            'min'      => 'Campo :attribute precisa ter no mínimo of :min caracteres.'
-        ];
-    }
+
 }
