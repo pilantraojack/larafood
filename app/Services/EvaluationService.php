@@ -23,7 +23,6 @@ class EvaluationService
         $order = $this->orderRepository->getOrderByIdentify($identifyOrder);
 
         return $this->evaluationRepository->newEvaluationOrder($order->id, $clientId, $evaluation);
-
     }
 
     private function getIdClient()

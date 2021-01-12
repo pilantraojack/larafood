@@ -16,7 +16,7 @@ class EvaluationRepository implements EvaluationRepositoryInterface
 
     public function newEvaluationOrder(int $idOrder, int $idClient, array $evaluation)
     {
-        $data = [
+        $data =  [
             'client_id' => $idClient,
             'order_id' => $idOrder,
             'stars' => $evaluation['stars'],
@@ -41,7 +41,7 @@ class EvaluationRepository implements EvaluationRepositoryInterface
         return $this->entity->find($id);
     }
 
-    public function getEvaluationsbyClientIdByOrderId(int $idOrder, int $idClient)
+    public function getEvaluationsByClientIdByOrderId(int $idOrder, int $idClient)
     {
         return $this->entity
                     ->where('client_id', $idClient)

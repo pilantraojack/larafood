@@ -18,7 +18,7 @@ class Evaluation extends Model
 
     public function order()
     {
-        return $this->belongsto(Order::class);
+        return $this->belongsTo(Order::class);
     }
 
     public function client()
