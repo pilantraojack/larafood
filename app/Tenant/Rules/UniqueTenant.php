@@ -8,15 +8,17 @@ use Illuminate\Support\Facades\DB;
 
 class UniqueTenant implements Rule
 {
-    protected $table;
+    protected $table, $value, $column;
     /**
      * Create a new rule instance.
      *
      * @return void
      */
-    public function __construct(string $table)
+    public function __construct(string $table, $value = null, $column = 'id')
     {
         $this->table = $table;
+        $this->value = $value;
+        $this->column = $column;
     }
 
     /**
@@ -35,6 +37,9 @@ class UniqueTenant implements Rule
                                 ->where('tenant_id', $tenantId)
                                 ->first();
 
+        if($register && $register->{$this->column} == $this->value)
+            return true;
+
         return is_null($register);
     }
 
@@ -45,6 +50,6 @@ class UniqueTenant implements Rule
      */
     public function message()
     {
-        return 'The validation error message.';
+        return 'O valor para o campo :attribute já está em uso!';
     }
 }
