@@ -117,16 +117,11 @@ Route::prefix('admin')
     Route::get('plans/{url}', 'PlanController@show')->name('plans.show');
     Route::post('plans', 'PlanController@store')->name('plans.store');
     Route::get('plans', 'PlanController@index')->name('plans.index');
-    // Route::get('/', 'PlanController@index')->name('admin.index');
+
+    // Home
+    Route::get('/', 'DashboardController@home')->name('admin.index');
 
 });
     // Routes Site
     Route::get('/plan/{url}', 'Site\SiteController@plan')->name('plan.subscription');
     Route::get('/', 'Site\SiteController@index')->name('site.home');
-
-
-
-    // Auth Routes
-    Auth::routes();
-
-
