@@ -29,7 +29,7 @@ Route::prefix('admin')
         ->group(function() {
 
     // Home
-    Route::get('/', 'HomeController@index')->name('admin.index');
+    // Route::get('/', 'HomeController@index')->name('admin.index');
 
     // Role x User
     Route::get('users/{id}/role/{idRole}/detach'     , 'ACL\RoleUserController@detachRolesUser')->name('users.role.detach');
