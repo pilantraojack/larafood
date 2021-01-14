@@ -36,7 +36,6 @@ class UniqueTenant implements Rule
                                 ->where($attribute, $value)
                                 ->where('tenant_id', $tenantId)
                                 ->first();
-
         if($register && $register->{$this->column} == $this->value)
             return true;
 
@@ -50,6 +49,6 @@ class UniqueTenant implements Rule
      */
     public function message()
     {
-        return 'O valor para o campo :attribute já está em uso!';
+        return 'O valor para :attribute já está em uso!';
     }
 }

@@ -22,7 +22,6 @@ class StoreUpdateProduct extends FormRequest
      *
      * @return array
      */
-
     public function rules()
     {
         $id = $this->segment(3);

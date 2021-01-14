@@ -33,7 +33,7 @@ class StoreUpdateCategory extends FormRequest
                 'max:255',
                 new UniqueTenant('categories', $id),
             ],
-            'description' => ['required', 'min:3', 'max:1000'],
+            'description' => ['required', 'min:3', 'max:10000'],
         ];
     }
 }
