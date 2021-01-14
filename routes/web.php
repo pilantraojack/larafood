@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\DetailPlanController;
 use App\Models\Client;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -29,7 +30,7 @@ Route::prefix('admin')
         ->group(function() {
 
     // Home
-    // Route::get('/', 'HomeController@index')->name('admin.index');
+    Route::get('/', 'HomeController@index')->name('admin.index');
 
     // Role x User
     Route::get('users/{id}/role/{idRole}/detach'     , 'ACL\RoleUserController@detachRolesUser')->name('users.role.detach');
@@ -125,3 +126,5 @@ Route::prefix('admin')
     // Routes Site
     Route::get('/plan/{url}', 'Site\SiteController@plan')->name('plan.subscription');
     Route::get('/', 'Site\SiteController@index')->name('site.home');
+
+    Auth::routes();
