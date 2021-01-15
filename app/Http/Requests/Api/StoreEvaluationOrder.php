@@ -37,4 +37,11 @@ class StoreEvaluationOrder extends FormRequest
             'comment' => ['nullable', 'min:3', 'max:1000'],
         ];
     }
+
+    public function messages() {
+        return [
+            'required' => 'O campo :attribute é obrigatório.',
+            'min'      => 'O campo :attribute precisa ter no mínimo :min caracteres.'
+        ];
+    }
 }

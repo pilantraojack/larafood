@@ -10,5 +10,9 @@
         $('.checks').not(this).prop('checked', this.checked);
     });
 
+    setTimeout(function(){
+        $(".alert").fadeOut();
+    }, 5000 ); // 5 secs
+
 })();
 

@@ -51,4 +51,5 @@ class UniqueTenant implements Rule
     {
         return 'O valor para :attribute já está em uso!';
     }
+
 }

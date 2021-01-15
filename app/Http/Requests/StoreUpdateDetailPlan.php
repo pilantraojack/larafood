@@ -30,8 +30,8 @@ class StoreUpdateDetailPlan extends FormRequest
 
     public function messages() {
         return [
-            'required' => 'Campo :attribute é obrigatório.',
-            'min'      => 'Campo :attribute precisa ter no mínimo of :min caracteres.'
+            'required' => 'O campo :attribute é obrigatório.',
+            'min'      => 'O campo :attribute precisa ter no mínimo :min caracteres.'
         ];
     }
 }
