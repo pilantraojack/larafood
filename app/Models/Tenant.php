@@ -33,7 +33,6 @@ class Tenant extends Model
         'sub_id',
         'sub_active',
         'sub_suspended'
-
     ];
 
     public function users(){

@@ -29,6 +29,7 @@ Route::prefix('admin')
         ->middleware('auth')
         ->group(function() {
 
+
     // Home
     Route::get('/', 'HomeController@index')->name('admin.index');
 
@@ -122,9 +123,20 @@ Route::prefix('admin')
     // Home
     Route::get('/', 'DashboardController@home')->name('admin.index');
 
-});
-    // Routes Site
-    Route::get('/plan/{url}', 'Site\SiteController@plan')->name('plan.subscription');
-    Route::get('/', 'Site\SiteController@index')->name('site.home');
+    // Rota debug dos métodos UserAclTrait
+    Route::get('test-acl', function() {
+        // dd(auth()->user()->permissions());
+        // dd(auth()->user()->hasPermission('roles'));
+        // dd(auth()->user()->isAdmin());
+        dd(auth()->user()->isTenant());
+    });
 
-    Auth::routes();
+
+});
+
+
+// Routes Site
+Route::get('/plan/{url}', 'Site\SiteController@plan')->name('plan.subscription');
+Route::get('/', 'Site\SiteController@index')->name('site.home');
+
+Auth::routes();

@@ -16,7 +16,7 @@ class Plan extends Model
         'description'
     ];
 
-    // método para pesquisa, recebe o $filters, qué onde o usuário vai digitar a busca, o valor fica null para evitar erros
+    // método para pesquisa, recebe o $filters, que é onde o usuário vai digitar a busca, o valor fica null para evitar erros
     public function search($filter = null){
         // paga o resultado, amarzena em uma variável,
         // busca o campo name ou campo description, compara com o LIKE onde é igual ao que foi digitado no campo filter

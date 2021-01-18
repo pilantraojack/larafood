@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
-use App\Models\Permission;
-use App\Models\User;
+use App\Models\{
+    User,
+    Permission
+};
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -27,7 +29,7 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        if($this->app->runningInConsole()) return;
+        // if($this->app->runningInConsole()) return;
 
         // traz a lista de todas as permissões cadastradas
         $permissions = Permission::all();

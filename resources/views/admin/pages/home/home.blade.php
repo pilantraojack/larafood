@@ -52,8 +52,6 @@
                 </div>
             </div>
         </div>
-
-        @admin()
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon bg-aqua">
@@ -65,9 +63,6 @@
                 </div>
             </div>
         </div>
-        @endadmin
-
-        @admin()
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon bg-aqua">
@@ -79,9 +74,6 @@
                 </div>
             </div>
         </div>
-        @endadmin
-
-        @admin()
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon bg-aqua">
@@ -93,9 +85,6 @@
                 </div>
             </div>
         </div>
-        @endadmin
-
-        @admin()
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon bg-aqua">
@@ -107,9 +96,6 @@
                 </div>
             </div>
         </div>
-        @endadmin
-
-        @admin()
         <div class="col-md-3 col-sm-6 col-xs-12">
             <div class="info-box">
                 <span class="info-box-icon bg-aqua">
@@ -121,7 +107,5 @@
                 </div>
             </div>
         </div>
-        @endadmin
-
     </div>
 @stop

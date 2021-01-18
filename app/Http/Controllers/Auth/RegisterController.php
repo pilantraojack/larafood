@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use App\Services\TenantService;
 use App\Tenant\Events\TenantCreated;
+use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -53,7 +56,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'min:3', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:6', 'max:16', 'confirmed'],
             'empresa' => ['required', 'string', 'min:3', 'max:255', 'unique:tenants,name'],
-            'cnpj' => ['required', 'numeric', 'digits:14', 'unique:tenants'],
+            'cnpj' => ['required', 'min:14', 'max:18', 'unique:tenants'],
         ]);
     }
 
@@ -65,7 +68,6 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-
         if (!$plan = session('plan')) {
             return redirect()->route('site.home');
         }
@@ -76,6 +78,5 @@ class RegisterController extends Controller
         event(new TenantCreated($user));
 
         return $user;
-
     }
 }

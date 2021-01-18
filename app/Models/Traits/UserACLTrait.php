@@ -6,15 +6,26 @@ use App\Models\Tenant;
 
 trait UserACLTrait
 {
-    public function permissions(): array
+    public function permissions()
     {
-        $permissionsPlan = $this->permissionsPlan();
-        $permissionsRole = $this->permissionsRole();
+        // $permissionsPlan = $this->permissionsPlan();
+        // $permissionsRole = $this->permissionsRole();
+
+        // $permissions = [];
+        // foreach ($permissionsRole as $permission) {
+        //     if (in_array($permission, $permissionsPlan))
+        //         array_push($permissions, $permission);
+        // }
+
+        // return $permissions;
+        $tenant = $this->tenant()->first();
+        $plan = $tenant->plan;
 
         $permissions = [];
-        foreach ($permissionsRole as $permission) {
-            if (in_array($permission, $permissionsPlan))
-                array_push($permissions, $permission);
+        foreach($plan->profiles as $profile) {
+            foreach($profile->permissions as $permission) {
+                array_push($permissions, $permission->name);
+            };
         }
 
         return $permissions;
@@ -22,43 +33,43 @@ trait UserACLTrait
 
     // método que retorna as permissoes do plano
     public function permissionsPlan(): array {
-        // recupera o tenant com o plano, os perfis do plano, e as permissoes do perfil
-        $tenant = Tenant::with('plan.profiles.permissions')->where('id', $this->tenant_id)->first();
-        $plan = $tenant->plan;
+        // // recupera o tenant com o plano, os perfis do plano, e as permissoes do perfil
+        // $tenant = Tenant::with('plan.profiles.permissions')->where('id', $this->tenant_id)->first();
+        // $plan = $tenant->plan;
 
-        $permissions = [];
-        // percorre os perfis do plano
-        foreach($plan->profiles as $profile){
-            // percorre as permissoes do perfil
-            foreach($profile->permissions as $permission){
-                // preenche o array de permissions e mostra o nome das permissoes
-                array_push($permissions, $permission->name);
-            }
-        }
-        // retorna as permissoes
-        return $permissions;
+        // $permissions = [];
+        // // percorre os perfis do plano
+        // foreach($plan->profiles as $profile){
+        //     // percorre as permissoes do perfil
+        //     foreach($profile->permissions as $permission){
+        //         // preenche o array de permissions e mostra o nome das permissoes
+        //         array_push($permissions, $permission->name);
+        //     }
+        // }
+        // // retorna as permissoes
+        // return $permissions;
     }
     // método que retorna as permissoes do cargo
     public function permissionsRole(): array {
-        // recupera as permissoes de um cargo
-        $roles = $this->roles()->with('permissions')->get();
-        // cria um array vazio para receber as permissoes
-        $permissions = [];
-        // recupera as permissoes dos cargos e joga para dentro do array de permissoes
-        foreach($roles as $role){
-            foreach($role->permissions as $permission) {
-                array_push($permissions, $permission->name);
-            }
-        }
+        // // recupera as permissoes de um cargo
+        // $roles = $this->roles()->with('permissions')->get();
+        // // cria um array vazio para receber as permissoes
+        // $permissions = [];
+        // // recupera as permissoes dos cargos e joga para dentro do array de permissoes
+        // foreach($roles as $role){
+        //     foreach($role->permissions as $permission) {
+        //         array_push($permissions, $permission->name);
+        //     }
+        // }
 
-        // retorna as permissoes
-        return $permissions;
+        // // retorna as permissoes
+        // return $permissions;
     }
 
 
 
     // verifica se o usuário tem permissões, retorna true or false
-    public function hasPermission(String $permissionName): bool {
+    public function hasPermission(string $permissionName): bool {
         return in_array($permissionName, $this->permissions());
     }
 
