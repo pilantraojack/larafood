@@ -2,25 +2,24 @@
 
 namespace App\Tenant\Observers;
 
+use App\Models\Tenant;
 use App\Tenant\ManagerTenant;
 use Illuminate\Database\Eloquent\Model;
 
-
-class TenantObserver{
+class TenantObserver
+{
     /**
-     * Handle the category "creating" event.
+     * Handle the plan "creating" event.
      *
-     * @param Model $model
+     * @param \Illuminate\Database\Eloquent\Model $model
      * @return void
      */
-    // TODO: Pode ser comentado este cara, em tese. Fazer testes
-    public function creating(Model $model)
+    public function creating(Tenant $model)
     {
-        // Verificar este código
         $managerTenant = app(ManagerTenant::class);
         $identify = $managerTenant->getTenantIdentify();
 
-        if($identify)
+        if ($identify)
             $model->tenant_id = $identify;
     }
 }

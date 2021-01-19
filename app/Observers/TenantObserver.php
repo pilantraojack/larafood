@@ -8,24 +8,25 @@ use App\Models\Tenant;
 class TenantObserver
 {
     /**
-     * Handle the tenant "creating" event.
+     * Handle the tenant "create" event.
      *
      * @param  \App\Models\Tenant  $tenant
      * @return void
      */
-    public function creating(Tenant $tenant)
+    // no laravel 7 é created, e nao creating
+    public function created(Tenant $tenant)
     {
         $tenant->uuid = Str::uuid();
         $tenant->url = Str::kebab($tenant->name);
     }
 
     /**
-     * Handle the tenant "updating" event.
+     * Handle the tenant "update" event.
      *
      * @param  \App\Models\Tenant  $tenant
      * @return void
      */
-    public function updating(Tenant $tenant)
+    public function updated(Tenant $tenant)
     {
         $tenant->url = Str::kebab($tenant->name);
     }
