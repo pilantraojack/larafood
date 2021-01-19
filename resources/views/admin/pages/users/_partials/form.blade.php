@@ -1,6 +1,17 @@
 @include('admin.includes.alerts')
 
 <div class="form-group">
+    <label for="name">Empresa</label>
+    <select class="form-control select2" name="tenant_id" id="tenant-id" placeholder="{{ 'Select...' }}">
+        <option selected disabled>{{ 'Select...' }}</option>
+            @foreach($tenants as $tenant)
+                <option value="{{$tenant->id}}">
+                    {{__($tenant->name)}}
+                </option>
+            @endforeach
+    </select>
+</div>
+<div class="form-group">
     <label for="name">Nome</label>
     <input type="text" name="name" id="name" class="form-control" placeholder="Nome" value="{{ $user->name ?? old('name')}}">
 </div>

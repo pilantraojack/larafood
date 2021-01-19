@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateUser;
+use App\Models\Tenant;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +40,9 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.users.create');
+        $tenants = Tenant::get();
+
+        return view('admin.pages.users.create', compact('tenants'));
     }
 
     /**
@@ -51,28 +54,27 @@ class UserController extends Controller
     public function store(StoreUpdateUser $request)
     {
         $data = $request->all();
-        $data['tenant_id'] = auth()->user()->tenant_id;
+        // $data['tenant_id'] = auth()->user()->tenant_id;
         $data['password'] = bcrypt($data['password']);
+        $tenants = Tenant::where('active', '=', 'Y')->get();
 
         try{
             DB::beginTransaction();
             $this->repository->create($data);
 
             DB::commit();
-            return redirect()->route('users.index')
+            return redirect()->route('users.index', 'tenants')
                                     ->withSuccess([
                                         'titulo' => 'Usuário atualizado com sucesso !'
                                     ]);
 
         }catch(\Exception $e){
             DB::rollback();
-            return redirect()->route('users.index')
+            return redirect()->route('users.index', 'tenants')
                                     ->withErrors([
                                         'titulo' => 'Error !'
                                     ]);
-
         }
-
     }
 
     /**
@@ -83,6 +85,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
+
         if (!$user = $this->repository->tenantUser()->find($id)) {
             return redirect()->back();
         }
@@ -99,11 +102,13 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-       if (!$user = $this->repository->tenantUser()->find($id)) {
-           return redirect()->back();
-       }
+        $tenants = Tenant::where('active', '=', 'Y')->get();
 
-       return view('admin.pages.users.edit', compact('user'));
+        if (!$user = $this->repository->tenantUser()->find($id)) {
+            return redirect()->back();
+        }
+
+        return view('admin.pages.users.edit', compact('user', 'tenants'));
     }
 
     /**
@@ -115,6 +120,8 @@ class UserController extends Controller
      */
     public function update(StoreUpdateUser $request, $id)
     {
+        $tenants = Tenant::where('active', '=', 'Y')->get();
+
         if (!$user = $this->repository->tenantUser()->find($id)) {
             return redirect()->back();
         }
@@ -129,14 +136,14 @@ class UserController extends Controller
             $user->update($data);
 
             DB::commit();
-            return redirect()->route('users.index')
+            return redirect()->route('users.index', 'tenants')
                                     ->withSuccess([
                                         'titulo' => 'Usuário atualizado com sucesso !'
                                     ]);
 
         }catch(\Exception $e){
             DB::rollback();
-            return redirect()->route('users.index')
+            return redirect()->route('users.index', 'tenants')
                                     ->withErrors([
                                         'titulo' => 'Erro !'
                                     ]);

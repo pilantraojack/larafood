@@ -75,6 +75,7 @@ class TenantController extends Controller
                                     ]);
 
         }catch(\Exception $e){
+            dd($e);
             DB::rollback();
             return redirect()->route('tenants.index', compact('tenant'))
                                     ->withErrors([
