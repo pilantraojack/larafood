@@ -40,7 +40,7 @@
                                placeholder="Empresa" autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-user"></span>
+                                <span class="fas fa-building"></span>
                             </div>
                         </div>
 
@@ -55,7 +55,7 @@
                                placeholder="CNPJ" autofocus>
                         <div class="input-group-append">
                             <div class="input-group-text">
-                                <span class="fas fa-user"></span>
+                                <span class="fas fa-user-tie">
                             </div>
                         </div>
 

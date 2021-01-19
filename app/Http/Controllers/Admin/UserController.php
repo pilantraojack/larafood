@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUpdateUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class UserController extends Controller
 {
@@ -26,11 +26,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        // traz somente o próprio usuário
-        // $users = $this->repository->latest()->tenantUser()->paginate();
-
-        // traz todos os usuários
-        $users = $this->repository->get();
+        // traz os usuários do mesmo tenant
+        $users = $this->repository->latest()->tenantUser()->paginate();
 
         return view('admin.pages.users.index', compact('users'));
     }
