@@ -31,7 +31,6 @@ class TenantService
         $this->data = $data;
 
         $tenant = $this->storeTenant();
-
         $user = $this->storeUser($tenant);
 
         return $user;
@@ -40,7 +39,6 @@ class TenantService
     public function storeTenant()
     {
         $data = $this->data;
-
         return $this->plan->tenants()->create([
             'cnpj' => $data['cnpj'],
             'name' => $data['empresa'],
@@ -61,4 +59,5 @@ class TenantService
 
         return $user;
     }
+
 }

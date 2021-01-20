@@ -75,7 +75,6 @@ class TenantController extends Controller
                                     ]);
 
         }catch(\Exception $e){
-            dd($e);
             DB::rollback();
             return redirect()->route('tenants.index', compact('tenant'))
                                     ->withErrors([
@@ -155,7 +154,6 @@ class TenantController extends Controller
 
         }catch(\Exception $e){
             DB::rollback();
-            Log::alert('deu merda', ["merda" => $e->getMessage()]);
             return redirect()->route('tenants.index')
                                     ->WithErrors([
                                         'titulo' => 'Erro !'

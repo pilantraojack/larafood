@@ -67,6 +67,7 @@ class ProductController extends Controller
                                     ]);
 
         }catch(\Exception $e){
+            dd($e);
             DB::rollback();
             return redirect()->route('products.index')
                                     ->withErrors([

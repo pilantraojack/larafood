@@ -8,7 +8,7 @@ use App\Models\Product;
 class ProductObserver
 {
     /**
-     * Handle the product "creating" event.
+     * Handle the product "created" event.
      *
      * @param  \App\Models\Product  $product
      * @return void
@@ -20,7 +20,7 @@ class ProductObserver
     }
 
     /**
-     * Handle the product "updating" event.
+     * Handle the product "updated" event.
      *
      * @param  \App\Models\Product  $product
      * @return void

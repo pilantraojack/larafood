@@ -69,6 +69,7 @@ class UserController extends Controller
                                     ]);
 
         }catch(\Exception $e){
+            dd($e);
             DB::rollback();
             return redirect()->route('users.index', 'tenants')
                                     ->withErrors([
