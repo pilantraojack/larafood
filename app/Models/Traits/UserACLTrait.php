@@ -8,6 +8,8 @@ trait UserACLTrait
 {
     public function permissions(): array
     {
+        // dd($this->permissionsPlan());
+        // dd($this->permissionsRole());
         $permissionsPlan = $this->permissionsPlan();
         $permissionsRole = $this->permissionsRole();
 
@@ -16,15 +18,14 @@ trait UserACLTrait
             if (in_array($permission, $permissionsPlan))
                 array_push($permissions, $permission);
         }
-
+        // dd($permissions);
         return $permissions;
     }
 
     // método que retorna as permissoes do plano
     public function permissionsPlan(): array
     {
-        // $tenant = $this->tenant;
-        // $plan = $tenant->plan;
+
         $tenant = Tenant::with('plan.profiles.permissions')->where('id', $this->tenant_id)->first();
         $plan = $tenant->plan;
 

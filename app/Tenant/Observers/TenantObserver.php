@@ -14,12 +14,12 @@ class TenantObserver
      * @param \Illuminate\Database\Eloquent\Model $model
      * @return void
      */
-    // public function creating(Tenant $tenant)
-    // {
-    //     $managerTenant = app(ManagerTenant::class);
-    //     $identify = $managerTenant->getTenantIdentify();
+    public function creating(Tenant $tenant)
+    {
+        $managerTenant = app(ManagerTenant::class);
+        $identify = $managerTenant->getTenantIdentify();
 
-    //     if ($identify)
-    //         $tenant->tenant_id = $identify;
-    // }
+        if ($identify)
+            $tenant->tenant_id = $identify;
+    }
 }

@@ -17,7 +17,6 @@ class TenantCreated
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     private $user;
-
     /**
      * Create a new event instance.
      *
@@ -29,7 +28,7 @@ class TenantCreated
     }
 
     /**
-     * Return user created
+     * Return created user
      */
     public function user(): User
     {
